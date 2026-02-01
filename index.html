@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>San Francisco de Padua Cali - Artículos Religiosos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="dove-loader">🕊</div>
+        <div class="loader-text">San Francisco de Padua Cali</div>
+    </div>
+
+    <!-- Image Modal -->
+    <div class="image-modal" id="imageModal">
+        <span class="close-modal" id="closeModal">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="Imagen ampliada">
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">✝</div>
+                <div>
+                    <h1>SAN FRANCISCO DE PADUA CALI</h1>
+                    <div class="logo-subtitle">Artículos Religiosos desde 2006</div>
+                </div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="mainMenu">
+                    <li><a href="#home" class="active">Inicio</a></li>
+                    <li><a href="#products">Productos</a></li>
+                    <li><a href="#company">Nosotros</a></li>
+                    <li><a href="#payment">Pagos</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="dove-container">
+                <div class="dove">🕊</div>
+            </div>
+            
+            <h2>Arte y Devoción en Cada Detalle</h2>
+            <p>Desde el 21 de febrero de 2006, ofrecemos artículos religiosos que inspiran fe y recuerdan nuestro amor a Dios. Cada pieza es una representación de nuestra divinidad y compromiso con el amor al prójimo.</p>
+            <a href="#products" class="cta-button">Ver Nuestra Colección</a>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products">
+            <div class="section-title">
+                <h2>Nuestros Productos</h2>
+            </div>
+            
+            <div class="section-subtitle">
+                <p>Explora nuestra amplia selección de artículos religiosos organizados por categorías. Cada pieza es cuidadosamente seleccionada para inspirar tu fe y devoción.</p>
+            </div>
+            
+            <!-- Debug Information -->
+            <div class="debug-info" id="debugInfo">
+                <h4>Información de imágenes:</h4>
+                <p>Las imágenes se cargan desde la carpeta "MEDIA/". Asegúrate de que los archivos existan en esa ubicación.</p>
+            </div>
+            
+            <div class="product-tabs">
+                <div class="tabs-header">
+                    <button class="tab-button active" data-tab="saints">Santos Devocionales</button>
+                    <button class="tab-button" data-tab="rosaries">Rosarios y Cuentas</button>
+                    <button class="tab-button" data-tab="medals">Medallas y Colgantes</button>
+                    <button class="tab-button" data-tab="amulets">Amuletos y Protección</button>
+                    <button class="tab-button" data-tab="scapulars">Escapularios</button>
+                </div>
+                
+                <!-- Saints Tab -->
+                <div class="tab-content active" id="saints-tab">
+                    <div class="products-grid" id="saintsGrid">
+                        <!-- Saints products will be generated here by JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- Rosaries Tab -->
+                <div class="tab-content" id="rosaries-tab">
+                    <div class="products-grid" id="rosariesGrid">
+                        <!-- Rosaries products will be generated here by JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- Medals Tab -->
+                <div class="tab-content" id="medals-tab">
+                    <div class="products-grid" id="medalsGrid">
+                        <!-- Medals products will be generated here by JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- Amulets Tab -->
+                <div class="tab-content" id="amulets-tab">
+                    <div class="products-grid" id="amuletsGrid">
+                        <!-- Amulets products will be generated here by JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- Scapulars Tab -->
+                <div class="tab-content" id="scapulars-tab">
+                    <div class="products-grid" id="scapularsGrid">
+                        <!-- Scapulars products will be generated here by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Company Info -->
+        <section class="company-info" id="company">
+            <div class="section-title">
+                <h2>Nuestra Historia</h2>
+            </div>
+            
+            <div class="company-details">
+                <p>Fundada el <span class="company-highlight">21 de febrero de 2006</span>, <strong>SAN FRANCISCO DE PADUA CALI</strong> ha permanecido en el mismo lugar manteniendo nuestras costumbres y valores fundamentales: el amor al prójimo y una hermosa representación de nuestra divinidad.</p>
+                
+                <p style="margin-top: 20px;">Nuestra misión es ofrecer una <span class="company-highlight">hermosa representación de nuestra divinidad</span> para quienes desean tener algo que les recuerde su amor a Dios y fortalezca su fe en el camino espiritual.</p>
+                
+                <p style="margin-top: 20px;">Servicios:</p>
+                <ul style="list-style: none; margin-top: 15px; text-align: left; max-width: 700px; margin: 20px auto;">
+                    <li>✓ <strong>Domicilios en Cali y Área Metropolitana</strong> (Acopi y demás)</li>
+                    <li>✓ <strong>Envíos a nivel nacional</strong> a convenir</li>
+                    <li>✓ Atención personalizada con amor al prójimo</li>
+                    <li>✓ Productos bendecidos disponibles</li>
+                    <li>✓ Asesoría espiritual para selección de artículos</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Payment Section -->
+        <section class="payment-section" id="payment">
+            <div class="section-title">
+                <h2>Métodos de Pago</h2>
+            </div>
+            
+            <div style="text-align: center; margin-bottom: 40px;">
+                <p>Ofrecemos múltiples opciones de pago para tu comodidad:</p>
+            </div>
+            
+            <div class="payment-methods">
+                <div class="bank-logo">Bancolombia</div>
+                <div class="bank-logo">Davivienda</div>
+                <div class="bank-logo">BBVA</div>
+                <div class="bank-logo">Banco de Bogotá</div>
+                <div class="bank-logo">Scotiabank</div>
+                <div class="bank-logo">Banco Popular</div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="#" class="pse-button">
+                    <i class="fas fa-credit-card"></i> Pagar con PSE
+                </a>
+                <p style="margin-top: 20px; color: var(--brown-light);">Área de pagos en desarrollo - Próximamente más opciones</p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" style="padding-top: 40px; background-color: var(--beige-light);">
+            <div class="section-title">
+                <h2>Contacto</h2>
+            </div>
+            
+            <div style="text-align: center; max-width: 900px; margin: 0 auto;">
+                <p style="margin-bottom: 30px; font-size: 1.1rem;">Estamos aquí para ayudarte en tu camino de fe. Contáctanos para más información sobre nuestros productos.</p>
+                
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; margin-bottom: 40px;">
+                    <div style="text-align: center; flex: 1; min-width: 200px;">
+                        <div style="font-size: 2.5rem; color: var(--brown-dark); margin-bottom: 10px;">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h3 style="margin-bottom: 10px;">Teléfono / WhatsApp</h3>
+                        <p style="font-size: 1.2rem; font-weight: 600;">300 848 6851</p>
+                    </div>
+                    
+                    <div style="text-align: center; flex: 1; min-width: 200px;">
+                        <div style="font-size: 2.5rem; color: var(--brown-dark); margin-bottom: 10px;">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3 style="margin-bottom: 10px;">Correo Electrónico</h3>
+                        <p>sanfranciscodepadua.cali@gmail.com</p>
+                        <p style="font-size: 0.9rem; color: var(--brown-light);">(pendiente de crear oficialmente)</p>
+                    </div>
+                    
+                    <div style="text-align: center; flex: 1; min-width: 200px;">
+                        <div style="font-size: 2.5rem; color: var(--brown-dark); margin-bottom: 10px;">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <h3 style="margin-bottom: 10px;">Instagram</h3>
+                        <p>@sanfranciscodepadua_cali</p>
+                        <p style="font-size: 0.9rem; color: var(--brown-light);">(pendiente de crear oficialmente)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>SAN FRANCISCO DE PADUA CALI</h3>
+                <p>Arte y devoción desde 2006. Ofrecemos artículos religiosos que inspiran y conectan con la divinidad, manteniendo siempre el amor al prójimo.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Categorías</h3>
+                <ul>
+                    <li><a href="#products" class="tab-link" data-tab="saints">Santos Devocionales</a></li>
+                    <li><a href="#products" class="tab-link" data-tab="rosaries">Rosarios y Cuentas</a></li>
+                    <li><a href="#products" class="tab-link" data-tab="medals">Medallas y Colgantes</a></li>
+                    <li><a href="#products" class="tab-link" data-tab="amulets">Amuletos de Protección</a></li>
+                    <li><a href="#products" class="tab-link" data-tab="scapulars">Escapularios</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Información de Contacto</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Cali, Colombia</li>
+                    <li><i class="fas fa-phone-alt"></i> 300 848 6851</li>
+                    <li><i class="fas fa-envelope"></i> sanfranciscodepadua.cali@gmail.com</li>
+                    <li><i class="fas fa-clock"></i> Lunes a Sábado: 9am - 7pm</li>
+                    <li><i class="fas fa-church"></i> Domingos: 10am - 2pm</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 SAN FRANCISCO DE PADUA CALI. Todos los derechos reservados. | Desde el 21 de febrero de 2006</p>
+            <p style="margin-top: 10px;">"Donde la fe se encuentra con la devoción en cada detalle"</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/573008486851?text=Hola%20San%20Francisco%20de%20Padua%20Cali,%20me%20interesan%20sus%20productos" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="script.js"></script>
+        <script src="java.js"></script>
+
+</body>
+</html>
