@@ -92,6 +92,272 @@
             pointer-events: none;
         }
 
+        /* ========== CARRUSEL DE FONDO PARA PRODUCTOS - CORREGIDO ========== */
+        .products-bg-carousel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+        }
+
+        .carousel-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: brightness(0.8);
+            background-color: var(--beige-light);
+        }
+
+        .carousel-slide::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(248, 243, 233, 0.6) 0%, rgba(240, 230, 211, 0.4) 100%);
+            z-index: 1;
+        }
+
+        /* Controles del carrusel */
+        .carousel-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 3;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background-color: var(--mustard-medium);
+            transform: scale(1.2);
+        }
+
+        .carousel-dot:hover {
+            background-color: var(--mustard-light);
+        }
+
+        /* ========== SECCIÓN VISÍTANOS ========== */
+        .visit-section {
+            background-color: var(--beige-light);
+            padding: 80px 20px;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .visit-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 70%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .visit-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .visit-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        @media (max-width: 992px) {
+            .visit-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .store-images {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 15px;
+            height: 400px;
+        }
+
+        .store-image-main {
+            grid-column: 1 / 3;
+            grid-row: 1 / 2;
+        }
+
+        .store-image-secondary {
+            grid-column: 1 / 2;
+            grid-row: 2 / 3;
+        }
+
+        .store-image-tertiary {
+            grid-column: 2 / 3;
+            grid-row: 2 / 3;
+        }
+
+        .store-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px var(--shadow);
+            transition: transform 0.3s ease;
+            border: 2px solid var(--beige-medium);
+        }
+
+        .store-image:hover {
+            transform: scale(1.02);
+        }
+
+        .store-image-main {
+            height: 220px;
+        }
+
+        .store-image-secondary, .store-image-tertiary {
+            height: 160px;
+        }
+
+        .visit-info {
+            padding: 20px;
+        }
+
+        .visit-info h3 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--brown-dark);
+            position: relative;
+            display: inline-block;
+        }
+
+        .visit-info h3::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, var(--mustard-medium), var(--coffee-light));
+            bottom: -8px;
+            left: 0;
+        }
+
+        .visit-description {
+            margin-bottom: 25px;
+            color: var(--brown-light);
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .visit-details {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--mustard-medium);
+            box-shadow: 0 4px 10px var(--shadow);
+        }
+
+        .visit-details p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .visit-details i {
+            color: var(--mustard-medium);
+            width: 20px;
+            text-align: center;
+        }
+
+        .map-container {
+            margin-top: 25px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px var(--shadow);
+            border: 2px solid var(--beige-medium);
+            height: 250px;
+        }
+
+        .map-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .map-button {
+            display: inline-block;
+            background: linear-gradient(to right, var(--mustard-medium), var(--mustard-light));
+            color: var(--brown-dark);
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+            box-shadow: 0 4px 10px rgba(212, 185, 106, 0.3);
+            border: 1px solid rgba(212, 185, 106, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .map-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .map-button:hover::before {
+            left: 100%;
+        }
+
+        .map-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(212, 185, 106, 0.4);
+        }
+
         /* ========== ANIMACIONES SUAVES ========== */
         @keyframes floatParticle {
             0% {
@@ -537,6 +803,7 @@
             text-align: center;
             margin-bottom: 50px;
             position: relative;
+            z-index: 2;
         }
 
         .section-title h2 {
@@ -567,6 +834,8 @@
             margin: 0 auto 40px;
             font-size: 1.1rem;
             text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            position: relative;
+            z-index: 2;
         }
 
         .section-logo {
@@ -577,18 +846,7 @@
             align-items: center;
             justify-content: center;
             position: relative;
-        }
-
-        .section-logo::before {
-            content: '';
-            position: absolute;
-            width: 140%;
-            height: 140%;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 70%);
-            filter: blur(15px);
-            z-index: -1;
-            animation: gentleGlow 8s infinite alternate;
+            z-index: 2;
         }
 
         .section-logo-image {
@@ -597,6 +855,24 @@
             object-fit: contain;
             opacity: 0.7;
             filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.7));
+        }
+
+        /* ========== SECCIÓN DE PRODUCTOS CON CARRUSEL DE FONDO ========== */
+        #products {
+            position: relative;
+            overflow: hidden;
+            background: none;
+        }
+
+        #products::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(248, 243, 233, 0.7) 0%, rgba(240, 230, 211, 0.6) 100%);
+            z-index: 1;
         }
 
         /* ========== PRODUCT TABS ========== */
@@ -621,7 +897,7 @@
 
         .tab-button {
             padding: 12px 25px;
-            background-color: var(--beige-medium);
+            background-color: rgba(255, 255, 255, 0.9);
             border: none;
             border-radius: 30px;
             font-family: 'Merriweather', serif;
@@ -634,6 +910,8 @@
             overflow: hidden;
             z-index: 1;
             border: 1px solid rgba(212, 185, 106, 0.2);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(93, 76, 52, 0.1);
         }
 
         .tab-button::before {
@@ -688,7 +966,7 @@
         }
 
         .product-card {
-            background: var(--white);
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 5px 15px var(--shadow);
@@ -700,7 +978,8 @@
             flex-direction: column;
             opacity: 0;
             transform: translateY(20px);
-            z-index: 1;
+            z-index: 2;
+            backdrop-filter: blur(5px);
         }
 
         .product-card::before {
@@ -1224,6 +1503,23 @@
             font-size: 0.9rem;
         }
 
+        .developer-credit {
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+
+        .developer-credit a {
+            color: var(--mustard-light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .developer-credit a:hover {
+            color: var(--mustard-medium);
+            text-decoration: underline;
+        }
+
         /* ========== WHATSAPP FLOAT BUTTON CORREGIDO ========== */
         .whatsapp-float {
             position: fixed;
@@ -1321,6 +1617,18 @@
                 font-size: 2.6rem;
             }
             
+            .store-images {
+                height: 350px;
+            }
+            
+            .store-image-main {
+                height: 190px;
+            }
+            
+            .store-image-secondary, .store-image-tertiary {
+                height: 140px;
+            }
+            
             .whatsapp-float {
                 bottom: 25px;
                 right: 25px;
@@ -1416,6 +1724,26 @@
                 height: 120px;
             }
             
+            .store-images {
+                height: 300px;
+            }
+            
+            .store-image-main {
+                height: 160px;
+            }
+            
+            .store-image-secondary, .store-image-tertiary {
+                height: 120px;
+            }
+            
+            .visit-info h3 {
+                font-size: 1.8rem;
+            }
+            
+            .map-container {
+                height: 200px;
+            }
+            
             /* Reducir partículas de luz en móvil */
             .light-particle {
                 display: none;
@@ -1423,6 +1751,10 @@
             
             .light-ray {
                 display: none;
+            }
+            
+            .carousel-controls {
+                bottom: 10px;
             }
             
             .whatsapp-float {
@@ -1514,6 +1846,31 @@
                 height: 100px;
             }
             
+            .store-images {
+                height: 250px;
+                gap: 10px;
+            }
+            
+            .store-image-main {
+                height: 140px;
+            }
+            
+            .store-image-secondary, .store-image-tertiary {
+                height: 100px;
+            }
+            
+            .visit-info h3 {
+                font-size: 1.6rem;
+            }
+            
+            .visit-description {
+                font-size: 1rem;
+            }
+            
+            .map-container {
+                height: 180px;
+            }
+            
             .footer-column h3 {
                 font-size: 1.4rem;
             }
@@ -1541,6 +1898,10 @@
                 width: 35px;
                 height: 35px;
                 font-size: 1rem;
+            }
+            
+            .carousel-controls {
+                display: none;
             }
         }
     </style>
@@ -1596,6 +1957,7 @@
                     <li><a href="#products">Productos</a></li>
                     <li><a href="#company">Nosotros</a></li>
                     <li><a href="#payment">Pagos</a></li>
+                    <li><a href="#visit">Visítanos</a></li>
                     <li><a href="#contact">Contacto</a></li>
                 </ul>
             </nav>
@@ -1622,8 +1984,26 @@
             <a href="#products" class="cta-button">Ver Nuestra Colección</a>
         </section>
 
-        <!-- Products Section -->
+        <!-- Products Section CON CARRUSEL DE FONDO CORREGIDO -->
         <section id="products">
+            <!-- Carrusel de fondo CORREGIDO -->
+            <div class="products-bg-carousel" id="productsCarousel">
+                <div class="carousel-slide active">
+                    <img src="MEDIA/ALMACEN%201.jpeg" alt="Almacén 1" class="carousel-image">
+                </div>
+                <div class="carousel-slide">
+                    <img src="MEDIA/ALMACEN%202.jpeg" alt="Almacén 2" class="carousel-image">
+                </div>
+                <div class="carousel-slide">
+                    <img src="MEDIA/ALMACEN%203.jpeg" alt="Almacén 3" class="carousel-image">
+                </div>
+                <div class="carousel-controls" id="carouselControls">
+                    <div class="carousel-dot active" data-slide="0"></div>
+                    <div class="carousel-dot" data-slide="1"></div>
+                    <div class="carousel-dot" data-slide="2"></div>
+                </div>
+            </div>
+            
             <div class="section-title">
                 <h2>Nuestros Productos</h2>
             </div>
@@ -1734,6 +2114,58 @@
             </div>
         </section>
 
+        <!-- Visítanos Section -->
+        <section class="visit-section" id="visit">
+            <div class="section-title">
+                <h2>Visítanos en Nuestra Tienda</h2>
+            </div>
+            
+            <div class="visit-container">
+                <div class="visit-content">
+                    <div class="store-images">
+                        <div class="store-image-main">
+                            <img src="MEDIA/ALMACEN%201.jpeg" alt="Interior de la tienda San Francisco de Padua" class="store-image">
+                        </div>
+                        <div class="store-image-secondary">
+                            <img src="MEDIA/ALMACEN%202.jpeg" alt="Vista de los productos religiosos" class="store-image">
+                        </div>
+                        <div class="store-image-tertiary">
+                            <img src="MEDIA/ALMACEN%203.jpeg" alt="Estanterías con artículos religiosos" class="store-image">
+                        </div>
+                    </div>
+                    
+                    <div class="visit-info">
+                        <h3>Nuestra Tienda Física</h3>
+                        <p class="visit-description">
+                            Te invitamos a visitar nuestro espacio físico donde podrás ver y tocar cada uno de nuestros artículos religiosos. 
+                            Nuestra tienda es un lugar de paz y reflexión, donde cada producto cuenta una historia de fe y devoción.
+                        </p>
+                        
+                        <div class="visit-details">
+                            <p><i class="fas fa-map-marker-alt"></i> <strong>Dirección:</strong> Calle 10 # 4-28, Centro, Cali, Colombia</p>
+                            <p><i class="fas fa-clock"></i> <strong>Horario de atención:</strong> Lunes a Sábado 9:00 AM - 7:00 PM</p>
+                            <p><i class="fas fa-phone-alt"></i> <strong>Teléfono:</strong> 300 848 6851</p>
+                            <p><i class="fas fa-car"></i> <strong>Parqueadero:</strong> Disponible cerca de la tienda</p>
+                        </div>
+                        
+                        <div class="map-container">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3982.6740040667867!2d-76.53638542424154!3d3.4511160965203944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e30a6a0c5c6b5a3%3A0x1a7c8a9b9b9b9b9b!2sCalle%2010%20%234-28%2C%20Cali%2C%20Colombia!5e0!3m2!1ses!2sco!4v1690834567890!5m2!1ses!2sco" 
+                                class="map-iframe" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                        
+                        <a href="https://maps.app.goo.gl/ej5r9bYW9C1FreBr7" target="_blank" class="map-button">
+                            <i class="fas fa-directions"></i> Abrir en Google Maps
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Contact Section -->
         <section id="contact" style="padding-top: 40px; background-color: var(--beige-light);">
             <div class="section-title">
@@ -1820,6 +2252,7 @@
         <div class="copyright">
             <p>&copy; 2023 SAN FRANCISCO DE PADUA CALI. Todos los derechos reservados. | Desde el 21 de febrero de 2006</p>
             <p style="margin-top: 10px;">"Donde la fe se encuentra con la devoción en cada detalle"</p>
+            <p class="developer-credit">Desarrollado por <a href="https://whiatcompany.online" target="_blank">Whiat Company Col</a></p>
         </div>
     </footer>
 
@@ -1848,6 +2281,8 @@
                         document.body.style.overflow = 'auto';
                         // Inicializar efectos celestiales
                         initializeCelestialEffects();
+                        // Inicializar carrusel de fondo
+                        initializeCarousel();
                     }, 500);
                 }, remaining);
             }
@@ -1925,6 +2360,70 @@
                 star.style.animationDelay = `${delay}s`;
                 
                 celestialBackground.appendChild(star);
+            }
+        }
+
+        // ========== INICIALIZAR CARRUSEL DE FONDO CORREGIDO ==========
+        function initializeCarousel() {
+            const slides = document.querySelectorAll('.carousel-slide');
+            const dots = document.querySelectorAll('.carousel-dot');
+            let currentSlide = 0;
+            const slideInterval = 5000; // Cambiar cada 5 segundos
+            
+            if (slides.length === 0) return;
+            
+            // Función para mostrar un slide específico
+            function showSlide(n) {
+                // Ocultar todos los slides
+                slides.forEach(slide => {
+                    slide.classList.remove('active');
+                });
+                
+                // Remover clase active de todos los dots
+                dots.forEach(dot => {
+                    dot.classList.remove('active');
+                });
+                
+                // Mostrar el slide actual
+                currentSlide = (n + slides.length) % slides.length;
+                slides[currentSlide].classList.add('active');
+                dots[currentSlide].classList.add('active');
+            }
+            
+            // Inicializar el primer slide
+            showSlide(0);
+            
+            // Configurar intervalo para cambio automático
+            let slideTimer = setInterval(() => {
+                showSlide(currentSlide + 1);
+            }, slideInterval);
+            
+            // Añadir event listeners a los dots
+            dots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const slideIndex = parseInt(this.getAttribute('data-slide'));
+                    showSlide(slideIndex);
+                    // Reiniciar el temporizador
+                    clearInterval(slideTimer);
+                    slideTimer = setInterval(() => {
+                        showSlide(currentSlide + 1);
+                    }, slideInterval);
+                });
+            });
+            
+            // Pausar el carrusel cuando el mouse está sobre la sección de productos
+            const productsSection = document.getElementById('products');
+            if (productsSection) {
+                productsSection.addEventListener('mouseenter', () => {
+                    clearInterval(slideTimer);
+                });
+                
+                productsSection.addEventListener('mouseleave', () => {
+                    clearInterval(slideTimer);
+                    slideTimer = setInterval(() => {
+                        showSlide(currentSlide + 1);
+                    }, slideInterval);
+                });
             }
         }
 
