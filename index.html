@@ -1821,7 +1821,7 @@
             }
             
             .product-info {
-                padding: 15px;
+                padding: 5px;
             }
             
             .product-info h3 {
@@ -2142,7 +2142,7 @@
                         </p>
                         
                         <div class="visit-details">
-                            <p><i class="fas fa-map-marker-alt"></i> <strong>Dirección:</strong> Calle 10 # 4-28, Centro, Cali, Colombia</p>
+                            <p><i class="fas fa-map-marker-alt"></i> <strong>Dirección:</strong> Calle 9 # 5-28, Centro, Cali, Colombia</p>
                             <p><i class="fas fa-clock"></i> <strong>Horario de atención:</strong> Lunes a Sábado 9:00 AM - 7:00 PM</p>
                             <p><i class="fas fa-phone-alt"></i> <strong>Teléfono:</strong> 300 848 6851</p>
                             <p><i class="fas fa-car"></i> <strong>Parqueadero:</strong> Disponible cerca de la tienda</p>
@@ -2150,7 +2150,7 @@
                         
                         <div class="map-container">
                             <iframe 
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3982.6740040667867!2d-76.53638542424154!3d3.4511160965203944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e30a6a0c5c6b5a3%3A0x1a7c8a9b9b9b9b9b!2sCalle%2010%20%234-28%2C%20Cali%2C%20Colombia!5e0!3m2!1ses!2sco!4v1690834567890!5m2!1ses!2sco" 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3982.6740040667867!2d-76.53638542424154!3d3.4511160965203944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e30a6a0c5c6b5a3%3A0x1a7c8a9b9b9b9b9b!2sCl.%209%20%235-28%2C%20Comuna%203%2C%20Cali%2C%20Valle%20del%20Cauca%2C%20Colombia!5e0!3m2!1ses!2sco!4v1690834567890!5m2!1ses!2sco" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" 
                                 class="map-iframe" 
                                 allowfullscreen="" 
                                 loading="lazy" 
@@ -2158,7 +2158,7 @@
                             </iframe>
                         </div>
                         
-                        <a href="https://maps.app.goo.gl/ej5r9bYW9C1FreBr7" target="_blank" class="map-button">
+                        <a href="https://maps.app.goo.gl/Zgy17hrerEgKGTXX9" target="_blank" class="map-button">
                             <i class="fas fa-directions"></i> Abrir en Google Maps
                         </a>
                     </div>
@@ -2542,86 +2542,615 @@
                 });
             });
         }
-
         // Product data con imágenes reales
         const productCategories = {
-            saints: {
-                items: [
-                    {
-                        name: "Virgen Milagrosa Pintada a Mano 40CM",
-                        description: "Hermosa imagen de la Virgen Milagrosa pintada a mano con detalles dorados.",
-                        price: "150.000",
-                        image: "MEDIA/MILAGROSA 40CM.jpeg",
-                        material: "Pintura a mano",
-                        size: "40cm",
-                        details: "Técnica artesanal"
-                    },
-                    {
-                        name: "Virgen Milagrosa en resina de 30CM",
-                        description: "Imagen sagrada de la Virgen de Guadalupe, patrona de América.",
-                        price: "100.000",
-                        image: "MEDIA/MILAGROSA 30CM.jpeg",
-                        material: "Resina",
-                        size: "30cm",
-                        details: "Acabado detallado"
-                    },
-                    {
-                        name: "San Jose en técnica italiana al horno 30CM",
-                        description: "Estatua de San José pintada a mano con detalles artesanales.",
-                        price: "110.000",
-                        image: "MEDIA/SAN JOSE 30CM.jpeg",
-                        material: "Cerámica italiana",
-                        size: "30cm",
-                        details: "Técnica al horno"
-                    },
-                    {
-                        name: "Corazón de María técnica italiana de 33CM",
-                        description: "Escultura del Sagrado Corazón de María con detalles artesanales.",
-                        price: "135.000",
-                        image: "MEDIA/CORAZON DE MARIA 33CM.jpeg",
-                        material: "Cerámica italiana",
-                        size: "33cm",
-                        details: "Técnica al horno"
-                    },
-                    {
-                        name: "Virgen de la salud 44CM",
-                        description: "Imagen de la Virgen de la Salud con detalles artesanales.",
-                        price: "45.000",
-                        image: "MEDIA/VIRGENDE LA SALUD 44CM.jpeg",
-                        material: "Resina pintada",
-                        size: "44cm",
-                        details: "Protección para el hogar"
-                    },
-                    {
-                        name: "Niño de Praga técnica italiana valor 15CM",
-                        description: "Representación devocional del Niño Jesús de Praga.",
-                        price: "120.000",
-                        image: "MEDIA/NIÑO DE PRAGA 15CM.jpeg",
-                        material: "Cerámica italiana",
-                        size: "15cm",
-                        details: "Técnica al horno"
-                    },
-                    {
-                        name: "Virgen de la providencia altura 20CM técnica italiana al horno",
-                        description: "Imagen de la Virgen de la Providencia con detalles dorados.",
-                        price: "100.000",
-                        image: "MEDIA/VIRGEN DE LA PROVIDENCIA 20CM.jpeg",
-                        material: "Cerámica italiana",
-                        size: "20cm",
-                        details: "Técnica al horno"
-                    },
-                    {
-                        name: "Ángel con arpa técnica italiana al horno",
-                        description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                        price: "120.000",
-                        image: "MEDIA/ANGEL CON ARPA CM.jpeg",
-                        material: "Cerámica italiana",
-                        size: "25cm",
-                        details: "Técnica al horno"
-                    }
-                ]
-            },
-            rosaries: {
+          saints: {
+    items: [
+        {
+            name: "Virgen Milagrosa Pintada a Mano 40CM",
+            description: "",
+            price: "150.000",
+            image: "MEDIA/MILAGROSA 40CM.jpeg",
+            material: "Pintura a mano",
+            size: "40cm",
+            details: "Técnica artesanal"
+        },
+        {
+            name: "Virgen Milagrosa en resina de 30CM",
+            description: "",
+            price: "100.000",
+            image: "MEDIA/MILAGROSA 30CM.jpeg",
+            material: "Resina",
+            size: "30cm",
+            details: "Acabado detallado"
+        },
+        {
+            name: "San Jose en técnica italiana al horno 30CM",
+            description: "",
+            price: "110.000",
+            image: "MEDIA/SAN JOSE 30CM.jpeg",
+            material: "Cerámica italiana",
+            size: "30cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Corazón de María técnica italiana de 33CM",
+            description: "",
+            price: "135.000",
+            image: "MEDIA/CORAZON DE MARIA 33CM.jpeg",
+            material: "Cerámica italiana",
+            size: "33cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Virgen de la salud 44CM",
+            description: "",
+            price: "45.000",
+            image: "MEDIA/VIRGENDE LA SALUD 44CM.jpeg",
+            material: "Resina pintada",
+            size: "44cm",
+            details: "Protección para el hogar"
+        },
+        {
+            name: "Niño de Praga técnica italiana valor 15CM",
+            description: "",
+            price: "120.000",
+            image: "MEDIA/NIÑO DE PRAGA 15CM.jpeg",
+            material: "Cerámica italiana",
+            size: "15cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Virgen de la providencia altura 20CM técnica italiana al horno",
+            description: "",
+            price: "100.000",
+            image: "MEDIA/VIRGEN DE LA PROVIDENCIA 20CM.jpeg",
+            material: "Cerámica italiana",
+            size: "20cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Ángel con arpa técnica italiana al horno",
+            description: "",
+            price: "120.000",
+            image: "MEDIA/ANGEL CON ARPA CM.jpeg",
+            material: "Cerámica italiana",
+            size: "25cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Anunciacion",
+            description: "",
+            price: "200.000",
+            image: "MEDIA/ANUNCIACION 30CM.jpeg",
+            material: "Cerámica italiana",
+            size: "30cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Pastor",
+            description: "",
+            price: "120.000",
+            image: "MEDIA/PASTOR.jpeg",
+            material: "Cerámica italiana",
+            size: "25cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Pastor con niño Dios",
+            description: "",
+            price: "80.000",
+            image: "MEDIA/PASTOR NIÑO DIOS.jpeg",
+            material: "Cerámica italiana",
+            size: "34cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Santa zita",
+            description: "",
+            price: "70.000",
+            image: "MEDIA/SANTA ZITA.jpeg",
+            material: "Cerámica italiana",
+            size: "27cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Santa Lucía",
+            description: "",
+            price: "80.000",
+            image: "MEDIA/SANTA LUCIA.jpeg",
+            material: "Cerámica italiana",
+            size: "23cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Santa Marta",
+            description: "",
+            price: "80.000",
+            image: "MEDIA/SANTA MARTA.jpeg",
+            material: "Cerámica italiana",
+            size: "25cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Arcangel Rafael",
+            description: "",
+            price: "90.000",
+            image: "MEDIA/ARCANGEL RAFAEL.jpeg",
+            material: "Cerámica italiana",
+            size: "25cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Arcangel Uriel",
+            description: "",
+            price: "90.000",
+            image: "MEDIA/ARCANGEL URIEL.jpeg",
+            material: "Cerámica italiana",
+            size: "25cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Arcángel zadquiel",
+            description: "",
+            price: "80.000",
+            image: "MEDIA/ARCANGEL ZADQUIEL.jpeg",
+            material: "Cerámica italiana",
+            size: "25cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Virgen Rosa mística",
+            description: "",
+            price: "90.000",
+            image: "MEDIA/VIRGEN ROSA MISTICA.jpeg",
+            material: "Cerámica italiana",
+            size: "25cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Virgen de la Piedad",
+            description: "",
+            price: "90.000",
+            image: "MEDIA/VIRGEN DE LA PIEDAD.jpeg",
+            material: "Cerámica italiana",
+            size: "23cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Virgen del valle",
+            description: "",
+            price: "90.000",
+            image: "MEDIA/VIRDEN DEL VALLE.jpeg",
+            material: "Cerámica italiana",
+            size: "25cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Buen pastor",
+            description: "",
+            price: "100.000",
+            image: "MEDIA/BUEN PASTOR.jpeg",
+            material: "Cerámica italiana",
+            size: "25cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Señor de la misericordia",
+            description: "",
+            price: "110.000",
+            image: "MEDIA/SEÑOR DE LA MISERICORDIA.jpeg",
+            material: "Cerámica italiana",
+            size: "33cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Arcangel San Miguel",
+            description: "",
+            price: "180.000",
+            image: "MEDIA/ARCANGEL SAN MIGUEL.jpeg",
+            material: "Cerámica italiana",
+            size: "38cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Arcangel Metatron",
+            description: "",
+            price: "150.000",
+            image: "MEDIA/ARCANGEL METATRON.jpeg",
+            material: "Cerámica italiana",
+            size: "28cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Virgen de la Salud",
+            description: "",
+            price: "68.000",
+            image: "MEDIA/VIRGEN DE LA SALUD.jpeg",
+            material: "Cerámica italiana",
+            size: "22cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "San Francisco de Asís ",
+            description: "",
+            price: "100.000",
+            image: "MEDIA/SAN FRANCISCO DE ASIS.jpeg",
+            material: "Cerámica italiana",
+            size: "23cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Virgen de la Primavera ",
+            description: "",
+            price: "80.000",
+            image: "MEDIA/VIRGEN DE LA PRIMAVERA.jpeg",
+            material: "Cerámica italiana",
+            size: "25cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Virgen María Auxiliadora ",
+            description: "",
+            price: "90.000",
+            image: "MEDIA/VIRGEN MARIA AUXILIADORA.jpeg",
+            material: "Cerámica italiana",
+            size: "30cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Virgen de aranzazu ",
+            description: "",
+            price: "130.000",
+            image: "MEDIA/VIRGEN DE ARANSAZU.jpeg",
+            material: "Cerámica italiana",
+            size: "43cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Santa Ana ",
+            description: "",
+            price: "120.000",
+            image: "MEDIA/SANTA ANA.jpeg",
+            material: "Cerámica italiana",
+            size: "30cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Virgen de Loreto",
+            description: "",
+            price: "120.000",
+            image: "MEDIA/VIRDEN DE LORETO.jpeg",
+            material: "Cerámica italiana",
+            size: "28cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "San Jose",
+            description: "",
+            price: "100.000",
+            image: "MEDIA/SAN JOSE.jpeg",
+            material: "Cerámica italiana",
+            size: "28cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Virgen del Cojin",
+            description: "",
+            price: "70.000",
+            image: "MEDIA/VIRGEN DEL COJIN.jpeg",
+            material: "Cerámica italiana",
+            size: "18cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Virgen del Coromoto",
+            description: "",
+            price: "85.000",
+            image: "MEDIA/VIRGEN DEL COROMOTO.jpeg",
+            material: "Cerámica italiana",
+            size: "23cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Retablo de Ascensión de la virgen",
+            description: "",
+            price: "120.000",
+            image: "MEDIA/RETRATO ACSENSION DE LA VIRGEN.jpeg",
+            material: "Cerámica italiana",
+            size: "25cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Retablo de María reina",
+            description: "",
+            price: "130.000",
+            image: "MEDIA/RETABLO DE MARIA REINA.jpeg",
+            material: "Cerámica italiana",
+            size: "130*40cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Retablo de arcángel San Miguel",
+            description: "",
+            price: "120.000",
+            image: "MEDIA/RETABLO DE ARCANGEL SAN MIGUEL.jpeg",
+            material: "Cerámica italiana",
+            size: "40*20cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Retablo del arcángel San Rafael ",
+            description: "",
+            price: "120.000",
+            image: "MEDIA/RETABLO DE ARCANGEL SAN RAFAEL.jpeg",
+            material: "Cerámica italiana",
+            size: "48*20cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Retablo santísima Trinidad ",
+            description: "",
+            price: "120.000",
+            image: "MEDIA/RETABLO SANTISIMA TRINIDAD.jpeg",
+            material: "Cerámica italiana",
+            size: "27*27cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Retablo Madonna",
+            description: "",
+            price: "130.000",
+            image: "MEDIA/RETABLO MADONA.jpeg",
+            material: "Cerámica italiana",
+            size: "33*28cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Retablo virgen de Lourdes",
+            description: "",
+            price: "130.000",
+            image: "MEDIA/RETABLO VIRGEN DE LOURDES.jpeg",
+            material: "Cerámica italiana",
+            size: "38*18cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Aplique Madonna",
+            description: "",
+            price: "70.000",
+            image: "MEDIA/APLIQUE MADONNA.jpeg",
+            material: "Cerámica italiana",
+            size: "22*11cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Aplique Rosa mística",
+            description: "",
+            price: "65.000",
+            image: "MEDIA/APLIQUE ROSA MISTICA.jpeg ",
+            material: "Cerámica italiana",
+            size: "24*9cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Aplique virgen del Carmen ",
+            description: "",
+            price: "70.000",
+            image: "MEDIA/APLIQUE VIRGEN DEL CARMEN.jpeg",
+            material: "Cerámica italiana",
+            size: "20*14cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Aplique niño Jesús",
+            description: "",
+            price: "70.000",
+            image: "MEDIA/APLIQUE NIÑO DE JESUS.jpeg",
+            material: "Cerámica italiana",
+            size: "20*12cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Retablo virgen de Fátima",
+            description: "",
+            price: "150.000",
+            image: "MEDIA/RETABLO VIRGEN DE FATIMA.jpeg",
+            material: "Cerámica italiana",
+            size: "cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Retablo del Tao de San Francisco de Asís",
+            description: "",
+            price: "120.000",
+            image: "MEDIA/RETABLO DEL TAO DE SAN FRANCISCO.jpeg",
+            material: "Cerámica italiana",
+            size: "24*20cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Retablo Madonna clasico",
+            description: "",
+            price: "110.000",
+            image: "MEDIA/RETABLO MADONNA CLASICA.jpeg",
+            material: "Cerámica italiana",
+            size: "24*16cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Retablo ultima cena",
+            description: "",
+            price: "130.000",
+            image: "MEDIA/RETABLO ULTIMA CENA.jpeg",
+            material: "Cerámica italiana",
+            size: "cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Retablo San Rafael ",
+            description: "",
+            price: "80.000",
+            image: "MEDIA/RETABLO SAN RAFAEL.jpeg",
+            material: "Cerámica italiana",
+            size: "30*16cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Niño Dios canasta ",
+            description: "",
+            price: "120.000",
+            image: "MEDIA/NIÑO DIOS EN CANASTA.jpeg",
+            material: "Cerámica italiana",
+            size: "28cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "San José estilizado",
+            description: "",
+            price: "170.000",
+            image: "MEDIA/SAN JOSE ESTILIZADO.jpeg",
+            material: "Cerámica italiana",
+            size: "50cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Sueño de Jesús ",
+            description: "",
+            price: "120.000",
+            image: "MEDIA/SUEÑO DE JESUS.jpeg",
+            material: "Cerámica italiana",
+            size: "23cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Cristo San Benito ",
+            description: "",
+            price: "130.000",
+            image: "MEDIA/CRISTO BENDITO.jpeg",
+            material: "Cerámica italiana",
+            size: "50*30cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Cristo en Cruz",
+            description: "",
+            price: "110.000",
+            image: "MEDIA/CRISTO EN LA RUZ.jpeg ",
+            material: "Cerámica italiana",
+            size: "49*25",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Cruz de San Damián",
+            description: "",
+            price: "100.000",
+            image: "MEDIA/CRUZ DE SAN DAMIAN.jpeg   ",
+            material: "Cerámica italiana",
+            size: "28*20cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Retablo Guadalupe ",
+            description: "",
+            price: "120.000",
+            image: "MEDIA/RETABLO GUADALUPE.jpeg",
+            material: "Cerámica italiana",
+            size: "30*26cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Ángel de la lechuga ",
+            description: "",
+            price: "90.000",
+            image: "MEDIA/ANGEL DE LA LECHUGA.jpeg",
+            material: "Cerámica italiana",
+            size: "35*20cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Retablo sagrada familia de pared ",
+            description: "",
+            price: "00.000",
+            image: "MEDIA/RETABLO SAGRADA FAMILIA DE PARED.jpeg",
+            material: "Cerámica italiana",
+            size: "29*15cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Arcangeles niños x unidad",
+            description: "",
+            price: "40.000",
+            image: "MEDIA/ACRCANGELES NIÑOS.jpeg",
+            material: "Cerámica italiana",
+            size: "cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Virgen Rosa mística con vestido ",
+            description: "",
+            price: "160.000",
+            image: "MEDIA/VIRGEN ROSA MISTICA CON VESTIDO.jpeg",
+            material: "Cerámica italiana",
+            size: "cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Cristo eucarístico",
+            description: "",
+            price: "45.000",
+            image: "MEDIA/CRISTO EUCARISTICO.jpeg",
+            material: "Cerámica italiana",
+            size: "cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Virgen María Auxiliadora",
+            description: "",
+            price: "60.000",
+            image: "MEDIA/VIRGEN MARIA AUXILIADORA DORADA.jpeg",
+            material: "Cerámica italiana",
+            size: "cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Retablo Lourdes",
+            description: "",
+            price: "100.000",
+            image: "MEDIA/RETABLO LIURDES.jpeg",
+            material: "Cerámica italiana",
+            size: "42*27cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Retablo Jesús con niños",
+            description: "",
+            price: "85.000",
+            image: "MEDIA/RETABLO JESUS CON NIÑO DIOS.jpeg",
+            material: "Cerámica italiana",
+            size: "21*12cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Teresa de Ávila ",
+            description: "",
+            price: "90.000",
+            image: "MEDIA/TERESA DE AVILA.jpeg",
+            material: "Cerámica italiana",
+            size: "30cm",
+            details: "Técnica italiana al horno"
+        },
+        {
+            name: "Cristo Dalí",
+            description: "",
+            price: "75.000",
+            image: "MEDIA/CRISTO DALI.jpeg",
+            material: "Cerámica italiana",
+            size: "39   cm",
+            details: "Técnica italiana al horno"
+        }
+    ]
+            },    rosaries: {
                 items: [
                     {
                         name: "Rosario Madera de Olivo",
@@ -2658,6 +3187,222 @@
                         material: "Plástico resistente",
                         size: "40cm",
                         details: "Colorido y educativo"
+                    },
+                    {
+                        name: "Rosario de Cristal Swarovski",
+                        description: "Rosario elegante con cuentas de cristal auténtico.",
+                        price: "85.000",
+                        image: "MEDIA/rosario3.jpg",
+                        material: "Cristal Swarovski",
+                        size: "48cm",
+                        details: "Elegante y luminoso"
+                    },
+                    {
+                        name: "Rosario Infantil de Colores",
+                        description: "Rosario pequeño y colorido para niños.",
+                        price: "15.000",
+                        image: "MEDIA/rosario4.jpg",
+                        material: "Plástico resistente",
+                        size: "40cm",
+                        details: "Colorido y educativo"
+                    },
+                    {
+                        name: "Rosario de Cristal Swarovski",
+                        description: "Rosario elegante con cuentas de cristal auténtico.",
+                        price: "85.000",
+                        image: "MEDIA/rosario3.jpg",
+                        material: "Cristal Swarovski",
+                        size: "48cm",
+                        details: "Elegante y luminoso"
+                    },
+                    {
+                        name: "Rosario Infantil de Colores",
+                        description: "Rosario pequeño y colorido para niños.",
+                        price: "15.000",
+                        image: "MEDIA/rosario4.jpg",
+                        material: "Plástico resistente",
+                        size: "40cm",
+                        details: "Colorido y educativo"
+                    },
+                    {
+                        name: "Rosario de Cristal Swarovski",
+                        description: "Rosario elegante con cuentas de cristal auténtico.",
+                        price: "85.000",
+                        image: "MEDIA/rosario3.jpg",
+                        material: "Cristal Swarovski",
+                        size: "48cm",
+                        details: "Elegante y luminoso"
+                    },
+                    {
+                        name: "Rosario Infantil de Colores",
+                        description: "Rosario pequeño y colorido para niños.",
+                        price: "15.000",
+                        image: "MEDIA/rosario4.jpg",
+                        material: "Plástico resistente",
+                        size: "40cm",
+                        details: "Colorido y educativo"
+                    },
+                    {
+                        name: "Rosario de Cristal Swarovski",
+                        description: "Rosario elegante con cuentas de cristal auténtico.",
+                        price: "85.000",
+                        image: "MEDIA/rosario3.jpg",
+                        material: "Cristal Swarovski",
+                        size: "48cm",
+                        details: "Elegante y luminoso"
+                    },
+                    {
+                        name: "Rosario Infantil de Colores",
+                        description: "Rosario pequeño y colorido para niños.",
+                        price: "15.000",
+                        image: "MEDIA/rosario4.jpg",
+                        material: "Plástico resistente",
+                        size: "40cm",
+                        details: "Colorido y educativo"
+                    },
+                    {
+                        name: "Rosario de Cristal Swarovski",
+                        description: "Rosario elegante con cuentas de cristal auténtico.",
+                        price: "85.000",
+                        image: "MEDIA/rosario3.jpg",
+                        material: "Cristal Swarovski",
+                        size: "48cm",
+                        details: "Elegante y luminoso"
+                    },
+                    {
+                        name: "Rosario Infantil de Colores",
+                        description: "Rosario pequeño y colorido para niños.",
+                        price: "15.000",
+                        image: "MEDIA/rosario4.jpg",
+                        material: "Plástico resistente",
+                        size: "40cm",
+                        details: "Colorido y educativo"
+                    },
+                    {
+                        name: "Rosario de Cristal Swarovski",
+                        description: "Rosario elegante con cuentas de cristal auténtico.",
+                        price: "85.000",
+                        image: "MEDIA/rosario3.jpg",
+                        material: "Cristal Swarovski",
+                        size: "48cm",
+                        details: "Elegante y luminoso"
+                    },
+                    {
+                        name: "Rosario Infantil de Colores",
+                        description: "Rosario pequeño y colorido para niños.",
+                        price: "15.000",
+                        image: "MEDIA/rosario4.jpg",
+                        material: "Plástico resistente",
+                        size: "40cm",
+                        details: "Colorido y educativo"
+                    },
+                    {
+                        name: "Rosario de Cristal Swarovski",
+                        description: "Rosario elegante con cuentas de cristal auténtico.",
+                        price: "85.000",
+                        image: "MEDIA/rosario3.jpg",
+                        material: "Cristal Swarovski",
+                        size: "48cm",
+                        details: "Elegante y luminoso"
+                    },
+                    {
+                        name: "Rosario Infantil de Colores",
+                        description: "Rosario pequeño y colorido para niños.",
+                        price: "15.000",
+                        image: "MEDIA/rosario4.jpg",
+                        material: "Plástico resistente",
+                        size: "40cm",
+                        details: "Colorido y educativo"
+                    },
+                    {
+                        name: "Rosario de Cristal Swarovski",
+                        description: "Rosario elegante con cuentas de cristal auténtico.",
+                        price: "85.000",
+                        image: "MEDIA/rosario3.jpg",
+                        material: "Cristal Swarovski",
+                        size: "48cm",
+                        details: "Elegante y luminoso"
+                    },
+                    {
+                        name: "Rosario Infantil de Colores",
+                        description: "Rosario pequeño y colorido para niños.",
+                        price: "15.000",
+                        image: "MEDIA/rosario4.jpg",
+                        material: "Plástico resistente",
+                        size: "40cm",
+                        details: "Colorido y educativo"
+                    },
+                    {
+                        name: "Rosario de Cristal Swarovski",
+                        description: "Rosario elegante con cuentas de cristal auténtico.",
+                        price: "85.000",
+                        image: "MEDIA/rosario3.jpg",
+                        material: "Cristal Swarovski",
+                        size: "48cm",
+                        details: "Elegante y luminoso"
+                    },
+                    {
+                        name: "Rosario Infantil de Colores",
+                        description: "Rosario pequeño y colorido para niños.",
+                        price: "15.000",
+                        image: "MEDIA/rosario4.jpg",
+                        material: "Plástico resistente",
+                        size: "40cm",
+                        details: "Colorido y educativo"
+                    },
+                    {
+                        name: "Rosario de Cristal Swarovski",
+                        description: "Rosario elegante con cuentas de cristal auténtico.",
+                        price: "85.000",
+                        image: "MEDIA/rosario3.jpg",
+                        material: "Cristal Swarovski",
+                        size: "48cm",
+                        details: "Elegante y luminoso"
+                    },
+                    {
+                        name: "Rosario Infantil de Colores",
+                        description: "Rosario pequeño y colorido para niños.",
+                        price: "15.000",
+                        image: "MEDIA/rosario4.jpg",
+                        material: "Plástico resistente",
+                        size: "40cm",
+                        details: "Colorido y educativo"
+                    },
+                    {
+                        name: "Rosario de Cristal Swarovski",
+                        description: "Rosario elegante con cuentas de cristal auténtico.",
+                        price: "85.000",
+                        image: "MEDIA/rosario3.jpg",
+                        material: "Cristal Swarovski",
+                        size: "48cm",
+                        details: "Elegante y luminoso"
+                    },
+                    {
+                        name: "Rosario Infantil de Colores",
+                        description: "Rosario pequeño y colorido para niños.",
+                        price: "15.000",
+                        image: "MEDIA/rosario4.jpg",
+                        material: "Plástico resistente",
+                        size: "40cm",
+                        details: "Colorido y educativo"
+                    },
+                    {
+                        name: "Rosario de Cristal Swarovski",
+                        description: "Rosario elegante con cuentas de cristal auténtico.",
+                        price: "85.000",
+                        image: "MEDIA/rosario3.jpg",
+                        material: "Cristal Swarovski",
+                        size: "48cm",
+                        details: "Elegante y luminoso"
+                    },
+                    {
+                        name: "Rosario Infantil de Colores",
+                        description: "Rosario pequeño y colorido para niños.",
+                        price: "15.000",
+                        image: "MEDIA/rosario4.jpg",
+                        material: "Plástico resistente",
+                        size: "40cm",
+                        details: "Colorido y educativo"
                     }
                 ]
             },
@@ -2671,6 +3416,330 @@
                         material: "Acero",
                         size: "13x13cm",
                         details: "Protección contra el mal"
+                    },
+                    {
+                        name: "Medalla de San Benito",
+                        description: "Medalla protectora contra el mal con inscripciones sagradas.",
+                        price: "25.000",
+                        image: "MEDIA/medalla2.jpg",
+                        material: "Metal bañado en oro",
+                        size: "3cm",
+                        details: "Exorcismo y protección"
+                    },
+                    {
+                        name: "Medallón de Ángel Custodio",
+                        description: "Medallón con imagen del ángel de la guarda para protección diaria.",
+                        price: "18.000",
+                        image: "MEDIA/medallon.jpg",
+                        material: "Plata con esmalte",
+                        size: "3.5cm",
+                        details: "Para niños y adultos"
+                    },
+                    {
+                        name: "Medalla de San Benito",
+                        description: "Medalla protectora contra el mal con inscripciones sagradas.",
+                        price: "25.000",
+                        image: "MEDIA/medalla2.jpg",
+                        material: "Metal bañado en oro",
+                        size: "3cm",
+                        details: "Exorcismo y protección"
+                    },
+                    {
+                        name: "Medallón de Ángel Custodio",
+                        description: "Medallón con imagen del ángel de la guarda para protección diaria.",
+                        price: "18.000",
+                        image: "MEDIA/medallon.jpg",
+                        material: "Plata con esmalte",
+                        size: "3.5cm",
+                        details: "Para niños y adultos"
+                    },
+                    {
+                        name: "Medalla de San Benito",
+                        description: "Medalla protectora contra el mal con inscripciones sagradas.",
+                        price: "25.000",
+                        image: "MEDIA/medalla2.jpg",
+                        material: "Metal bañado en oro",
+                        size: "3cm",
+                        details: "Exorcismo y protección"
+                    },
+                    {
+                        name: "Medallón de Ángel Custodio",
+                        description: "Medallón con imagen del ángel de la guarda para protección diaria.",
+                        price: "18.000",
+                        image: "MEDIA/medallon.jpg",
+                        material: "Plata con esmalte",
+                        size: "3.5cm",
+                        details: "Para niños y adultos"
+                    },
+                    {
+                        name: "Medalla de San Benito",
+                        description: "Medalla protectora contra el mal con inscripciones sagradas.",
+                        price: "25.000",
+                        image: "MEDIA/medalla2.jpg",
+                        material: "Metal bañado en oro",
+                        size: "3cm",
+                        details: "Exorcismo y protección"
+                    },
+                    {
+                        name: "Medallón de Ángel Custodio",
+                        description: "Medallón con imagen del ángel de la guarda para protección diaria.",
+                        price: "18.000",
+                        image: "MEDIA/medallon.jpg",
+                        material: "Plata con esmalte",
+                        size: "3.5cm",
+                        details: "Para niños y adultos"
+                    },
+                    {
+                        name: "Medalla de San Benito",
+                        description: "Medalla protectora contra el mal con inscripciones sagradas.",
+                        price: "25.000",
+                        image: "MEDIA/medalla2.jpg",
+                        material: "Metal bañado en oro",
+                        size: "3cm",
+                        details: "Exorcismo y protección"
+                    },
+                    {
+                        name: "Medallón de Ángel Custodio",
+                        description: "Medallón con imagen del ángel de la guarda para protección diaria.",
+                        price: "18.000",
+                        image: "MEDIA/medallon.jpg",
+                        material: "Plata con esmalte",
+                        size: "3.5cm",
+                        details: "Para niños y adultos"
+                    },
+                    {
+                        name: "Medalla de San Benito",
+                        description: "Medalla protectora contra el mal con inscripciones sagradas.",
+                        price: "25.000",
+                        image: "MEDIA/medalla2.jpg",
+                        material: "Metal bañado en oro",
+                        size: "3cm",
+                        details: "Exorcismo y protección"
+                    },
+                    {
+                        name: "Medallón de Ángel Custodio",
+                        description: "Medallón con imagen del ángel de la guarda para protección diaria.",
+                        price: "18.000",
+                        image: "MEDIA/medallon.jpg",
+                        material: "Plata con esmalte",
+                        size: "3.5cm",
+                        details: "Para niños y adultos"
+                    },
+                    {
+                        name: "Medalla de San Benito",
+                        description: "Medalla protectora contra el mal con inscripciones sagradas.",
+                        price: "25.000",
+                        image: "MEDIA/medalla2.jpg",
+                        material: "Metal bañado en oro",
+                        size: "3cm",
+                        details: "Exorcismo y protección"
+                    },
+                    {
+                        name: "Medallón de Ángel Custodio",
+                        description: "Medallón con imagen del ángel de la guarda para protección diaria.",
+                        price: "18.000",
+                        image: "MEDIA/medallon.jpg",
+                        material: "Plata con esmalte",
+                        size: "3.5cm",
+                        details: "Para niños y adultos"
+                    },
+                    {
+                        name: "Medalla de San Benito",
+                        description: "Medalla protectora contra el mal con inscripciones sagradas.",
+                        price: "25.000",
+                        image: "MEDIA/medalla2.jpg",
+                        material: "Metal bañado en oro",
+                        size: "3cm",
+                        details: "Exorcismo y protección"
+                    },
+                    {
+                        name: "Medallón de Ángel Custodio",
+                        description: "Medallón con imagen del ángel de la guarda para protección diaria.",
+                        price: "18.000",
+                        image: "MEDIA/medallon.jpg",
+                        material: "Plata con esmalte",
+                        size: "3.5cm",
+                        details: "Para niños y adultos"
+                    },
+                    {
+                        name: "Medalla de San Benito",
+                        description: "Medalla protectora contra el mal con inscripciones sagradas.",
+                        price: "25.000",
+                        image: "MEDIA/medalla2.jpg",
+                        material: "Metal bañado en oro",
+                        size: "3cm",
+                        details: "Exorcismo y protección"
+                    },
+                    {
+                        name: "Medallón de Ángel Custodio",
+                        description: "Medallón con imagen del ángel de la guarda para protección diaria.",
+                        price: "18.000",
+                        image: "MEDIA/medallon.jpg",
+                        material: "Plata con esmalte",
+                        size: "3.5cm",
+                        details: "Para niños y adultos"
+                    },
+                    {
+                        name: "Medalla de San Benito",
+                        description: "Medalla protectora contra el mal con inscripciones sagradas.",
+                        price: "25.000",
+                        image: "MEDIA/medalla2.jpg",
+                        material: "Metal bañado en oro",
+                        size: "3cm",
+                        details: "Exorcismo y protección"
+                    },
+                    {
+                        name: "Medallón de Ángel Custodio",
+                        description: "Medallón con imagen del ángel de la guarda para protección diaria.",
+                        price: "18.000",
+                        image: "MEDIA/medallon.jpg",
+                        material: "Plata con esmalte",
+                        size: "3.5cm",
+                        details: "Para niños y adultos"
+                    },
+                    {
+                        name: "Medalla de San Benito",
+                        description: "Medalla protectora contra el mal con inscripciones sagradas.",
+                        price: "25.000",
+                        image: "MEDIA/medalla2.jpg",
+                        material: "Metal bañado en oro",
+                        size: "3cm",
+                        details: "Exorcismo y protección"
+                    },
+                    {
+                        name: "Medallón de Ángel Custodio",
+                        description: "Medallón con imagen del ángel de la guarda para protección diaria.",
+                        price: "18.000",
+                        image: "MEDIA/medallon.jpg",
+                        material: "Plata con esmalte",
+                        size: "3.5cm",
+                        details: "Para niños y adultos"
+                    },
+                    {
+                        name: "Medalla de San Benito",
+                        description: "Medalla protectora contra el mal con inscripciones sagradas.",
+                        price: "25.000",
+                        image: "MEDIA/medalla2.jpg",
+                        material: "Metal bañado en oro",
+                        size: "3cm",
+                        details: "Exorcismo y protección"
+                    },
+                    {
+                        name: "Medallón de Ángel Custodio",
+                        description: "Medallón con imagen del ángel de la guarda para protección diaria.",
+                        price: "18.000",
+                        image: "MEDIA/medallon.jpg",
+                        material: "Plata con esmalte",
+                        size: "3.5cm",
+                        details: "Para niños y adultos"
+                    },
+                    {
+                        name: "Medalla de San Benito",
+                        description: "Medalla protectora contra el mal con inscripciones sagradas.",
+                        price: "25.000",
+                        image: "MEDIA/medalla2.jpg",
+                        material: "Metal bañado en oro",
+                        size: "3cm",
+                        details: "Exorcismo y protección"
+                    },
+                    {
+                        name: "Medallón de Ángel Custodio",
+                        description: "Medallón con imagen del ángel de la guarda para protección diaria.",
+                        price: "18.000",
+                        image: "MEDIA/medallon.jpg",
+                        material: "Plata con esmalte",
+                        size: "3.5cm",
+                        details: "Para niños y adultos"
+                    },
+                    {
+                        name: "Medalla de San Benito",
+                        description: "Medalla protectora contra el mal con inscripciones sagradas.",
+                        price: "25.000",
+                        image: "MEDIA/medalla2.jpg",
+                        material: "Metal bañado en oro",
+                        size: "3cm",
+                        details: "Exorcismo y protección"
+                    },
+                    {
+                        name: "Medallón de Ángel Custodio",
+                        description: "Medallón con imagen del ángel de la guarda para protección diaria.",
+                        price: "18.000",
+                        image: "MEDIA/medallon.jpg",
+                        material: "Plata con esmalte",
+                        size: "3.5cm",
+                        details: "Para niños y adultos"
+                    },
+                    {
+                        name: "Medalla de San Benito",
+                        description: "Medalla protectora contra el mal con inscripciones sagradas.",
+                        price: "25.000",
+                        image: "MEDIA/medalla2.jpg",
+                        material: "Metal bañado en oro",
+                        size: "3cm",
+                        details: "Exorcismo y protección"
+                    },
+                    {
+                        name: "Medallón de Ángel Custodio",
+                        description: "Medallón con imagen del ángel de la guarda para protección diaria.",
+                        price: "18.000",
+                        image: "MEDIA/medallon.jpg",
+                        material: "Plata con esmalte",
+                        size: "3.5cm",
+                        details: "Para niños y adultos"
+                    },
+                    {
+                        name: "Medalla de San Benito",
+                        description: "Medalla protectora contra el mal con inscripciones sagradas.",
+                        price: "25.000",
+                        image: "MEDIA/medalla2.jpg",
+                        material: "Metal bañado en oro",
+                        size: "3cm",
+                        details: "Exorcismo y protección"
+                    },
+                    {
+                        name: "Medallón de Ángel Custodio",
+                        description: "Medallón con imagen del ángel de la guarda para protección diaria.",
+                        price: "18.000",
+                        image: "MEDIA/medallon.jpg",
+                        material: "Plata con esmalte",
+                        size: "3.5cm",
+                        details: "Para niños y adultos"
+                    },
+                    {
+                        name: "Medalla de San Benito",
+                        description: "Medalla protectora contra el mal con inscripciones sagradas.",
+                        price: "25.000",
+                        image: "MEDIA/medalla2.jpg",
+                        material: "Metal bañado en oro",
+                        size: "3cm",
+                        details: "Exorcismo y protección"
+                    },
+                    {
+                        name: "Medallón de Ángel Custodio",
+                        description: "Medallón con imagen del ángel de la guarda para protección diaria.",
+                        price: "18.000",
+                        image: "MEDIA/medallon.jpg",
+                        material: "Plata con esmalte",
+                        size: "3.5cm",
+                        details: "Para niños y adultos"
+                    },
+                    {
+                        name: "Medalla de San Benito",
+                        description: "Medalla protectora contra el mal con inscripciones sagradas.",
+                        price: "25.000",
+                        image: "MEDIA/medalla2.jpg",
+                        material: "Metal bañado en oro",
+                        size: "3cm",
+                        details: "Exorcismo y protección"
+                    },
+                    {
+                        name: "Medallón de Ángel Custodio",
+                        description: "Medallón con imagen del ángel de la guarda para protección diaria.",
+                        price: "18.000",
+                        image: "MEDIA/medallon.jpg",
+                        material: "Plata con esmalte",
+                        size: "3.5cm",
+                        details: "Para niños y adultos"
                     },
                     {
                         name: "Medalla de San Benito",
