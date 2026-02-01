@@ -32,7 +32,9 @@ h1, h2, h3, h4, h5 {
     font-weight: 700;
 }
 
-/* Preloader corregido */
+/* ========== LOGOS 20% MÁS GRANDES ========== */
+
+/* Preloader corregido - LOGO +20% */
 #preloader {
     position: fixed;
     top: 0;
@@ -81,15 +83,15 @@ h1, h2, h3, h4, h5 {
 
 .loader-text {
     color: var(--brown-dark);
-    font-size: 1.5rem;
+    font-size: 1.8rem; /* +20% de 1.5rem */
     letter-spacing: 1px;
     animation: pulse 2s infinite;
     margin-top: 20px;
 }
 
 .loader-logo {
-    width: 150px;
-    height: 150px;
+    width: 180px; /* +20% de 150px */
+    height: 180px; /* +20% de 150px */
     margin-bottom: 20px;
 }
 
@@ -105,7 +107,7 @@ h1, h2, h3, h4, h5 {
     50% { opacity: 0.7; }
 }
 
-/* Header */
+/* Header - LOGO +20% */
 header {
     background-color: var(--white);
     padding: 1rem 0;
@@ -142,29 +144,29 @@ header {
 }
 
 .logo h1 {
-    font-size: 1.8rem;
+    font-size: 2.16rem; /* +20% de 1.8rem */
     color: var(--brown-dark);
     line-height: 1.2;
 }
 
 .logo-subtitle {
-    font-size: 0.9rem;
+    font-size: 1.08rem; /* +20% de 0.9rem */
     color: var(--brown-light);
     font-weight: 300;
     margin-top: 3px;
 }
 
 .logo-icon {
-    width: 50px;
-    height: 50px;
+    width: 80px; /* +20% de 50px */
+    height: 80px; /* +20% de 50px */
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .logo-image {
-    width: 100%;
-    height: 100%;
+    width: 330%;
+    height: 330%;
     object-fit: contain;
 }
 
@@ -178,8 +180,8 @@ nav a {
     color: var(--brown-dark);
     text-decoration: none;
     font-weight: 500;
-    padding: 8px 15px;
-    border-radius: 20px;
+    padding: 8px 10px;
+    border-radius: 14px;
     transition: all 0.3s ease;
     position: relative;
 }
@@ -203,7 +205,7 @@ nav a.active {
     cursor: pointer;
 }
 
-/* Hero Section */
+/* Hero Section - LOGO +20% */
 .hero {
     background: linear-gradient(rgba(248, 243, 233, 0.9), rgba(240, 230, 211, 0.9)), url('https://images.unsplash.com/photo-1544716278-e8c6cc6c6c4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
     background-size: cover;
@@ -225,8 +227,8 @@ nav a.active {
 }
 
 .hero-logo-container {
-    width: 200px;
-    height: 200px;
+    width: 240px; /* +20% de 200px */
+    height: 240px; /* +20% de 200px */
     margin: 0 auto 30px;
     display: flex;
     align-items: center;
@@ -241,7 +243,7 @@ nav a.active {
 }
 
 .hero h2 {
-    font-size: 2.8rem;
+    font-size: 3.36rem; /* +20% de 2.8rem */
     margin-bottom: 20px;
     color: var(--brown-dark);
 }
@@ -263,7 +265,7 @@ nav a.active {
 }
 
 .motto-text {
-    font-size: 1.3rem;
+    font-size: 1.56rem; /* +20% de 1.3rem */
     font-weight: 600;
     color: var(--brown-dark);
     font-style: italic;
@@ -384,7 +386,7 @@ section {
 }
 
 .section-title h2 {
-    font-size: 2.5rem;
+    font-size: 3rem; /* +20% de 2.5rem */
     display: inline-block;
     padding-bottom: 15px;
     margin-bottom: 20px;
@@ -410,8 +412,8 @@ section {
 }
 
 .section-logo {
-    width: 100px;
-    height: 100px;
+    width: 120px; /* +20% de 100px */
+    height: 120px; /* +20% de 100px */
     margin: 0 auto 30px;
     display: flex;
     align-items: center;
@@ -578,7 +580,7 @@ section {
     transform: scale(1.02);
 }
 
-/* Company Info */
+/* Company Info - LOGO +20% */
 .company-info {
     background-color: var(--beige-light);
     text-align: center;
@@ -591,11 +593,12 @@ section {
 .company-info h2 {
     color: var(--brown-dark);
     margin-bottom: 30px;
+    font-size: 3rem; /* +20% de 2.5rem */
 }
 
 .company-logo-container {
-    width: 120px;
-    height: 120px;
+    width: 144px; /* +20% de 120px */
+    height: 144px; /* +20% de 120px */
     margin: 0 auto 30px;
     display: flex;
     align-items: center;
@@ -723,7 +726,7 @@ section {
     color: var(--mustard-light);
 }
 
-/* Footer */
+/* Footer - LOGO +20% */
 footer {
     background-color: var(--brown-dark);
     color: var(--beige-light);
@@ -744,12 +747,12 @@ footer {
 .footer-column h3 {
     color: var(--mustard-light);
     margin-bottom: 25px;
-    font-size: 1.3rem;
+    font-size: 1.56rem; /* +20% de 1.3rem */
 }
 
 .footer-logo-container {
-    width: 80px;
-    height: 80px;
+    width: 96px; /* +20% de 80px */
+    height: 96px; /* +20% de 80px */
     margin-bottom: 20px;
     display: flex;
     align-items: center;
@@ -757,8 +760,8 @@ footer {
 }
 
 .footer-logo {
-    width: 100%;
-    height: 100%;
+    width: 280%;
+    height: 280%;
     object-fit: contain;
     opacity: 0.9;
 }
@@ -767,7 +770,7 @@ footer {
     font-style: italic;
     color: var(--mustard-light);
     margin-bottom: 15px;
-    font-size: 1.1rem;
+    font-size: 1.32rem; /* +20% de 1.1rem */
 }
 
 .footer-column ul {
@@ -859,12 +862,12 @@ footer {
 /* Responsive Design */
 @media (max-width: 992px) {
     .hero h2 {
-        font-size: 2.3rem;
+        font-size: 2.8rem; /* Ajuste para responsive */
     }
     
     .hero-logo-container {
-        width: 150px;
-        height: 150px;
+        width: 200px;
+        height: 200px;
     }
     
     .products-grid {
@@ -873,6 +876,10 @@ footer {
     
     .product-card {
         height: 420px;
+    }
+    
+    .section-title h2 {
+        font-size: 2.6rem;
     }
 }
 
@@ -900,7 +907,7 @@ footer {
     }
     
     .hero h2 {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
     
     .hero p {
@@ -908,12 +915,12 @@ footer {
     }
     
     .hero-logo-container {
-        width: 120px;
-        height: 120px;
+        width: 160px;
+        height: 160px;
     }
     
     .section-title h2 {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
     
     .dove-container {
@@ -948,6 +955,15 @@ footer {
     .product-image {
         height: 180px;
     }
+    
+    .company-info h2 {
+        font-size: 2.2rem;
+    }
+    
+    .company-logo-container {
+        width: 120px;
+        height: 120px;
+    }
 }
 
 @media (max-width: 576px) {
@@ -966,7 +982,7 @@ footer {
     }
     
     .logo h1 {
-        font-size: 1.6rem;
+        font-size: 1.8rem;
         text-align: center;
     }
     
@@ -977,8 +993,8 @@ footer {
     }
     
     .logo-icon {
-        width: 40px;
-        height: 40px;
+        width: 50px;
+        height: 50px;
     }
     
     .footer-container {
@@ -1006,5 +1022,27 @@ footer {
     
     .product-price {
         font-size: 1.3rem;
+    }
+    
+    .section-logo {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .company-info h2 {
+        font-size: 2rem;
+    }
+    
+    .company-logo-container {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .footer-column h3 {
+        font-size: 1.4rem;
+    }
+    
+    .footer-motto {
+        font-size: 1.1rem;
     }
 }
