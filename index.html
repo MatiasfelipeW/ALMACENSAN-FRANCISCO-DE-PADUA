@@ -7,10 +7,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <!-- Estilos adicionales para el logo -->
-    <style>
-        /* Aquí irán los estilos específicos para el logo, pero los pondré en un archivo separado si es necesario */
-    </style>
 </head>
 <body>
     <!-- Preloader -->
@@ -100,7 +96,45 @@
             </div>
             
             <div class="product-tabs">
-                <!-- ... resto del código de productos sin cambios ... -->
+                <div class="tabs-header">
+                    <button class="tab-button active" data-tab="saints">Santos Devocionales</button>
+                    <button class="tab-button" data-tab="rosaries">Rosarios y Cuentas</button>
+                    <button class="tab-button" data-tab="medals">Medallas y Colgantes</button>
+                    <button class="tab-button" data-tab="amulets">Amuletos de Protección</button>
+                    <button class="tab-button" data-tab="scapulars">Escapularios</button>
+                </div>
+                
+                <div class="tabs-content">
+                    <div class="tab-content active" id="saints-tab">
+                        <div class="products-grid" id="saintsGrid">
+                            <!-- Product cards for saints will be inserted here by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="rosaries-tab">
+                        <div class="products-grid" id="rosariesGrid">
+                            <!-- Product cards for rosaries will be inserted here by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="medals-tab">
+                        <div class="products-grid" id="medalsGrid">
+                            <!-- Product cards for medals will be inserted here by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="amulets-tab">
+                        <div class="products-grid" id="amuletsGrid">
+                            <!-- Product cards for amulets will be inserted here by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="scapulars-tab">
+                        <div class="products-grid" id="scapularsGrid">
+                            <!-- Product cards for scapulars will be inserted here by JavaScript -->
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -112,7 +146,7 @@
             
             <!-- Logo en la sección de empresa -->
             <div class="company-logo-container">
-                <img src="SMEDIA/SAN_FRANCISCO_PALOMITAS__1_-removebg-preview.png" alt="San Francisco Tienda" class="company-logo">
+                <img src="MEDIA/SAN_FRANCISCO_PALOMITAS__1_-removebg-preview.png" alt="San Francisco Tienda" class="company-logo">
             </div>
             
             <div class="company-details">
@@ -204,7 +238,7 @@
             <div class="footer-column">
                 <!-- Logo en el footer -->
                 <div class="footer-logo-container">
-                    <img src="SAN_FRANCISCO_PALOMITAS__1_-removebg-preview.png" alt="San Francisco Tienda" class="footer-logo">
+                    <img src="MEDIA/SAN_FRANCISCO_PALOMITAS__1_-removebg-preview.png" alt="San Francisco Tienda" class="footer-logo">
                 </div>
                 <h3>SAN FRANCISCO DE PADUA CALI</h3>
                 <!-- Lema en el footer -->
@@ -252,7 +286,6 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <script src="script.js"></script>
     <script src="java.js"></script>
 </body>
 </html>

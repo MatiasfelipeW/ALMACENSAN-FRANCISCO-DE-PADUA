@@ -32,7 +32,7 @@ h1, h2, h3, h4, h5 {
     font-weight: 700;
 }
 
-/* Preloader */
+/* Preloader corregido */
 #preloader {
     position: fixed;
     top: 0;
@@ -83,6 +83,20 @@ h1, h2, h3, h4, h5 {
     color: var(--brown-dark);
     font-size: 1.5rem;
     letter-spacing: 1px;
+    animation: pulse 2s infinite;
+    margin-top: 20px;
+}
+
+.loader-logo {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+}
+
+.preloader-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
     animation: pulse 2s infinite;
 }
 
@@ -141,8 +155,17 @@ header {
 }
 
 .logo-icon {
-    font-size: 2.5rem;
-    color: var(--mustard-medium);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 nav ul {
@@ -186,7 +209,7 @@ nav a.active {
     background-size: cover;
     background-position: center;
     text-align: center;
-    padding: 100px 20px;
+    padding: 80px 20px;
     position: relative;
     overflow: hidden;
     opacity: 0;
@@ -199,6 +222,22 @@ nav a.active {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+.hero-logo-container {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
 }
 
 .hero h2 {
@@ -215,6 +254,21 @@ nav a.active {
     color: var(--brown-light);
 }
 
+.hero-motto {
+    margin: 30px 0;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.motto-text {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--brown-dark);
+    font-style: italic;
+}
+
 .cta-button {
     display: inline-block;
     background: linear-gradient(to right, var(--mustard-medium), var(--mustard-light));
@@ -227,6 +281,7 @@ nav a.active {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 15px rgba(212, 185, 106, 0.3);
     border: 1px solid rgba(212, 185, 106, 0.2);
+    margin-top: 20px;
 }
 
 .cta-button:hover {
@@ -299,6 +354,10 @@ nav a.active {
     box-shadow: 0 4px 10px rgba(212, 185, 106, 0.3);
 }
 
+.tabs-content {
+    margin-top: 30px;
+}
+
 .tab-content {
     display: none;
     animation: fadeIn 0.5s ease;
@@ -350,7 +409,23 @@ section {
     font-size: 1.1rem;
 }
 
-/* Product Grids - VERSIÓN CORREGIDA */
+.section-logo {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.section-logo-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0.7;
+}
+
+/* Product Grids */
 .products-grid {
     max-width: 1200px;
     margin: 0 auto;
@@ -368,7 +443,7 @@ section {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     border: 1px solid var(--beige-medium);
-    height: 450px; /* Altura fija para uniformidad */
+    height: 450px;
     display: flex;
     flex-direction: column;
     opacity: 0;
@@ -386,9 +461,9 @@ section {
     box-shadow: 0 15px 30px rgba(93, 76, 52, 0.15);
 }
 
-/* CONTENEDOR DE IMAGEN - CORREGIDO */
+/* Contenedor de imagen */
 .product-image {
-    height: 200px; /* Altura fija más pequeña */
+    height: 200px;
     background: var(--beige-light);
     display: flex;
     justify-content: center;
@@ -404,20 +479,13 @@ section {
     max-height: 100%;
     width: auto;
     height: auto;
-    object-fit: contain; /* Mantiene proporciones */
+    object-fit: contain;
     transition: transform 0.5s ease;
     border-radius: 4px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .product-card:hover .product-image img {
-    transform: scale(1.03);
-}
-
-.placeholder-icon {
-    font-size: 3rem;
-    opacity: 0.5;
-    color: var(--brown-light);
+    transform: scale(1.05);
 }
 
 .product-badge {
@@ -439,7 +507,7 @@ section {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    overflow: hidden; /* Previene desbordamiento */
+    overflow: hidden;
 }
 
 .product-info h3 {
@@ -447,7 +515,7 @@ section {
     margin-bottom: 10px;
     color: var(--brown-dark);
     line-height: 1.3;
-    min-height: 60px;
+    min-height: 65px;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -472,7 +540,7 @@ section {
     margin-bottom: 10px;
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 10px;
     align-items: center;
 }
 
@@ -523,6 +591,21 @@ section {
 .company-info h2 {
     color: var(--brown-dark);
     margin-bottom: 30px;
+}
+
+.company-logo-container {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.company-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .company-details {
@@ -664,6 +747,29 @@ footer {
     font-size: 1.3rem;
 }
 
+.footer-logo-container {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0.9;
+}
+
+.footer-motto {
+    font-style: italic;
+    color: var(--mustard-light);
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
 .footer-column ul {
     list-style: none;
 }
@@ -739,11 +845,6 @@ footer {
     font-size: 0.9rem;
 }
 
-/* Debug Info - Ocultar en producción */
-.debug-info {
-    display: none;
-}
-
 /* Animations for notifications */
 @keyframes slideIn {
     from { transform: translateX(100%); opacity: 0; }
@@ -755,37 +856,15 @@ footer {
     to { transform: translateX(100%); opacity: 0; }
 }
 
-/* Mejoras adicionales */
-.products-grid {
-    align-items: stretch; /* Todas las tarjetas misma altura */
-}
-
-.product-card {
-    /* Sombra y borde ya definidos */
-}
-
-/* Clase para manejar imágenes rotas o faltantes */
-.broken-image {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: var(--brown-light);
-    font-size: 0.9rem;
-    text-align: center;
-    padding: 20px;
-}
-
-.broken-image i {
-    font-size: 2rem;
-    margin-bottom: 10px;
-    opacity: 0.5;
-}
-
 /* Responsive Design */
 @media (max-width: 992px) {
     .hero h2 {
         font-size: 2.3rem;
+    }
+    
+    .hero-logo-container {
+        width: 150px;
+        height: 150px;
     }
     
     .products-grid {
@@ -793,11 +872,7 @@ footer {
     }
     
     .product-card {
-        height: 420px; /* Un poco más pequeña en tablet */
-    }
-    
-    .product-image {
-        height: 180px;
+        height: 420px;
     }
 }
 
@@ -830,6 +905,11 @@ footer {
     
     .hero p {
         font-size: 1rem;
+    }
+    
+    .hero-logo-container {
+        width: 120px;
+        height: 120px;
     }
     
     .section-title h2 {
@@ -866,7 +946,7 @@ footer {
     }
     
     .product-image {
-        height: 160px;
+        height: 180px;
     }
 }
 
@@ -877,7 +957,7 @@ footer {
     }
     
     .hero {
-        padding: 70px 20px;
+        padding: 60px 20px;
     }
     
     .header-container {
@@ -897,7 +977,8 @@ footer {
     }
     
     .logo-icon {
-        font-size: 2rem;
+        width: 40px;
+        height: 40px;
     }
     
     .footer-container {
@@ -911,7 +992,7 @@ footer {
     }
     
     .product-image {
-        height: 150px;
+        height: 160px;
         padding: 10px;
     }
     
@@ -925,184 +1006,5 @@ footer {
     
     .product-price {
         font-size: 1.3rem;
-    }
-}
-/* Estilos para el logo en diferentes secciones */
-
-/* Logo en el header */
-.logo-image {
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
-    transition: transform 0.3s ease;
-}
-
-.logo-image:hover {
-    transform: scale(1.05);
-}
-
-/* Logo en el hero */
-.hero-logo-container {
-    text-align: center;
-    margin-bottom: 30px;
-    animation: fadeInDown 0.8s ease forwards 0.2s;
-    opacity: 0;
-}
-
-.hero-logo {
-    max-width: 180px;
-    height: auto;
-    margin: 0 auto;
-    filter: drop-shadow(0 5px 15px rgba(93, 76, 52, 0.2));
-}
-
-.hero-motto {
-    margin: 25px 0 35px;
-    font-family: 'Merriweather', serif;
-    font-style: italic;
-    color: var(--brown-light);
-    font-size: 1.2rem;
-    opacity: 0;
-    animation: fadeInUp 0.8s ease forwards 0.4s;
-}
-
-.motto-text {
-    position: relative;
-    padding: 10px 20px;
-    display: inline-block;
-}
-
-.motto-text:before,
-.motto-text:after {
-    content: "~";
-    margin: 0 10px;
-    color: var(--mustard-medium);
-}
-
-/* Logo en secciones generales */
-.section-logo {
-    text-align: center;
-    margin: 20px 0 40px;
-}
-
-.section-logo-image {
-    max-width: 100px;
-    height: auto;
-    opacity: 0.7;
-    filter: drop-shadow(0 3px 8px rgba(93, 76, 52, 0.2));
-}
-
-/* Logo en la sección de empresa */
-.company-logo-container {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.company-logo {
-    max-width: 150px;
-    height: auto;
-    filter: drop-shadow(0 5px 15px rgba(93, 76, 52, 0.2));
-}
-
-/* Logo en el footer */
-.footer-logo-container {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.footer-logo {
-    max-width: 100px;
-    height: auto;
-    margin: 0 auto 15px;
-    filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.2));
-}
-
-.footer-motto {
-    font-family: 'Merriweather', serif;
-    font-style: italic;
-    color: var(--mustard-light);
-    margin-bottom: 15px;
-    font-size: 1.1rem;
-}
-
-/* Estilos para logo en preloader */
-.loader-logo {
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.preloader-logo {
-    max-width: 120px;
-    height: auto;
-    opacity: 0.9;
-    animation: pulse 2s infinite;
-    filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.2));
-}
-
-/* Animaciones para los logos */
-@keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Ajustes responsivos para logos */
-@media (max-width: 768px) {
-    .hero-logo {
-        max-width: 140px;
-    }
-    
-    .company-logo {
-        max-width: 120px;
-    }
-    
-    .logo-image {
-        width: 50px;
-        height: 50px;
-    }
-    
-    .hero-motto {
-        font-size: 1.1rem;
-        margin: 20px 0 30px;
-    }
-}
-
-@media (max-width: 576px) {
-    .hero-logo {
-        max-width: 120px;
-    }
-    
-    .company-logo {
-        max-width: 100px;
-    }
-    
-    .footer-logo {
-        max-width: 80px;
-    }
-    
-    .logo-image {
-        width: 45px;
-        height: 45px;
-    }
-    
-    .hero-motto {
-        font-size: 1rem;
-        padding: 0 10px;
     }
 }

@@ -1,131 +1,116 @@
-// Preloader corregido - Se oculta cuando la página está completamente cargada
+// Preloader corregido
 document.addEventListener('DOMContentLoaded', function() {
-    // Mostrar que la página está cargando
-    console.log('DOM completamente cargado y analizado');
+    const preloader = document.getElementById('preloader');
+    const minimumDisplayTime = 1500;
+    const startTime = Date.now();
     
-    // Ocultar preloader después de un tiempo mínimo y cuando todo esté listo
-    setTimeout(function() {
-        hidePreloader();
-    }, 1500); // Tiempo mínimo de visualización del preloader
-    
-    // También ocultar cuando la ventana esté completamente cargada
-    window.addEventListener('load', function() {
-        setTimeout(function() {
-            hidePreloader();
-        }, 500); // Pequeño delay para asegurar que todo está listo
-    });
-    
-    // Función para ocultar el preloader
     function hidePreloader() {
-        const preloader = document.getElementById('preloader');
-        if (preloader) {
+        const elapsed = Date.now() - startTime;
+        const remaining = Math.max(minimumDisplayTime - elapsed, 0);
+        
+        setTimeout(() => {
             preloader.classList.add('loaded');
             
-            // Remover completamente después de la animación
-            setTimeout(function() {
-                if (preloader.parentNode) {
-                    preloader.style.display = 'none';
-                }
+            setTimeout(() => {
+                preloader.style.display = 'none';
+                document.body.style.overflow = 'auto';
             }, 500);
-        }
+        }, remaining);
     }
     
-    // Forzar ocultar el preloader después de 5 segundos como máximo (fallback)
-    setTimeout(function() {
-        const preloader = document.getElementById('preloader');
-        if (preloader && preloader.style.display !== 'none') {
-            preloader.classList.add('loaded');
-            setTimeout(function() {
-                if (preloader.parentNode) {
-                    preloader.style.display = 'none';
-                }
-            }, 500);
+    window.addEventListener('load', function() {
+        hidePreloader();
+    });
+    
+    setTimeout(() => {
+        if (preloader && !preloader.classList.contains('loaded')) {
+            hidePreloader();
         }
     }, 5000);
+    
+    initializeAll();
 });
 
-// Mobile menu toggle
-const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-const mainMenu = document.getElementById('mainMenu');
+function initializeAll() {
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mainMenu = document.getElementById('mainMenu');
+    
+    if (mobileMenuBtn && mainMenu) {
+        mobileMenuBtn.addEventListener('click', function() {
+            mainMenu.classList.toggle('active');
+            mobileMenuBtn.innerHTML = mainMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+    }
 
-if (mobileMenuBtn && mainMenu) {
-    mobileMenuBtn.addEventListener('click', function() {
-        mainMenu.classList.toggle('active');
-        mobileMenuBtn.innerHTML = mainMenu.classList.contains('active') 
-            ? '<i class="fas fa-times"></i>' 
-            : '<i class="fas fa-bars"></i>';
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('nav a, .tab-link').forEach(link => {
+        link.addEventListener('click', function() {
+            if (mainMenu) {
+                mainMenu.classList.remove('active');
+                if (mobileMenuBtn) {
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            }
+        });
     });
+
+    // Tab functionality
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const tabId = button.getAttribute('data-tab');
+            
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            button.classList.add('active');
+            const tabContent = document.getElementById(`${tabId}-tab`);
+            if (tabContent) {
+                tabContent.classList.add('active');
+            }
+            
+            setTimeout(() => {
+                animateProductCards(tabId);
+            }, 100);
+        });
+    });
+
+    // Tab links from footer
+    document.querySelectorAll('.tab-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const tabId = this.getAttribute('data-tab');
+            
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            const tabButton = document.querySelector(`.tab-button[data-tab="${tabId}"]`);
+            const tabContent = document.getElementById(`${tabId}-tab`);
+            
+            if (tabButton) tabButton.classList.add('active');
+            if (tabContent) tabContent.classList.add('active');
+            
+            const productsSection = document.getElementById('products');
+            if (productsSection) {
+                productsSection.scrollIntoView({ behavior: 'smooth' });
+            }
+            
+            setTimeout(() => {
+                animateProductCards(tabId);
+            }, 100);
+        });
+    });
+
+    // Inicializar productos
+    generateProducts();
 }
 
-// Close mobile menu when clicking on a link
-document.querySelectorAll('nav a, .tab-link').forEach(link => {
-    link.addEventListener('click', function() {
-        if (mainMenu) {
-            mainMenu.classList.remove('active');
-            if (mobileMenuBtn) {
-                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-            }
-        }
-    });
-});
-
-// Tab functionality
-const tabButtons = document.querySelectorAll('.tab-button');
-const tabContents = document.querySelectorAll('.tab-content');
-
-tabButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        const tabId = button.getAttribute('data-tab');
-        
-        // Remove active class from all buttons and contents
-        tabButtons.forEach(btn => btn.classList.remove('active'));
-        tabContents.forEach(content => content.classList.remove('active'));
-        
-        // Add active class to clicked button and corresponding content
-        button.classList.add('active');
-        const tabContent = document.getElementById(`${tabId}-tab`);
-        if (tabContent) {
-            tabContent.classList.add('active');
-        }
-        
-        // Animate product cards in the active tab
-        setTimeout(() => {
-            animateProductCards(tabId);
-        }, 100);
-    });
-});
-
-// Tab links from footer
-document.querySelectorAll('.tab-link').forEach(link => {
-    link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const tabId = this.getAttribute('data-tab');
-        
-        // Remove active class from all buttons and contents
-        tabButtons.forEach(btn => btn.classList.remove('active'));
-        tabContents.forEach(content => content.classList.remove('active'));
-        
-        // Add active class to corresponding button and content
-        const tabButton = document.querySelector(`.tab-button[data-tab="${tabId}"]`);
-        const tabContent = document.getElementById(`${tabId}-tab`);
-        
-        if (tabButton) tabButton.classList.add('active');
-        if (tabContent) tabContent.classList.add('active');
-        
-        // Scroll to products section
-        const productsSection = document.getElementById('products');
-        if (productsSection) {
-            productsSection.scrollIntoView({ behavior: 'smooth' });
-        }
-        
-        // Animate product cards
-        setTimeout(() => {
-            animateProductCards(tabId);
-        }, 100);
-    });
-});
-
-// Product data with real images from media folder - ACTUALIZADO con datos del segundo script
+// Product data con imágenes reales
 const productCategories = {
     saints: {
         items: [
@@ -189,403 +174,7 @@ const productCategories = {
                 price: "100.000",
                 image: "MEDIA/VIRGEN DE LA PROVIDENCIA 20CM.jpeg",
                 material: "Cerámica italiana",
-                size: "18cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Ángel con arpa técnica italiana al horno",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "120.000",
-                image: "MEDIA/ANGEL CON ARPA CM.jpeg",
-                material: "Cerámica italiana",
-                size: "25cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Anunciación técnica italiana al horno",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "200.000",
-                image: "MEDIA/ANUNCIACION 30CM.jpeg",
-                material: "Cerámica italiana",
-                size: "30cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Pastor técnica italiana al horno valor",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "120.000",
-                image: "MEDIA/PASTOR.jpeg",
-                material: "Cerámica italiana",
-                size: "25cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Pastor con niño Dios",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "80.000",
-                image: "MEDIA/PASTOR NIÑO DIOS.jpeg",
-                material: "Cerámica italiana",
-                size: "34cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Santa zita",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "70.000",
-                image: "MEDIA/SANTA ZITA.jpeg",
-                material: "Cerámica italiana",
-                size: "27cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Santa Lucía",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "80.000",
-                image: "MEDIA/SANTA LUCIA.jpeg",
-                material: "Cerámica italiana",
-                size: "23cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Santa Marta",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "80.000",
-                image: "MEDIA/SANTA MARIA.jpeg",
-                material: "Cerámica italiana",
-                size: "25cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Arcángel Rafael",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "90.000",
-                image: "MEDIA/ARCANGEL RAFAEL.jpeg",
-                material: "Cerámica italiana",
-                size: "25cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Ángel con arpa técnica italiana al horno",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "120.000",
-                image: "MEDIA/ANGEL CON ARPA CM.jpeg",
-                material: "Cerámica italiana",
-                size: "25cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Ángel con arpa técnica italiana al horno",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "120.000",
-                image: "MEDIA/ANGEL CON ARPA CM.jpeg",
-                material: "Cerámica italiana",
-                size: "25cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Ángel con arpa técnica italiana al horno",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "120.000",
-                image: "MEDIA/ANGEL CON ARPA CM.jpeg",
-                material: "Cerámica italiana",
-                size: "25cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Ángel con arpa técnica italiana al horno",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "120.000",
-                image: "MEDIA/ANGEL CON ARPA CM.jpeg",
-                material: "Cerámica italiana",
-                size: "25cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Ángel con arpa técnica italiana al horno",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "120.000",
-                image: "MEDIA/ANGEL CON ARPA CM.jpeg",
-                material: "Cerámica italiana",
-                size: "25cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Ángel con arpa técnica italiana al horno",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "120.000",
-                image: "MEDIA/ANGEL CON ARPA CM.jpeg",
-                material: "Cerámica italiana",
-                size: "25cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Ángel con arpa técnica italiana al horno",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "120.000",
-                image: "MEDIA/ANGEL CON ARPA CM.jpeg",
-                material: "Cerámica italiana",
-                size: "25cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Ángel con arpa técnica italiana al horno",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "120.000",
-                image: "MEDIA/ANGEL CON ARPA CM.jpeg",
-                material: "Cerámica italiana",
-                size: "25cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Ángel con arpa técnica italiana al horno",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "120.000",
-                image: "MEDIA/ANGEL CON ARPA CM.jpeg",
-                material: "Cerámica italiana",
-                size: "25cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Ángel con arpa técnica italiana al horno",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "120.000",
-                image: "MEDIA/ANGEL CON ARPA CM.jpeg",
-                material: "Cerámica italiana",
-                size: "25cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Ángel con arpa técnica italiana al horno",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "120.000",
-                image: "MEDIA/ANGEL CON ARPA CM.jpeg",
-                material: "Cerámica italiana",
-                size: "25cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Ángel con arpa técnica italiana al horno",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "120.000",
-                image: "MEDIA/ANGEL CON ARPA CM.jpeg",
-                material: "Cerámica italiana",
-                size: "25cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Ángel con arpa técnica italiana al horno",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "120.000",
-                image: "MEDIA/ANGEL CON ARPA CM.jpeg",
-                material: "Cerámica italiana",
-                size: "25cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Ángel con arpa técnica italiana al horno",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "120.000",
-                image: "MEDIA/ANGEL CON ARPA CM.jpeg",
-                material: "Cerámica italiana",
-                size: "25cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Ángel con arpa técnica italiana al horno",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "120.000",
-                image: "MEDIA/ANGEL CON ARPA CM.jpeg",
-                material: "Cerámica italiana",
-                size: "25cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Ángel con arpa técnica italiana al horno",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "120.000",
-                image: "MEDIA/ANGEL CON ARPA CM.jpeg",
-                material: "Cerámica italiana",
-                size: "25cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Ángel con arpa técnica italiana al horno",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "120.000",
-                image: "MEDIA/ANGEL CON ARPA CM.jpeg",
-                material: "Cerámica italiana",
-                size: "25cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Ángel con arpa técnica italiana al horno",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "120.000",
-                image: "MEDIA/ANGEL CON ARPA CM.jpeg",
-                material: "Cerámica italiana",
-                size: "25cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Ángel con arpa técnica italiana al horno",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "120.000",
-                image: "MEDIA/ANGEL CON ARPA CM.jpeg",
-                material: "Cerámica italiana",
-                size: "25cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Ángel con arpa técnica italiana al horno",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "120.000",
-                image: "MEDIA/ANGEL CON ARPA CM.jpeg",
-                material: "Cerámica italiana",
-                size: "25cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Ángel con arpa técnica italiana al horno",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "120.000",
-                image: "MEDIA/ANGEL CON ARPA CM.jpeg",
-                material: "Cerámica italiana",
-                size: "25cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Ángel con arpa técnica italiana al horno",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "120.000",
-                image: "MEDIA/ANGEL CON ARPA CM.jpeg",
-                material: "Cerámica italiana",
-                size: "25cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Ángel con arpa técnica italiana al horno",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "120.000",
-                image: "MEDIA/ANGEL CON ARPA CM.jpeg",
-                material: "Cerámica italiana",
-                size: "25cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Ángel con arpa técnica italiana al horno",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "120.000",
-                image: "MEDIA/ANGEL CON ARPA CM.jpeg",
-                material: "Cerámica italiana",
-                size: "25cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Ángel con arpa técnica italiana al horno",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "120.000",
-                image: "MEDIA/ANGEL CON ARPA CM.jpeg",
-                material: "Cerámica italiana",
-                size: "25cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Ángel con arpa técnica italiana al horno",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "120.000",
-                image: "MEDIA/ANGEL CON ARPA CM.jpeg",
-                material: "Cerámica italiana",
-                size: "25cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Ángel con arpa técnica italiana al horno",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "120.000",
-                image: "MEDIA/ANGEL CON ARPA CM.jpeg",
-                material: "Cerámica italiana",
-                size: "25cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Ángel con arpa técnica italiana al horno",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "120.000",
-                image: "MEDIA/ANGEL CON ARPA CM.jpeg",
-                material: "Cerámica italiana",
-                size: "25cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Ángel con arpa técnica italiana al horno",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "120.000",
-                image: "MEDIA/ANGEL CON ARPA CM.jpeg",
-                material: "Cerámica italiana",
-                size: "25cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Ángel con arpa técnica italiana al horno",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "120.000",
-                image: "MEDIA/ANGEL CON ARPA CM.jpeg",
-                material: "Cerámica italiana",
-                size: "25cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Ángel con arpa técnica italiana al horno",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "120.000",
-                image: "MEDIA/ANGEL CON ARPA CM.jpeg",
-                material: "Cerámica italiana",
-                size: "25cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Ángel con arpa técnica italiana al horno",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "120.000",
-                image: "MEDIA/ANGEL CON ARPA CM.jpeg",
-                material: "Cerámica italiana",
-                size: "25cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Ángel con arpa técnica italiana al horno",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "120.000",
-                image: "MEDIA/ANGEL CON ARPA CM.jpeg",
-                material: "Cerámica italiana",
-                size: "25cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Ángel con arpa técnica italiana al horno",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "120.000",
-                image: "MEDIA/ANGEL CON ARPA CM.jpeg",
-                material: "Cerámica italiana",
-                size: "25cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Ángel con arpa técnica italiana al horno",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "120.000",
-                image: "MEDIA/ANGEL CON ARPA CM.jpeg",
-                material: "Cerámica italiana",
-                size: "25cm",
-                details: "Técnica al horno"
-            },
-            {
-                name: "Ángel con arpa técnica italiana al horno",
-                description: "Ángel celestial tocando el arpa, símbolo de alabanza divina.",
-                price: "120.000",
-                image: "MEDIA/ANGEL CON ARPA CM.jpeg",
-                material: "Cerámica italiana",
-                size: "25cm",
+                size: "20cm",
                 details: "Técnica al horno"
             },
             {
@@ -740,38 +329,12 @@ function generateProducts() {
         const gridElement = document.getElementById(`${category}Grid`);
         
         if (gridElement) {
-            // Clear existing content
             gridElement.innerHTML = '';
             
-            // Actualizar información de depuración
-            const debugInfo = document.getElementById('debugInfo');
-            let debugMessage = `<h4>Información de carga - Categoría: ${category.toUpperCase()}</h4>`;
-            let imagesFound = 0;
-            let imagesMissing = 0;
-            
             catData.items.forEach((product, index) => {
-                // Verificar si la imagen existe
-                checkImageExists(product.image, function(exists) {
-                    if (exists) {
-                        imagesFound++;
-                    } else {
-                        imagesMissing++;
-                        debugMessage += `⚠️ Imagen no encontrada: ${product.image}<br>`;
-                    }
-                    
-                    // Actualizar mensaje de depuración cuando se complete la verificación
-                    if (index === catData.items.length - 1) {
-                        debugInfo.innerHTML += `<hr>${debugMessage}<br>`;
-                        debugInfo.innerHTML += `✅ Imágenes encontradas: ${imagesFound}<br>`;
-                        debugInfo.innerHTML += `❌ Imágenes faltantes: ${imagesMissing}<br>`;
-                        debugInfo.innerHTML += `📍 Ruta esperada: carpeta "MEDIA/" en el mismo directorio que este archivo HTML`;
-                    }
-                });
-                
                 const productCard = document.createElement('div');
                 productCard.className = 'product-card';
                 
-                // Determine badge text based on category
                 let badgeText = category.toUpperCase();
                 if (category === 'saints') badgeText = 'SANTO';
                 if (category === 'rosaries') badgeText = 'ROSARIO';
@@ -783,8 +346,8 @@ function generateProducts() {
                     <div class="product-image">
                         <img src="${product.image}" alt="${product.name}" 
                              onerror="this.onerror=null; 
-                             this.src='https://via.placeholder.com/400x500/f0e6d3/5d4c34?text=${encodeURIComponent(product.name.substring(0, 20))}'; 
-                             this.style.objectFit='cover';">
+                             this.src='https://via.placeholder.com/300x200/f0e6d3/5d4c34?text=${encodeURIComponent(product.name.substring(0, 15))}'; 
+                             this.style.objectFit='contain';">
                         <div class="product-badge">${badgeText}</div>
                     </div>
                     <div class="product-info">
@@ -800,7 +363,6 @@ function generateProducts() {
                 `;
                 gridElement.appendChild(productCard);
                 
-                // Add animation with delay based on index
                 setTimeout(() => {
                     productCard.classList.add('visible');
                 }, 100 + (index * 100));
@@ -808,9 +370,6 @@ function generateProducts() {
         }
     });
 }
-
-// Initialize products
-generateProducts();
 
 // Function to animate product cards
 function animateProductCards(category) {
@@ -825,48 +384,6 @@ function animateProductCards(category) {
         });
     }
 }
-
-// Image Modal functionality
-const imageModal = document.getElementById('imageModal');
-const modalImage = document.getElementById('modalImage');
-const closeModal = document.getElementById('closeModal');
-
-function openImageModal(src, alt) {
-    if (modalImage) {
-        modalImage.src = src;
-        modalImage.alt = alt;
-    }
-    if (imageModal) {
-        imageModal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-    }
-}
-
-if (closeModal) {
-    closeModal.addEventListener('click', function() {
-        if (imageModal) {
-            imageModal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-    });
-}
-
-if (imageModal) {
-    imageModal.addEventListener('click', function(e) {
-        if (e.target === imageModal) {
-            imageModal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-    });
-}
-
-// Close modal with Escape key
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && imageModal && imageModal.style.display === 'flex') {
-        imageModal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    }
-});
 
 // Add to cart functionality
 document.addEventListener('click', function(e) {
@@ -966,13 +483,6 @@ document.addEventListener('click', function(e) {
     }
 });
 
-// Función para consultar un producto (directamente a WhatsApp)
-function consultarProducto(nombre, precio) {
-    const mensaje = `Hola, estoy interesado en el producto: ${nombre} - Precio: $${precio}`;
-    const url = `https://wa.me/573008486851?text=${encodeURIComponent(mensaje)}`;
-    window.open(url, '_blank');
-}
-
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
@@ -1022,15 +532,3 @@ setTimeout(() => {
         animateProductCards(firstTabId);
     }
 }, 1000);
-
-// Cargar categoría inicial al cargar la página
-window.onload = () => {
-    // Actualizar información de depuración inicial
-    const debugInfo = document.getElementById('debugInfo');
-    debugInfo.innerHTML = `<h4>Información de imágenes:</h4>
-    <p>Las imágenes se cargan desde la carpeta "MEDIA/". Asegúrate de que los archivos existan en esa ubicación.</p>
-    <p><strong>Estructura recomendada:</strong></p>
-    <p>📁 Carpeta: "MEDIA/" (en mayúsculas)<br>
-    📄 Archivos: "MILAGROSA 40CM.jpeg", "SAN JOSE 30CM.jpeg", etc.<br>
-    📍 El archivo HTML debe estar en la misma carpeta que "MEDIA/"</p>`;
-};
