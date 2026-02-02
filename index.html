@@ -29,6 +29,114 @@
             --gold-medium: rgba(255, 215, 0, 0.3);
         }
 
+        /* ========== ALERTA DE CONSTRUCCIÓN ========== */
+        .construction-alert {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(135deg, var(--mustard-medium) 0%, var(--mustard-light) 100%);
+            color: var(--brown-dark);
+            padding: 12px 20px;
+            text-align: center;
+            z-index: 9999;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            font-size: 0.95rem;
+            border-bottom: 2px solid rgba(93, 76, 52, 0.2);
+        }
+
+        .construction-alert.hidden {
+            display: none;
+        }
+
+        .alert-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            max-width: 1200px;
+        }
+
+        .construction-alert a {
+            color: var(--brown-dark);
+            font-weight: 700;
+            text-decoration: none;
+            border-bottom: 1px dashed var(--brown-dark);
+            transition: all 0.3s ease;
+            padding: 2px 4px;
+            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .construction-alert a:hover {
+            background: rgba(255, 255, 255, 0.4);
+            border-bottom-style: solid;
+        }
+
+        .close-alert {
+            background: none;
+            border: none;
+            color: var(--brown-dark);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 4px 10px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 30px;
+            min-height: 30px;
+        }
+
+        .close-alert:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .alert-icon {
+            font-size: 1.1rem;
+            color: var(--brown-dark);
+        }
+
+        /* Responsive para la alerta */
+        @media (max-width: 768px) {
+            .construction-alert {
+                padding: 10px 15px;
+                font-size: 0.85rem;
+                gap: 10px;
+            }
+            
+            .alert-content {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .close-alert {
+                position: absolute;
+                right: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+                background: rgba(255, 255, 255, 0.2);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .construction-alert {
+                font-size: 0.75rem;
+                padding: 8px 35px 8px 10px;
+            }
+            
+            .alert-icon {
+                display: none;
+            }
+        }
+
         /* ========== ESTILOS GENERALES ========== */
         * {
             margin: 0;
@@ -43,6 +151,13 @@
             overflow-x: hidden;
             line-height: 1.6;
             position: relative;
+            padding-top: 50px; /* Espacio para la alerta */
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 45px; /* Menos espacio en móvil */
+            }
         }
 
         h1, h2, h3, h4, h5 {
@@ -2064,6 +2179,18 @@
     </style>
 </head>
 <body>
+    <!-- ALERTA DE CONSTRUCCIÓN -->
+    <div class="construction-alert" id="constructionAlert">
+        <div class="alert-content">
+            <i class="fas fa-tools alert-icon"></i>
+            <span>Este website está en construcción y constantemente en mantenimiento por</span>
+            <a href="https://whiatcompany.lat" target="_blank">Whiat Company Col</a>
+        </div>
+        <button class="close-alert" id="closeAlert" title="Cerrar alerta">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
     <!-- Fondo celestial con efectos sutiles -->
     <div class="celestial-background" id="celestialBackground">
         <!-- Las partículas de luz, rayos y estrellas se crearán con JavaScript -->
@@ -2445,7 +2572,51 @@
     <script>
         // ========== JAVASCRIPT ==========
         
+        // Función para manejar la alerta de construcción
+        function initializeConstructionAlert() {
+            const alertElement = document.getElementById('constructionAlert');
+            const closeButton = document.getElementById('closeAlert');
+            
+            // Verificar si el usuario ya cerró la alerta anteriormente
+            const alertClosed = localStorage.getItem('constructionAlertClosed');
+            
+            if (alertClosed === 'true') {
+                alertElement.classList.add('hidden');
+                document.body.style.paddingTop = '0';
+            }
+            
+            // Evento para cerrar la alerta
+            if (closeButton) {
+                closeButton.addEventListener('click', function() {
+                    alertElement.classList.add('hidden');
+                    document.body.style.paddingTop = '0';
+                    
+                    // Guardar en localStorage que el usuario cerró la alerta
+                    localStorage.setItem('constructionAlertClosed', 'true');
+                });
+            }
+            
+            // Cerrar automáticamente después de 30 segundos si el usuario no interactúa
+            setTimeout(() => {
+                if (!alertElement.classList.contains('hidden')) {
+                    alertElement.style.opacity = '0.7';
+                }
+            }, 25000);
+            
+            setTimeout(() => {
+                if (!alertElement.classList.contains('hidden')) {
+                    alertElement.classList.add('hidden');
+                    document.body.style.paddingTop = '0';
+                    
+                    // No guardamos en localStorage para que vuelva a aparecer en la próxima visita
+                }
+            }, 30000);
+        }
+        
         document.addEventListener('DOMContentLoaded', function() {
+            // Inicializar la alerta de construcción
+            initializeConstructionAlert();
+            
             const preloader = document.getElementById('preloader');
             const minimumDisplayTime = 1500;
             const startTime = Date.now();
