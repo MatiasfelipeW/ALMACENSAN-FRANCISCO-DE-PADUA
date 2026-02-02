@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>San Francisco de Padua Cali - Artículos Religiosos</title>
+    <!-- Favicon - logo en la pestaña del navegador -->
+    <link rel="icon" href="MEDIA/SAN_FRANCISCO_PALOMITAS__1_-removebg-preview.png" type="image/png">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     
@@ -167,6 +170,140 @@
 
         .carousel-dot:hover {
             background-color: var(--mustard-light);
+        }
+
+        /* ========== BUSCADOR ========== */
+        .search-container {
+            max-width: 1200px;
+            margin: 0 auto 40px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards 0.5s;
+        }
+
+        .search-box {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 16px 60px 16px 25px;
+            border: 2px solid var(--mustard-medium);
+            border-radius: 50px;
+            font-size: 1.1rem;
+            background-color: rgba(255, 255, 255, 0.95);
+            color: var(--brown-dark);
+            box-shadow: 0 5px 20px var(--shadow);
+            transition: all 0.3s ease;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--coffee-medium);
+            box-shadow: 0 5px 25px rgba(93, 76, 52, 0.2);
+            background-color: var(--white);
+        }
+
+        .search-input::placeholder {
+            color: var(--coffee-light);
+        }
+
+        .search-button {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--mustard-medium);
+            font-size: 1.4rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 5px;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-button:hover {
+            color: var(--coffee-medium);
+            background-color: rgba(212, 185, 106, 0.1);
+        }
+
+        .search-results-info {
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 3px 10px var(--shadow);
+            display: none;
+            border-left: 4px solid var(--mustard-medium);
+        }
+
+        .search-results-info.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            margin: 20px auto;
+            max-width: 800px;
+            box-shadow: 0 5px 15px var(--shadow);
+            display: none;
+            border: 2px solid var(--beige-medium);
+        }
+
+        .no-results.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .no-results h3 {
+            color: var(--brown-dark);
+            margin-bottom: 15px;
+        }
+
+        .no-results p {
+            color: var(--brown-light);
+            margin-bottom: 20px;
+        }
+
+        .search-suggestions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .suggestion-tag {
+            background-color: var(--beige-light);
+            color: var(--brown-dark);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid var(--beige-medium);
+        }
+
+        .suggestion-tag:hover {
+            background-color: var(--mustard-light);
+            transform: translateY(-2px);
         }
 
         /* ========== SECCIÓN VISÍTANOS ========== */
@@ -976,8 +1113,8 @@
             height: 450px;
             display: flex;
             flex-direction: column;
-            opacity: 0;
-            transform: translateY(20px);
+            opacity: 1;
+            transform: translateY(0);
             z-index: 2;
             backdrop-filter: blur(5px);
         }
@@ -1757,6 +1894,11 @@
                 bottom: 10px;
             }
             
+            .search-input {
+                padding: 14px 60px 14px 20px;
+                font-size: 1rem;
+            }
+            
             .whatsapp-float {
                 bottom: 20px;
                 right: 20px;
@@ -1882,6 +2024,21 @@
             .loader-logo {
                 width: 200px;
                 height: 200px;
+            }
+            
+            .search-box {
+                margin: 0 10px;
+            }
+            
+            .search-input {
+                padding: 12px 50px 12px 15px;
+                font-size: 0.95rem;
+            }
+            
+            .search-button {
+                width: 35px;
+                height: 35px;
+                font-size: 1.2rem;
             }
             
             .whatsapp-float {
@@ -2015,6 +2172,30 @@
             <!-- Logo pequeño en la sección de productos -->
             <div class="section-logo">
                 <img src="MEDIA/SAN_FRANCISCO_PALOMITAS__1_-removebg-preview.png" alt="San Francisco Tienda" class="section-logo-image">
+            </div>
+            
+            <!-- BUSCADOR DE PRODUCTOS -->
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" class="search-input" id="searchInput" placeholder="Buscar artículos por nombre, descripción o categoría...">
+                    <button class="search-button" id="searchButton">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div class="search-results-info" id="searchResultsInfo">
+                    <p id="searchResultsText"></p>
+                </div>
+                <div class="no-results" id="noResults">
+                    <h3><i class="fas fa-search"></i> No se encontraron resultados</h3>
+                    <p>No hemos encontrado productos que coincidan con tu búsqueda. Intenta con otros términos o revisa nuestras sugerencias:</p>
+                    <div class="search-suggestions">
+                        <div class="suggestion-tag" data-search="Virgen">Virgen</div>
+                        <div class="suggestion-tag" data-search="San">San</div>
+                        <div class="suggestion-tag" data-search="Rosario">Rosario</div>
+                        <div class="suggestion-tag" data-search="Cristo">Cristo</div>
+                        <div class="suggestion-tag" data-search="Ángel">Ángel</div>
+                    </div>
+                </div>
             </div>
             
             <div class="product-tabs">
@@ -2252,7 +2433,7 @@
         <div class="copyright">
             <p>&copy; 2023 SAN FRANCISCO DE PADUA CALI. Todos los derechos reservados. | Desde el 21 de febrero de 2006</p>
             <p style="margin-top: 10px;">"Donde la fe se encuentra con la devoción en cada detalle"</p>
-            <p class="developer-credit">Desarrollado por <a href="https://whiatcompany.online" target="_blank">Whiat Company Col</a></p>
+            <p class="developer-credit">Desarrollado por <a href="https://whiatcompany.lat" target="_blank">Whiat Company Col</a></p>
         </div>
     </footer>
 
@@ -2541,620 +2722,826 @@
                     behavior: 'smooth'
                 });
             });
+            
+            // Inicializar buscador
+            initializeSearch();
         }
+        
+        // ========== SISTEMA DE BÚSQUEDA ==========
+        function initializeSearch() {
+            const searchInput = document.getElementById('searchInput');
+            const searchButton = document.getElementById('searchButton');
+            const searchResultsInfo = document.getElementById('searchResultsInfo');
+            const searchResultsText = document.getElementById('searchResultsText');
+            const noResults = document.getElementById('noResults');
+            const suggestionTags = document.querySelectorAll('.suggestion-tag');
+            
+            // Variable para almacenar todos los productos
+            let allProducts = [];
+            
+            // Función para ejecutar la búsqueda
+            function performSearch() {
+                const searchTerm = searchInput.value.trim().toLowerCase();
+                
+                // Ocultar mensajes anteriores
+                searchResultsInfo.classList.remove('show');
+                noResults.classList.remove('show');
+                
+                // Si el término de búsqueda está vacío, mostrar todos los productos
+                if (searchTerm === '') {
+                    showAllProducts();
+                    return;
+                }
+                
+                // Buscar productos que coincidan
+                let foundProducts = [];
+                let totalFound = 0;
+                
+                // Buscar en cada categoría
+                Object.keys(productCategories).forEach(category => {
+                    const catData = productCategories[category];
+                    const gridElement = document.getElementById(`${category}Grid`);
+                    
+                    if (gridElement) {
+                        const productCards = gridElement.querySelectorAll('.product-card');
+                        let foundInCategory = 0;
+                        
+                        productCards.forEach(card => {
+                            const productName = card.querySelector('h3').textContent.toLowerCase();
+                            const productDescription = card.querySelector('.product-description').textContent.toLowerCase();
+                            const productBadge = card.querySelector('.product-badge').textContent.toLowerCase();
+                            
+                            // Verificar si coincide con el término de búsqueda
+                            if (productName.includes(searchTerm) || 
+                                productDescription.includes(searchTerm) || 
+                                productBadge.includes(searchTerm)) {
+                                
+                                card.style.display = 'flex';
+                                foundInCategory++;
+                                totalFound++;
+                                
+                                // Agregar a la lista de productos encontrados
+                                const productData = {
+                                    name: card.querySelector('h3').textContent,
+                                    price: card.querySelector('.product-price').textContent,
+                                    category: category
+                                };
+                                foundProducts.push(productData);
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        });
+                        
+                        // Mostrar/ocultar la pestaña si tiene resultados
+                        const tabButton = document.querySelector(`.tab-button[data-tab="${category}"]`);
+                        const tabContent = document.getElementById(`${category}-tab`);
+                        
+                        if (foundInCategory > 0) {
+                            if (tabContent) tabContent.style.display = 'block';
+                            if (tabButton) tabButton.style.display = 'block';
+                        } else {
+                            if (tabContent) tabContent.style.display = 'none';
+                            if (tabButton) tabButton.style.display = 'none';
+                        }
+                    }
+                });
+                
+                // Mostrar información de resultados
+                if (totalFound > 0) {
+                    searchResultsText.textContent = `Encontramos ${totalFound} producto${totalFound !== 1 ? 's' : ''} que coinciden con "${searchTerm}"`;
+                    searchResultsInfo.classList.add('show');
+                    
+                    // Asegurarse de que al menos una pestaña esté activa
+                    const visibleTabs = document.querySelectorAll('.tab-button[style="display: block"]');
+                    if (visibleTabs.length > 0) {
+                        const firstVisibleTab = visibleTabs[0];
+                        const tabId = firstVisibleTab.getAttribute('data-tab');
+                        
+                        // Activar la primera pestaña visible
+                        document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+                        document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                        
+                        firstVisibleTab.classList.add('active');
+                        const tabContent = document.getElementById(`${tabId}-tab`);
+                        if (tabContent) tabContent.classList.add('active');
+                    }
+                } else {
+                    // No se encontraron resultados
+                    noResults.classList.add('show');
+                    
+                    // Ocultar todos los productos
+                    Object.keys(productCategories).forEach(category => {
+                        const gridElement = document.getElementById(`${category}Grid`);
+                        if (gridElement) {
+                            const productCards = gridElement.querySelectorAll('.product-card');
+                            productCards.forEach(card => {
+                                card.style.display = 'none';
+                            });
+                        }
+                    });
+                }
+            }
+            
+            // Función para mostrar todos los productos
+            function showAllProducts() {
+                Object.keys(productCategories).forEach(category => {
+                    const gridElement = document.getElementById(`${category}Grid`);
+                    if (gridElement) {
+                        const productCards = gridElement.querySelectorAll('.product-card');
+                        productCards.forEach(card => {
+                            card.style.display = 'flex';
+                        });
+                    }
+                    
+                    // Mostrar todas las pestañas
+                    const tabButton = document.querySelector(`.tab-button[data-tab="${category}"]`);
+                    const tabContent = document.getElementById(`${category}-tab`);
+                    
+                    if (tabContent) tabContent.style.display = 'block';
+                    if (tabButton) {
+                        tabButton.style.display = 'block';
+                        tabButton.classList.remove('active');
+                    }
+                });
+                
+                // Activar la primera pestaña por defecto
+                const firstTabButton = document.querySelector('.tab-button');
+                const firstTabId = firstTabButton.getAttribute('data-tab');
+                
+                if (firstTabButton) firstTabButton.classList.add('active');
+                const firstTabContent = document.getElementById(`${firstTabId}-tab`);
+                if (firstTabContent) firstTabContent.classList.add('active');
+                
+                // Ocultar mensajes
+                searchResultsInfo.classList.remove('show');
+                noResults.classList.remove('show');
+            }
+            
+            // Evento para el botón de búsqueda
+            searchButton.addEventListener('click', performSearch);
+            
+            // Evento para la tecla Enter en el input
+            searchInput.addEventListener('keyup', function(event) {
+                if (event.key === 'Enter') {
+                    performSearch();
+                }
+            });
+            
+            // Evento para las sugerencias de búsqueda
+            suggestionTags.forEach(tag => {
+                tag.addEventListener('click', function() {
+                    const searchTerm = this.getAttribute('data-search');
+                    searchInput.value = searchTerm;
+                    performSearch();
+                });
+            });
+            
+            // Evento para limpiar la búsqueda cuando se hace clic en una pestaña
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    // Solo limpiar la búsqueda si no estamos en medio de una
+                    if (searchInput.value.trim() !== '') {
+                        // Actualizar la búsqueda para la categoría seleccionada
+                        const searchTerm = searchInput.value.trim().toLowerCase();
+                        if (searchTerm !== '') {
+                            const tabId = this.getAttribute('data-tab');
+                            const gridElement = document.getElementById(`${tabId}Grid`);
+                            
+                            if (gridElement) {
+                                const productCards = gridElement.querySelectorAll('.product-card');
+                                productCards.forEach(card => {
+                                    const productName = card.querySelector('h3').textContent.toLowerCase();
+                                    const productDescription = card.querySelector('.product-description').textContent.toLowerCase();
+                                    const productBadge = card.querySelector('.product-badge').textContent.toLowerCase();
+                                    
+                                    if (productName.includes(searchTerm) || 
+                                        productDescription.includes(searchTerm) || 
+                                        productBadge.includes(searchTerm)) {
+                                        card.style.display = 'flex';
+                                    } else {
+                                        card.style.display = 'none';
+                                    }
+                                });
+                            }
+                        }
+                    }
+                });
+            });
+        }
+
         // Product data con imágenes reales
         const productCategories = {
-          saints: {
-    items: [
-        {
-            name: "Virgen Milagrosa Pintada a Mano 40CM",
-            description: "",
-            price: "150.000",
-            image: "MEDIA/MILAGROSA 40CM.jpeg",
-            material: "Pintura a mano",
-            size: "40cm",
-            details: "Técnica artesanal"
-        },
-        {
-            name: "Virgen Milagrosa en resina de 30CM",
-            description: "",
-            price: "100.000",
-            image: "MEDIA/MILAGROSA 30CM.jpeg",
-            material: "Resina",
-            size: "30cm",
-            details: "Acabado detallado"
-        },
-        {
-            name: "San Jose en técnica italiana al horno 30CM",
-            description: "",
-            price: "110.000",
-            image: "MEDIA/SAN JOSE 30CM.jpeg",
-            material: "Cerámica italiana",
-            size: "30cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Corazón de María técnica italiana de 33CM",
-            description: "",
-            price: "135.000",
-            image: "MEDIA/CORAZON DE MARIA 33CM.jpeg",
-            material: "Cerámica italiana",
-            size: "33cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Virgen de la salud 44CM",
-            description: "",
-            price: "45.000",
-            image: "MEDIA/VIRGENDE LA SALUD 44CM.jpeg",
-            material: "Resina pintada",
-            size: "44cm",
-            details: "Protección para el hogar"
-        },
-        {
-            name: "Niño de Praga técnica italiana valor 15CM",
-            description: "",
-            price: "120.000",
-            image: "MEDIA/NIÑO DE PRAGA 15CM.jpeg",
-            material: "Cerámica italiana",
-            size: "15cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Virgen de la providencia altura 20CM técnica italiana al horno",
-            description: "",
-            price: "100.000",
-            image: "MEDIA/VIRGEN DE LA PROVIDENCIA 20CM.jpeg",
-            material: "Cerámica italiana",
-            size: "20cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Ángel con arpa técnica italiana al horno",
-            description: "",
-            price: "120.000",
-            image: "MEDIA/ANGEL CON ARPA CM.jpeg",
-            material: "Cerámica italiana",
-            size: "25cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Anunciacion",
-            description: "",
-            price: "200.000",
-            image: "MEDIA/ANUNCIACION 30CM.jpeg",
-            material: "Cerámica italiana",
-            size: "30cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Pastor",
-            description: "",
-            price: "120.000",
-            image: "MEDIA/PASTOR.jpeg",
-            material: "Cerámica italiana",
-            size: "25cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Pastor con niño Dios",
-            description: "",
-            price: "80.000",
-            image: "MEDIA/PASTOR NIÑO DIOS.jpeg",
-            material: "Cerámica italiana",
-            size: "34cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Santa zita",
-            description: "",
-            price: "70.000",
-            image: "MEDIA/SANTA ZITA.jpeg",
-            material: "Cerámica italiana",
-            size: "27cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Santa Lucía",
-            description: "",
-            price: "80.000",
-            image: "MEDIA/SANTA LUCIA.jpeg",
-            material: "Cerámica italiana",
-            size: "23cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Santa Marta",
-            description: "",
-            price: "80.000",
-            image: "MEDIA/SANTA MARTA.jpeg",
-            material: "Cerámica italiana",
-            size: "25cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Arcangel Rafael",
-            description: "",
-            price: "90.000",
-            image: "MEDIA/ARCANGEL RAFAEL.jpeg",
-            material: "Cerámica italiana",
-            size: "25cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Arcangel Uriel",
-            description: "",
-            price: "90.000",
-            image: "MEDIA/ARCANGEL URIEL.jpeg",
-            material: "Cerámica italiana",
-            size: "25cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Arcángel zadquiel",
-            description: "",
-            price: "80.000",
-            image: "MEDIA/ARCANGEL ZADQUIEL.jpeg",
-            material: "Cerámica italiana",
-            size: "25cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Virgen Rosa mística",
-            description: "",
-            price: "90.000",
-            image: "MEDIA/VIRGEN ROSA MISTICA.jpeg",
-            material: "Cerámica italiana",
-            size: "25cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Virgen de la Piedad",
-            description: "",
-            price: "90.000",
-            image: "MEDIA/VIRGEN DE LA PIEDAD.jpeg",
-            material: "Cerámica italiana",
-            size: "23cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Virgen del valle",
-            description: "",
-            price: "90.000",
-            image: "MEDIA/VIRDEN DEL VALLE.jpeg",
-            material: "Cerámica italiana",
-            size: "25cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Buen pastor",
-            description: "",
-            price: "100.000",
-            image: "MEDIA/BUEN PASTOR.jpeg",
-            material: "Cerámica italiana",
-            size: "25cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Señor de la misericordia",
-            description: "",
-            price: "110.000",
-            image: "MEDIA/SEÑOR DE LA MISERICORDIA.jpeg",
-            material: "Cerámica italiana",
-            size: "33cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Arcangel San Miguel",
-            description: "",
-            price: "180.000",
-            image: "MEDIA/ARCANGEL SAN MIGUEL.jpeg",
-            material: "Cerámica italiana",
-            size: "38cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Arcangel Metatron",
-            description: "",
-            price: "150.000",
-            image: "MEDIA/ARCANGEL METATRON.jpeg",
-            material: "Cerámica italiana",
-            size: "28cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Virgen de la Salud",
-            description: "",
-            price: "68.000",
-            image: "MEDIA/VIRGEN DE LA SALUD.jpeg",
-            material: "Cerámica italiana",
-            size: "22cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "San Francisco de Asís ",
-            description: "",
-            price: "100.000",
-            image: "MEDIA/SAN FRANCISCO DE ASIS.jpeg",
-            material: "Cerámica italiana",
-            size: "23cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Virgen de la Primavera ",
-            description: "",
-            price: "80.000",
-            image: "MEDIA/VIRGEN DE LA PRIMAVERA.jpeg",
-            material: "Cerámica italiana",
-            size: "25cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Virgen María Auxiliadora ",
-            description: "",
-            price: "90.000",
-            image: "MEDIA/VIRGEN MARIA AUXILIADORA.jpeg",
-            material: "Cerámica italiana",
-            size: "30cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Virgen de aranzazu ",
-            description: "",
-            price: "130.000",
-            image: "MEDIA/VIRGEN DE ARANSAZU.jpeg",
-            material: "Cerámica italiana",
-            size: "43cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Santa Ana ",
-            description: "",
-            price: "120.000",
-            image: "MEDIA/SANTA ANA.jpeg",
-            material: "Cerámica italiana",
-            size: "30cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Virgen de Loreto",
-            description: "",
-            price: "120.000",
-            image: "MEDIA/VIRDEN DE LORETO.jpeg",
-            material: "Cerámica italiana",
-            size: "28cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "San Jose",
-            description: "",
-            price: "100.000",
-            image: "MEDIA/SAN JOSE.jpeg",
-            material: "Cerámica italiana",
-            size: "28cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Virgen del Cojin",
-            description: "",
-            price: "70.000",
-            image: "MEDIA/VIRGEN DEL COJIN.jpeg",
-            material: "Cerámica italiana",
-            size: "18cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Virgen del Coromoto",
-            description: "",
-            price: "85.000",
-            image: "MEDIA/VIRGEN DEL COROMOTO.jpeg",
-            material: "Cerámica italiana",
-            size: "23cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Retablo de Ascensión de la virgen",
-            description: "",
-            price: "120.000",
-            image: "MEDIA/RETRATO ACSENSION DE LA VIRGEN.jpeg",
-            material: "Cerámica italiana",
-            size: "25cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Retablo de María reina",
-            description: "",
-            price: "130.000",
-            image: "MEDIA/RETABLO DE MARIA REINA.jpeg",
-            material: "Cerámica italiana",
-            size: "130*40cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Retablo de arcángel San Miguel",
-            description: "",
-            price: "120.000",
-            image: "MEDIA/RETABLO DE ARCANGEL SAN MIGUEL.jpeg",
-            material: "Cerámica italiana",
-            size: "40*20cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Retablo del arcángel San Rafael ",
-            description: "",
-            price: "120.000",
-            image: "MEDIA/RETABLO DE ARCANGEL SAN RAFAEL.jpeg",
-            material: "Cerámica italiana",
-            size: "48*20cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Retablo santísima Trinidad ",
-            description: "",
-            price: "120.000",
-            image: "MEDIA/RETABLO SANTISIMA TRINIDAD.jpeg",
-            material: "Cerámica italiana",
-            size: "27*27cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Retablo Madonna",
-            description: "",
-            price: "130.000",
-            image: "MEDIA/RETABLO MADONA.jpeg",
-            material: "Cerámica italiana",
-            size: "33*28cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Retablo virgen de Lourdes",
-            description: "",
-            price: "130.000",
-            image: "MEDIA/RETABLO VIRGEN DE LOURDES.jpeg",
-            material: "Cerámica italiana",
-            size: "38*18cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Aplique Madonna",
-            description: "",
-            price: "70.000",
-            image: "MEDIA/APLIQUE MADONNA.jpeg",
-            material: "Cerámica italiana",
-            size: "22*11cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Aplique Rosa mística",
-            description: "",
-            price: "65.000",
-            image: "MEDIA/APLIQUE ROSA MISTICA.jpeg ",
-            material: "Cerámica italiana",
-            size: "24*9cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Aplique virgen del Carmen ",
-            description: "",
-            price: "70.000",
-            image: "MEDIA/APLIQUE VIRGEN DEL CARMEN.jpeg",
-            material: "Cerámica italiana",
-            size: "20*14cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Aplique niño Jesús",
-            description: "",
-            price: "70.000",
-            image: "MEDIA/APLIQUE NIÑO DE JESUS.jpeg",
-            material: "Cerámica italiana",
-            size: "20*12cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Retablo virgen de Fátima",
-            description: "",
-            price: "150.000",
-            image: "MEDIA/RETABLO VIRGEN DE FATIMA.jpeg",
-            material: "Cerámica italiana",
-            size: "cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Retablo del Tao de San Francisco de Asís",
-            description: "",
-            price: "120.000",
-            image: "MEDIA/RETABLO DEL TAO DE SAN FRANCISCO.jpeg",
-            material: "Cerámica italiana",
-            size: "24*20cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Retablo Madonna clasico",
-            description: "",
-            price: "110.000",
-            image: "MEDIA/RETABLO MADONNA CLASICA.jpeg",
-            material: "Cerámica italiana",
-            size: "24*16cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Retablo ultima cena",
-            description: "",
-            price: "130.000",
-            image: "MEDIA/RETABLO ULTIMA CENA.jpeg",
-            material: "Cerámica italiana",
-            size: "cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Retablo San Rafael ",
-            description: "",
-            price: "80.000",
-            image: "MEDIA/RETABLO SAN RAFAEL.jpeg",
-            material: "Cerámica italiana",
-            size: "30*16cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Niño Dios canasta ",
-            description: "",
-            price: "120.000",
-            image: "MEDIA/NIÑO DIOS EN CANASTA.jpeg",
-            material: "Cerámica italiana",
-            size: "28cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "San José estilizado",
-            description: "",
-            price: "170.000",
-            image: "MEDIA/SAN JOSE ESTILIZADO.jpeg",
-            material: "Cerámica italiana",
-            size: "50cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Sueño de Jesús ",
-            description: "",
-            price: "120.000",
-            image: "MEDIA/SUEÑO DE JESUS.jpeg",
-            material: "Cerámica italiana",
-            size: "23cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Cristo San Benito ",
-            description: "",
-            price: "130.000",
-            image: "MEDIA/CRISTO BENDITO.jpeg",
-            material: "Cerámica italiana",
-            size: "50*30cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Cristo en Cruz",
-            description: "",
-            price: "110.000",
-            image: "MEDIA/CRISTO EN LA RUZ.jpeg ",
-            material: "Cerámica italiana",
-            size: "49*25",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Cruz de San Damián",
-            description: "",
-            price: "100.000",
-            image: "MEDIA/CRUZ DE SAN DAMIAN.jpeg   ",
-            material: "Cerámica italiana",
-            size: "28*20cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Retablo Guadalupe ",
-            description: "",
-            price: "120.000",
-            image: "MEDIA/RETABLO GUADALUPE.jpeg",
-            material: "Cerámica italiana",
-            size: "30*26cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Ángel de la lechuga ",
-            description: "",
-            price: "90.000",
-            image: "MEDIA/ANGEL DE LA LECHUGA.jpeg",
-            material: "Cerámica italiana",
-            size: "35*20cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Retablo sagrada familia de pared ",
-            description: "",
-            price: "00.000",
-            image: "MEDIA/RETABLO SAGRADA FAMILIA DE PARED.jpeg",
-            material: "Cerámica italiana",
-            size: "29*15cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Arcangeles niños x unidad",
-            description: "",
-            price: "40.000",
-            image: "MEDIA/ACRCANGELES NIÑOS.jpeg",
-            material: "Cerámica italiana",
-            size: "cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Virgen Rosa mística con vestido ",
-            description: "",
-            price: "160.000",
-            image: "MEDIA/VIRGEN ROSA MISTICA CON VESTIDO.jpeg",
-            material: "Cerámica italiana",
-            size: "cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Cristo eucarístico",
-            description: "",
-            price: "45.000",
-            image: "MEDIA/CRISTO EUCARISTICO.jpeg",
-            material: "Cerámica italiana",
-            size: "cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Virgen María Auxiliadora",
-            description: "",
-            price: "60.000",
-            image: "MEDIA/VIRGEN MARIA AUXILIADORA DORADA.jpeg",
-            material: "Cerámica italiana",
-            size: "cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Retablo Lourdes",
-            description: "",
-            price: "100.000",
-            image: "MEDIA/RETABLO LIURDES.jpeg",
-            material: "Cerámica italiana",
-            size: "42*27cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Retablo Jesús con niños",
-            description: "",
-            price: "85.000",
-            image: "MEDIA/RETABLO JESUS CON NIÑO DIOS.jpeg",
-            material: "Cerámica italiana",
-            size: "21*12cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Teresa de Ávila ",
-            description: "",
-            price: "90.000",
-            image: "MEDIA/TERESA DE AVILA.jpeg",
-            material: "Cerámica italiana",
-            size: "30cm",
-            details: "Técnica italiana al horno"
-        },
-        {
-            name: "Cristo Dalí",
-            description: "",
-            price: "75.000",
-            image: "MEDIA/CRISTO DALI.jpeg",
-            material: "Cerámica italiana",
-            size: "39   cm",
-            details: "Técnica italiana al horno"
-        }
+                     saints: {
+                items: [
+                    {
+                        name: "Virgen Milagrosa Pintada a Mano 40CM",
+                        description: "Virgen de las gracias y los milagros.",
+                        price: "150.000",
+                        image: "MEDIA/MILAGROSA 40CM.jpeg",
+                        material: "Pintura a mano",
+                        size: "40cm",
+                        details: "Técnica artesanal"
+                    },
+                    {
+                        name: "Virgen Milagrosa en resina de 30CM",
+                        description: "Virgen de las gracias y los milagros.",
+                        price: "100.000",
+                        image: "MEDIA/MILAGROSA 30CM.jpeg",
+                        material: "Resina",
+                        size: "30cm",
+                        details: "Acabado detallado"
+                    },
+                    {
+                        name: "San Jose en técnica italiana al horno 30CM",
+                        description: "Patrono de la Iglesia universal y padre adoptivo de Jesús.",
+                        price: "110.000",
+                        image: "MEDIA/SAN JOSE 30CM.jpeg",
+                        material: "Cerámica italiana",
+                        size: "30cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Corazón de María técnica italiana de 33CM",
+                        description: "Símbolo del amor y pureza de la Madre de Dios.",
+                        price: "135.000",
+                        image: "MEDIA/CORAZON DE MARIA 33CM.jpeg",
+                        material: "Cerámica italiana",
+                        size: "33cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Virgen de la salud 44CM",
+                        description: "Abogada de los enfermos y protectora de la salud.",
+                        price: "45.000",
+                        image: "MEDIA/VIRGENDE LA SALUD 44CM.jpeg",
+                        material: "Resina pintada",
+                        size: "44cm",
+                        details: "Protección para el hogar"
+                    },
+                    {
+                        name: "Niño de Praga técnica italiana valor 15CM",
+                        description: "Representación del Niño Jesús Rey y soberano.",
+                        price: "120.000",
+                        image: "MEDIA/NIÑO DE PRAGA 15CM.jpeg",
+                        material: "Cerámica italiana",
+                        size: "15cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Virgen de la providencia altura 20CM técnica italiana al horno",
+                        description: "Madre de la divina providencia y el cuidado maternal.",
+                        price: "100.000",
+                        image: "MEDIA/VIRGEN DE LA PROVIDENCIA 20CM.jpeg",
+                        material: "Cerámica italiana",
+                        size: "20cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Ángel con arpa técnica italiana al horno",
+                        description: "Ángel celestial que alaba a Dios con música.",
+                        price: "120.000",
+                        image: "MEDIA/ANGEL CON ARPA CM.jpeg",
+                        material: "Cerámica italiana",
+                        size: "25cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Anunciacion",
+                        description: "Momento en que el Ángel Gabriel anuncia a María.",
+                        price: "200.000",
+                        image: "MEDIA/ANUNCIACION 30CM.jpeg",
+                        material: "Cerámica italiana",
+                        size: "30cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Pastor",
+                        description: "Representación del buen pastor que cuida su rebaño.",
+                        price: "120.000",
+                        image: "MEDIA/PASTOR.jpeg",
+                        material: "Cerámica italiana",
+                        size: "25cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Pastor con niño Dios",
+                        description: "Pastor que carga al Niño Jesús en sus brazos.",
+                        price: "80.000",
+                        image: "MEDIA/PASTOR NIÑO DIOS.jpeg",
+                        material: "Cerámica italiana",
+                        size: "34cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Santa zita",
+                        description: "Patrona de las sirvientas y trabajadoras domésticas.",
+                        price: "70.000",
+                        image: "MEDIA/SANTA ZITA.jpeg",
+                        material: "Cerámica italiana",
+                        size: "27cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Santa Lucía",
+                        description: "Mártir patrona de la vista y los ojos.",
+                        price: "80.000",
+                        image: "MEDIA/SANTA LUCIA.jpeg",
+                        material: "Cerámica italiana",
+                        size: "23cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Santa Marta",
+                        description: "Patrona de los chefs, sirvientes y amas de casa.",
+                        price: "80.000",
+                        image: "MEDIA/SANTA MARTA.jpeg",
+                        material: "Cerámica italiana",
+                        size: "25cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Arcangel Rafael",
+                        description: "Arcángel sanador y protector de los viajeros.",
+                        price: "90.000",
+                        image: "MEDIA/ARCANGEL RAFAEL.jpeg",
+                        material: "Cerámica italiana",
+                        size: "25cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Arcangel Uriel",
+                        description: "Arcángel de la sabiduría y la iluminación divina.",
+                        price: "90.000",
+                        image: "MEDIA/ARCANGEL URIEL.jpeg",
+                        material: "Cerámica italiana",
+                        size: "25cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Arcángel zadquiel",
+                        description: "Arcángel de la misericordia y la transformación.",
+                        price: "80.000",
+                        image: "MEDIA/ARCANGEL ZADQUIEL.jpeg",
+                        material: "Cerámica italiana",
+                        size: "25cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Virgen Rosa mística",
+                        description: "Aparición mariana que invoca la penitencia y oración.",
+                        price: "90.000",
+                        image: "MEDIA/VIRGEN ROSA MISTICA.jpeg",
+                        material: "Cerámica italiana",
+                        size: "25cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Virgen de la Piedad",
+                        description: "María sosteniendo a Jesús después de la crucifixión.",
+                        price: "90.000",
+                        image: "MEDIA/VIRGEN DE LA PIEDAD.jpeg",
+                        material: "Cerámica italiana",
+                        size: "23cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Virgen del valle",
+                        description: "Patrona del oriente venezolano y los pescadores.",
+                        price: "90.000",
+                        image: "MEDIA/VIRDEN DEL VALLE.jpeg",
+                        material: "Cerámica italiana",
+                        size: "25cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Buen pastor",
+                        description: "Jesús como el pastor que da la vida por sus ovejas.",
+                        price: "100.000",
+                        image: "MEDIA/BUEN PASTOR.jpeg",
+                        material: "Cerámica italiana",
+                        size: "25cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Señor de la misericordia",
+                        description: "Cristo misericordioso que perdona y acoge.",
+                        price: "110.000",
+                        image: "MEDIA/SEÑOR DE LA MISERICORDIA.jpeg",
+                        material: "Cerámica italiana",
+                        size: "33cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Arcangel San Miguel",
+                        description: "Príncipe de los arcángeles, defensor contra el mal.",
+                        price: "180.000",
+                        image: "MEDIA/ARCANGEL SAN MIGUEL.jpeg",
+                        material: "Cerámica italiana",
+                        size: "38cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Arcangel Metatron",
+                        description: "Arcángel de la sabiduría y escriba celestial.",
+                        price: "150.000",
+                        image: "MEDIA/ARCANGEL METATRON.jpeg",
+                        material: "Cerámica italiana",
+                        size: "28cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Virgen de la Salud",
+                        description: "Protectora de la salud y consuelo de los enfermos.",
+                        price: "68.000",
+                        image: "MEDIA/VIRGEN DE LA SALUD.jpeg",
+                        material: "Cerámica italiana",
+                        size: "22cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "San Francisco de Asís ",
+                        description: "Santo de la pobreza, paz y amor a la naturaleza.",
+                        price: "100.000",
+                        image: "MEDIA/SAN FRANCISCO DE ASIS.jpeg",
+                        material: "Cerámica italiana",
+                        size: "23cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Virgen de la Primavera ",
+                        description: "Símbolo de renovación y nueva vida en Cristo.",
+                        price: "80.000",
+                        image: "MEDIA/VIRGEN DE LA PRIMAVERA.jpeg",
+                        material: "Cerámica italiana",
+                        size: "25cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Virgen María Auxiliadora ",
+                        description: "Auxilio de los cristianos y protectora de la Iglesia.",
+                        price: "90.000",
+                        image: "MEDIA/VIRGEN MARIA AUXILIADORA.jpeg",
+                        material: "Cerámica italiana",
+                        size: "30cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Virgen de aranzazu ",
+                        description: "Patrona de Guipúzcoa y los montañeros vascos.",
+                        price: "130.000",
+                        image: "MEDIA/VIRGEN DE ARANSAZU.jpeg",
+                        material: "Cerámica italiana",
+                        size: "43cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Santa Ana ",
+                        description: "Madre de la Virgen María y abuela de Jesús.",
+                        price: "120.000",
+                        image: "MEDIA/SANTA ANA.jpeg",
+                        material: "Cerámica italiana",
+                        size: "30cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Virgen de Loreto",
+                        description: "Patrona de los aviadores y las casas santas.",
+                        price: "120.000",
+                        image: "MEDIA/VIRDEN DE LORETO.jpeg",
+                        material: "Cerámica italiana",
+                        size: "28cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "San Jose",
+                        description: "Esposo de María y custodio de la Sagrada Familia.",
+                        price: "100.000",
+                        image: "MEDIA/SAN JOSE.jpeg",
+                        material: "Cerámica italiana",
+                        size: "28cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Virgen del Cojin",
+                        description: "Representación íntima de la Virgen en reposo.",
+                        price: "70.000",
+                        image: "MEDIA/VIRGEN DEL COJIN.jpeg",
+                        material: "Cerámica italiana",
+                        size: "18cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Virgen del Coromoto",
+                        description: "Patrona de Venezuela, aparición en Guanare.",
+                        price: "85.000",
+                        image: "MEDIA/VIRGEN DEL COROMOTO.jpeg",
+                        material: "Cerámica italiana",
+                        size: "23cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Retablo de Ascensión de la virgen",
+                        description: "Ascensión de María al cielo en cuerpo y alma.",
+                        price: "120.000",
+                        image: "MEDIA/RETRATO ACSENSION DE LA VIRGEN.jpeg",
+                        material: "Cerámica italiana",
+                        size: "25cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Retablo de María reina",
+                        description: "María como reina del cielo y de la tierra.",
+                        price: "130.000",
+                        image: "MEDIA/RETABLO DE MARIA REINA.jpeg",
+                        material: "Cerámica italiana",
+                        size: "130*40cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Retablo de arcángel San Miguel",
+                        description: "San Miguel arcángel venciendo al demonio.",
+                        price: "120.000",
+                        image: "MEDIA/RETABLO DE ARCANGEL SAN MIGUEL.jpeg",
+                        material: "Cerámica italiana",
+                        size: "40*20cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Retablo del arcángel San Rafael ",
+                        description: "Arcángel sanador y guía de los viajeros.",
+                        price: "120.000",
+                        image: "MEDIA/RETABLO DE ARCANGEL SAN RAFAEL.jpeg",
+                        material: "Cerámica italiana",
+                        size: "48*20cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Retablo santísima Trinidad ",
+                        description: "Padre, Hijo y Espíritu Santo en unidad divina.",
+                        price: "120.000",
+                        image: "MEDIA/RETABLO SANTISIMA TRINIDAD.jpeg",
+                        material: "Cerámica italiana",
+                        size: "27*27cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Retablo Madonna",
+                        description: "Representación clásica de la Virgen María.",
+                        price: "130.000",
+                        image: "MEDIA/RETABLO MADONA.jpeg",
+                        material: "Cerámica italiana",
+                        size: "33*28cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Retablo virgen de Lourdes",
+                        description: "Aparición mariana en la gruta de Massabielle.",
+                        price: "130.000",
+                        image: "MEDIA/RETABLO VIRGEN DE LOURDES.jpeg",
+                        material: "Cerámica italiana",
+                        size: "38*18cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Aplique Madonna",
+                        description: "Medallón de la Virgen María para pared.",
+                        price: "70.000",
+                        image: "MEDIA/APLIQUE MADONNA.jpeg",
+                        material: "Cerámica italiana",
+                        size: "22*11cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Aplique Rosa mística",
+                        description: "Medallón de la Rosa Mística para decoración.",
+                        price: "65.000",
+                        image: "MEDIA/APLIQUE ROSA MISTICA.jpeg ",
+                        material: "Cerámica italiana",
+                        size: "24*9cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Aplique virgen del Carmen ",
+                        description: "Medallón de la Virgen del Monte Carmelo.",
+                        price: "70.000",
+                        image: "MEDIA/APLIQUE VIRGEN DEL CARMEN.jpeg",
+                        material: "Cerámica italiana",
+                        size: "20*14cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Aplique niño Jesús",
+                        description: "Medallón del Niño Dios para devoción familiar.",
+                        price: "70.000",
+                        image: "MEDIA/APLIQUE NIÑO DE JESUS.jpeg",
+                        material: "Cerámica italiana",
+                        size: "20*12cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Retablo virgen de Fátima",
+                        description: "Aparición mariana a los pastorcitos de Portugal.",
+                        price: "150.000",
+                        image: "MEDIA/RETABLO VIRGEN DE FATIMA.jpeg",
+                        material: "Cerámica italiana",
+                        size: "cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Retablo del Tao de San Francisco de Asís",
+                        description: "San Francisco en meditación y oración.",
+                        price: "120.000",
+                        image: "MEDIA/RETABLO DEL TAO DE SAN FRANCISCO.jpeg",
+                        material: "Cerámica italiana",
+                        size: "24*20cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Retablo Madonna clasico",
+                        description: "Representación tradicional de la Madre de Dios.",
+                        price: "110.000",
+                        image: "MEDIA/RETABLO MADONNA CLASICA.jpeg",
+                        material: "Cerámica italiana",
+                        size: "24*16cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Retablo ultima cena",
+                        description: "Última cena de Jesús con sus apóstoles.",
+                        price: "130.000",
+                        image: "MEDIA/RETABLO ULTIMA CENA.jpeg",
+                        material: "Cerámica italiana",
+                        size: "cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Retablo San Rafael ",
+                        description: "Arcángel protector y guía de los caminantes.",
+                        price: "80.000",
+                        image: "MEDIA/RETABLO SAN RAFAEL.jpeg",
+                        material: "Cerámica italiana",
+                        size: "30*16cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Niño Dios canasta ",
+                        description: "Niño Jesús en canasta, símbolo de humildad.",
+                        price: "120.000",
+                        image: "MEDIA/NIÑO DIOS EN CANASTA.jpeg",
+                        material: "Cerámica italiana",
+                        size: "28cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "San José estilizado",
+                        description: "Representación moderna del padre adoptivo de Jesús.",
+                        price: "170.000",
+                        image: "MEDIA/SAN JOSE ESTILIZADO.jpeg",
+                        material: "Cerámica italiana",
+                        size: "50cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Sueño de Jesús ",
+                        description: "Niño Jesús durmiendo plácidamente.",
+                        price: "120.000",
+                        image: "MEDIA/SUEÑO DE JESUS.jpeg",
+                        material: "Cerámica italiana",
+                        size: "23cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Cristo San Benito ",
+                        description: "Cristo bendito representado con devoción.",
+                        price: "130.000",
+                        image: "MEDIA/CRISTO BENDITO.jpeg",
+                        material: "Cerámica italiana",
+                        size: "50*30cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Cristo en Cruz",
+                        description: "Jesucristo crucificado, sacrificio por la humanidad.",
+                        price: "110.000",
+                        image: "MEDIA/CRISTO EN LA RUZ.jpeg ",
+                        material: "Cerámica italiana",
+                        size: "49*25",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Cruz de San Damián",
+                        description: "Cruz que habló a San Francisco de Asís.",
+                        price: "100.000",
+                        image: "MEDIA/CRUZ DE SAN DAMIAN.jpeg   ",
+                        material: "Cerámica italiana",
+                        size: "28*20cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Retablo Guadalupe ",
+                        description: "Virgen de Guadalupe, emperatriz de América.",
+                        price: "120.000",
+                        image: "MEDIA/RETABLO GUADALUPE.jpeg",
+                        material: "Cerámica italiana",
+                        size: "30*26cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Ángel de la lechuga ",
+                        description: "Ángel que sostiene una lechuga, símbolo de prosperidad.",
+                        price: "90.000",
+                        image: "MEDIA/ANGEL DE LA LECHUGA.jpeg",
+                        material: "Cerámica italiana",
+                        size: "35*20cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Retablo sagrada familia de pared ",
+                        description: "Jesús, María y José, modelo de familia cristiana.",
+                        price: "00.000",
+                        image: "MEDIA/RETABLO SAGRADA FAMILIA DE PARED.jpeg",
+                        material: "Cerámica italiana",
+                        size: "29*15cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Arcangeles niños x unidad",
+                        description: "Arcángeles en representación infantil.",
+                        price: "40.000",
+                        image: "MEDIA/ACRCANGELES NIÑOS.jpeg",
+                        material: "Cerámica italiana",
+                        size: "cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Virgen Rosa mística con vestido ",
+                        description: "Rosa Mística con vestido decorado.",
+                        price: "160.000",
+                        image: "MEDIA/VIRGEN ROSA MISTICA CON VESTIDO.jpeg",
+                        material: "Cerámica italiana",
+                        size: "cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Cristo eucarístico",
+                        description: "Jesús en la Eucaristía, pan de vida eterna.",
+                        price: "45.000",
+                        image: "MEDIA/CRISTO EUCARISTICO.jpeg",
+                        material: "Cerámica italiana",
+                        size: "cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Virgen María Auxiliadora",
+                        description: "María auxiliadora en versión dorada.",
+                        price: "60.000",
+                        image: "MEDIA/VIRGEN MARIA AUXILIADORA DORADA.jpeg",
+                        material: "Cerámica italiana",
+                        size: "cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Retablo Lourdes",
+                        description: "Virgen de Lourdes en su gruta milagrosa.",
+                        price: "100.000",
+                        image: "MEDIA/RETABLO LIURDES.jpeg",
+                        material: "Cerámica italiana",
+                        size: "42*27cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Retablo Jesús con niños",
+                        description: "Jesús bendiciendo a los niños.",
+                        price: "85.000",
+                        image: "MEDIA/RETABLO JESUS CON NIÑO DIOS.jpeg",
+                        material: "Cerámica italiana",
+                        size: "21*12cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Teresa de Ávila ",
+                        description: "Doctora de la Iglesia y reformadora carmelita.",
+                        price: "90.000",
+                        image: "MEDIA/TERESA DE AVILA.jpeg",
+                        material: "Cerámica italiana",
+                        size: "30cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Cristo Dalí",
+                        description: "Representación del Cristo de San Juan de la Cruz.",
+                        price: "75.000",
+                        image: "MEDIA/CRISTO DALI.jpeg",
+                        material: "Cerámica italiana",
+                        size: "39   cm",
+                        details: "Técnica italiana al horno"
+                    }
     ]
             },    rosaries: {
                 items: [
                     {
                         name: "Rosario Madera de Olivo",
-                        description: "Rosario artesanal con cuentas de madera de olivo.",
+                        description: "Rosario artesanal con cuentas de madera de olivo traída de Tierra Santa, bendecido en Jerusalén.",
                         price: "22.000",
                         image: "MEDIA/rosario1.jpg",
                         material: "Madera de olivo",
@@ -3163,7 +3550,7 @@
                     },
                     {
                         name: "Rosario de Pétalos de Rosa",
-                        description: "Rosario delicado con cuentas de pétalos de rosa natural.",
+                        description: "Rosario delicado con cuentas de pétalos de rosa natural prensados, con aroma suave y duradero.",
                         price: "45.000",
                         image: "MEDIA/rosario2.jpg",
                         material: "Pétalos de rosa",
@@ -3172,7 +3559,7 @@
                     },
                     {
                         name: "Rosario de Cristal Swarovski",
-                        description: "Rosario elegante con cuentas de cristal auténtico.",
+                        description: "Rosario elegante con cuentas de cristal Swarovski auténtico que refleja la luz divinamente.",
                         price: "85.000",
                         image: "MEDIA/rosario3.jpg",
                         material: "Cristal Swarovski",
@@ -3181,223 +3568,7 @@
                     },
                     {
                         name: "Rosario Infantil de Colores",
-                        description: "Rosario pequeño y colorido para niños.",
-                        price: "15.000",
-                        image: "MEDIA/rosario4.jpg",
-                        material: "Plástico resistente",
-                        size: "40cm",
-                        details: "Colorido y educativo"
-                    },
-                    {
-                        name: "Rosario de Cristal Swarovski",
-                        description: "Rosario elegante con cuentas de cristal auténtico.",
-                        price: "85.000",
-                        image: "MEDIA/rosario3.jpg",
-                        material: "Cristal Swarovski",
-                        size: "48cm",
-                        details: "Elegante y luminoso"
-                    },
-                    {
-                        name: "Rosario Infantil de Colores",
-                        description: "Rosario pequeño y colorido para niños.",
-                        price: "15.000",
-                        image: "MEDIA/rosario4.jpg",
-                        material: "Plástico resistente",
-                        size: "40cm",
-                        details: "Colorido y educativo"
-                    },
-                    {
-                        name: "Rosario de Cristal Swarovski",
-                        description: "Rosario elegante con cuentas de cristal auténtico.",
-                        price: "85.000",
-                        image: "MEDIA/rosario3.jpg",
-                        material: "Cristal Swarovski",
-                        size: "48cm",
-                        details: "Elegante y luminoso"
-                    },
-                    {
-                        name: "Rosario Infantil de Colores",
-                        description: "Rosario pequeño y colorido para niños.",
-                        price: "15.000",
-                        image: "MEDIA/rosario4.jpg",
-                        material: "Plástico resistente",
-                        size: "40cm",
-                        details: "Colorido y educativo"
-                    },
-                    {
-                        name: "Rosario de Cristal Swarovski",
-                        description: "Rosario elegante con cuentas de cristal auténtico.",
-                        price: "85.000",
-                        image: "MEDIA/rosario3.jpg",
-                        material: "Cristal Swarovski",
-                        size: "48cm",
-                        details: "Elegante y luminoso"
-                    },
-                    {
-                        name: "Rosario Infantil de Colores",
-                        description: "Rosario pequeño y colorido para niños.",
-                        price: "15.000",
-                        image: "MEDIA/rosario4.jpg",
-                        material: "Plástico resistente",
-                        size: "40cm",
-                        details: "Colorido y educativo"
-                    },
-                    {
-                        name: "Rosario de Cristal Swarovski",
-                        description: "Rosario elegante con cuentas de cristal auténtico.",
-                        price: "85.000",
-                        image: "MEDIA/rosario3.jpg",
-                        material: "Cristal Swarovski",
-                        size: "48cm",
-                        details: "Elegante y luminoso"
-                    },
-                    {
-                        name: "Rosario Infantil de Colores",
-                        description: "Rosario pequeño y colorido para niños.",
-                        price: "15.000",
-                        image: "MEDIA/rosario4.jpg",
-                        material: "Plástico resistente",
-                        size: "40cm",
-                        details: "Colorido y educativo"
-                    },
-                    {
-                        name: "Rosario de Cristal Swarovski",
-                        description: "Rosario elegante con cuentas de cristal auténtico.",
-                        price: "85.000",
-                        image: "MEDIA/rosario3.jpg",
-                        material: "Cristal Swarovski",
-                        size: "48cm",
-                        details: "Elegante y luminoso"
-                    },
-                    {
-                        name: "Rosario Infantil de Colores",
-                        description: "Rosario pequeño y colorido para niños.",
-                        price: "15.000",
-                        image: "MEDIA/rosario4.jpg",
-                        material: "Plástico resistente",
-                        size: "40cm",
-                        details: "Colorido y educativo"
-                    },
-                    {
-                        name: "Rosario de Cristal Swarovski",
-                        description: "Rosario elegante con cuentas de cristal auténtico.",
-                        price: "85.000",
-                        image: "MEDIA/rosario3.jpg",
-                        material: "Cristal Swarovski",
-                        size: "48cm",
-                        details: "Elegante y luminoso"
-                    },
-                    {
-                        name: "Rosario Infantil de Colores",
-                        description: "Rosario pequeño y colorido para niños.",
-                        price: "15.000",
-                        image: "MEDIA/rosario4.jpg",
-                        material: "Plástico resistente",
-                        size: "40cm",
-                        details: "Colorido y educativo"
-                    },
-                    {
-                        name: "Rosario de Cristal Swarovski",
-                        description: "Rosario elegante con cuentas de cristal auténtico.",
-                        price: "85.000",
-                        image: "MEDIA/rosario3.jpg",
-                        material: "Cristal Swarovski",
-                        size: "48cm",
-                        details: "Elegante y luminoso"
-                    },
-                    {
-                        name: "Rosario Infantil de Colores",
-                        description: "Rosario pequeño y colorido para niños.",
-                        price: "15.000",
-                        image: "MEDIA/rosario4.jpg",
-                        material: "Plástico resistente",
-                        size: "40cm",
-                        details: "Colorido y educativo"
-                    },
-                    {
-                        name: "Rosario de Cristal Swarovski",
-                        description: "Rosario elegante con cuentas de cristal auténtico.",
-                        price: "85.000",
-                        image: "MEDIA/rosario3.jpg",
-                        material: "Cristal Swarovski",
-                        size: "48cm",
-                        details: "Elegante y luminoso"
-                    },
-                    {
-                        name: "Rosario Infantil de Colores",
-                        description: "Rosario pequeño y colorido para niños.",
-                        price: "15.000",
-                        image: "MEDIA/rosario4.jpg",
-                        material: "Plástico resistente",
-                        size: "40cm",
-                        details: "Colorido y educativo"
-                    },
-                    {
-                        name: "Rosario de Cristal Swarovski",
-                        description: "Rosario elegante con cuentas de cristal auténtico.",
-                        price: "85.000",
-                        image: "MEDIA/rosario3.jpg",
-                        material: "Cristal Swarovski",
-                        size: "48cm",
-                        details: "Elegante y luminoso"
-                    },
-                    {
-                        name: "Rosario Infantil de Colores",
-                        description: "Rosario pequeño y colorido para niños.",
-                        price: "15.000",
-                        image: "MEDIA/rosario4.jpg",
-                        material: "Plástico resistente",
-                        size: "40cm",
-                        details: "Colorido y educativo"
-                    },
-                    {
-                        name: "Rosario de Cristal Swarovski",
-                        description: "Rosario elegante con cuentas de cristal auténtico.",
-                        price: "85.000",
-                        image: "MEDIA/rosario3.jpg",
-                        material: "Cristal Swarovski",
-                        size: "48cm",
-                        details: "Elegante y luminoso"
-                    },
-                    {
-                        name: "Rosario Infantil de Colores",
-                        description: "Rosario pequeño y colorido para niños.",
-                        price: "15.000",
-                        image: "MEDIA/rosario4.jpg",
-                        material: "Plástico resistente",
-                        size: "40cm",
-                        details: "Colorido y educativo"
-                    },
-                    {
-                        name: "Rosario de Cristal Swarovski",
-                        description: "Rosario elegante con cuentas de cristal auténtico.",
-                        price: "85.000",
-                        image: "MEDIA/rosario3.jpg",
-                        material: "Cristal Swarovski",
-                        size: "48cm",
-                        details: "Elegante y luminoso"
-                    },
-                    {
-                        name: "Rosario Infantil de Colores",
-                        description: "Rosario pequeño y colorido para niños.",
-                        price: "15.000",
-                        image: "MEDIA/rosario4.jpg",
-                        material: "Plástico resistente",
-                        size: "40cm",
-                        details: "Colorido y educativo"
-                    },
-                    {
-                        name: "Rosario de Cristal Swarovski",
-                        description: "Rosario elegante con cuentas de cristal auténtico.",
-                        price: "85.000",
-                        image: "MEDIA/rosario3.jpg",
-                        material: "Cristal Swarovski",
-                        size: "48cm",
-                        details: "Elegante y luminoso"
-                    },
-                    {
-                        name: "Rosario Infantil de Colores",
-                        description: "Rosario pequeño y colorido para niños.",
+                        description: "Rosario pequeño y colorido diseñado especialmente para niños, con colores brillantes y seguro.",
                         price: "15.000",
                         image: "MEDIA/rosario4.jpg",
                         material: "Plástico resistente",
@@ -3410,7 +3581,7 @@
                 items: [
                     {
                         name: "Medallón de San Benito acero 13 *13CM",
-                        description: "Medallón protector de San Benito en acero con inscripciones sagradas.",
+                        description: "Medallón protector de San Benito en acero inoxidable con todas las inscripciones sagradas para protección espiritual.",
                         price: "85.000",
                         image: "MEDIA/MEDALLON SAN BEDITO 13X13.jpeg",
                         material: "Acero",
@@ -3419,7 +3590,7 @@
                     },
                     {
                         name: "Medalla de San Benito",
-                        description: "Medalla protectora contra el mal con inscripciones sagradas.",
+                        description: "Medalla protectora contra el mal con inscripciones sagradas de exorcismo, bañada en oro de 18k.",
                         price: "25.000",
                         image: "MEDIA/medalla2.jpg",
                         material: "Metal bañado en oro",
@@ -3428,331 +3599,7 @@
                     },
                     {
                         name: "Medallón de Ángel Custodio",
-                        description: "Medallón con imagen del ángel de la guarda para protección diaria.",
-                        price: "18.000",
-                        image: "MEDIA/medallon.jpg",
-                        material: "Plata con esmalte",
-                        size: "3.5cm",
-                        details: "Para niños y adultos"
-                    },
-                    {
-                        name: "Medalla de San Benito",
-                        description: "Medalla protectora contra el mal con inscripciones sagradas.",
-                        price: "25.000",
-                        image: "MEDIA/medalla2.jpg",
-                        material: "Metal bañado en oro",
-                        size: "3cm",
-                        details: "Exorcismo y protección"
-                    },
-                    {
-                        name: "Medallón de Ángel Custodio",
-                        description: "Medallón con imagen del ángel de la guarda para protección diaria.",
-                        price: "18.000",
-                        image: "MEDIA/medallon.jpg",
-                        material: "Plata con esmalte",
-                        size: "3.5cm",
-                        details: "Para niños y adultos"
-                    },
-                    {
-                        name: "Medalla de San Benito",
-                        description: "Medalla protectora contra el mal con inscripciones sagradas.",
-                        price: "25.000",
-                        image: "MEDIA/medalla2.jpg",
-                        material: "Metal bañado en oro",
-                        size: "3cm",
-                        details: "Exorcismo y protección"
-                    },
-                    {
-                        name: "Medallón de Ángel Custodio",
-                        description: "Medallón con imagen del ángel de la guarda para protección diaria.",
-                        price: "18.000",
-                        image: "MEDIA/medallon.jpg",
-                        material: "Plata con esmalte",
-                        size: "3.5cm",
-                        details: "Para niños y adultos"
-                    },
-                    {
-                        name: "Medalla de San Benito",
-                        description: "Medalla protectora contra el mal con inscripciones sagradas.",
-                        price: "25.000",
-                        image: "MEDIA/medalla2.jpg",
-                        material: "Metal bañado en oro",
-                        size: "3cm",
-                        details: "Exorcismo y protección"
-                    },
-                    {
-                        name: "Medallón de Ángel Custodio",
-                        description: "Medallón con imagen del ángel de la guarda para protección diaria.",
-                        price: "18.000",
-                        image: "MEDIA/medallon.jpg",
-                        material: "Plata con esmalte",
-                        size: "3.5cm",
-                        details: "Para niños y adultos"
-                    },
-                    {
-                        name: "Medalla de San Benito",
-                        description: "Medalla protectora contra el mal con inscripciones sagradas.",
-                        price: "25.000",
-                        image: "MEDIA/medalla2.jpg",
-                        material: "Metal bañado en oro",
-                        size: "3cm",
-                        details: "Exorcismo y protección"
-                    },
-                    {
-                        name: "Medallón de Ángel Custodio",
-                        description: "Medallón con imagen del ángel de la guarda para protección diaria.",
-                        price: "18.000",
-                        image: "MEDIA/medallon.jpg",
-                        material: "Plata con esmalte",
-                        size: "3.5cm",
-                        details: "Para niños y adultos"
-                    },
-                    {
-                        name: "Medalla de San Benito",
-                        description: "Medalla protectora contra el mal con inscripciones sagradas.",
-                        price: "25.000",
-                        image: "MEDIA/medalla2.jpg",
-                        material: "Metal bañado en oro",
-                        size: "3cm",
-                        details: "Exorcismo y protección"
-                    },
-                    {
-                        name: "Medallón de Ángel Custodio",
-                        description: "Medallón con imagen del ángel de la guarda para protección diaria.",
-                        price: "18.000",
-                        image: "MEDIA/medallon.jpg",
-                        material: "Plata con esmalte",
-                        size: "3.5cm",
-                        details: "Para niños y adultos"
-                    },
-                    {
-                        name: "Medalla de San Benito",
-                        description: "Medalla protectora contra el mal con inscripciones sagradas.",
-                        price: "25.000",
-                        image: "MEDIA/medalla2.jpg",
-                        material: "Metal bañado en oro",
-                        size: "3cm",
-                        details: "Exorcismo y protección"
-                    },
-                    {
-                        name: "Medallón de Ángel Custodio",
-                        description: "Medallón con imagen del ángel de la guarda para protección diaria.",
-                        price: "18.000",
-                        image: "MEDIA/medallon.jpg",
-                        material: "Plata con esmalte",
-                        size: "3.5cm",
-                        details: "Para niños y adultos"
-                    },
-                    {
-                        name: "Medalla de San Benito",
-                        description: "Medalla protectora contra el mal con inscripciones sagradas.",
-                        price: "25.000",
-                        image: "MEDIA/medalla2.jpg",
-                        material: "Metal bañado en oro",
-                        size: "3cm",
-                        details: "Exorcismo y protección"
-                    },
-                    {
-                        name: "Medallón de Ángel Custodio",
-                        description: "Medallón con imagen del ángel de la guarda para protección diaria.",
-                        price: "18.000",
-                        image: "MEDIA/medallon.jpg",
-                        material: "Plata con esmalte",
-                        size: "3.5cm",
-                        details: "Para niños y adultos"
-                    },
-                    {
-                        name: "Medalla de San Benito",
-                        description: "Medalla protectora contra el mal con inscripciones sagradas.",
-                        price: "25.000",
-                        image: "MEDIA/medalla2.jpg",
-                        material: "Metal bañado en oro",
-                        size: "3cm",
-                        details: "Exorcismo y protección"
-                    },
-                    {
-                        name: "Medallón de Ángel Custodio",
-                        description: "Medallón con imagen del ángel de la guarda para protección diaria.",
-                        price: "18.000",
-                        image: "MEDIA/medallon.jpg",
-                        material: "Plata con esmalte",
-                        size: "3.5cm",
-                        details: "Para niños y adultos"
-                    },
-                    {
-                        name: "Medalla de San Benito",
-                        description: "Medalla protectora contra el mal con inscripciones sagradas.",
-                        price: "25.000",
-                        image: "MEDIA/medalla2.jpg",
-                        material: "Metal bañado en oro",
-                        size: "3cm",
-                        details: "Exorcismo y protección"
-                    },
-                    {
-                        name: "Medallón de Ángel Custodio",
-                        description: "Medallón con imagen del ángel de la guarda para protección diaria.",
-                        price: "18.000",
-                        image: "MEDIA/medallon.jpg",
-                        material: "Plata con esmalte",
-                        size: "3.5cm",
-                        details: "Para niños y adultos"
-                    },
-                    {
-                        name: "Medalla de San Benito",
-                        description: "Medalla protectora contra el mal con inscripciones sagradas.",
-                        price: "25.000",
-                        image: "MEDIA/medalla2.jpg",
-                        material: "Metal bañado en oro",
-                        size: "3cm",
-                        details: "Exorcismo y protección"
-                    },
-                    {
-                        name: "Medallón de Ángel Custodio",
-                        description: "Medallón con imagen del ángel de la guarda para protección diaria.",
-                        price: "18.000",
-                        image: "MEDIA/medallon.jpg",
-                        material: "Plata con esmalte",
-                        size: "3.5cm",
-                        details: "Para niños y adultos"
-                    },
-                    {
-                        name: "Medalla de San Benito",
-                        description: "Medalla protectora contra el mal con inscripciones sagradas.",
-                        price: "25.000",
-                        image: "MEDIA/medalla2.jpg",
-                        material: "Metal bañado en oro",
-                        size: "3cm",
-                        details: "Exorcismo y protección"
-                    },
-                    {
-                        name: "Medallón de Ángel Custodio",
-                        description: "Medallón con imagen del ángel de la guarda para protección diaria.",
-                        price: "18.000",
-                        image: "MEDIA/medallon.jpg",
-                        material: "Plata con esmalte",
-                        size: "3.5cm",
-                        details: "Para niños y adultos"
-                    },
-                    {
-                        name: "Medalla de San Benito",
-                        description: "Medalla protectora contra el mal con inscripciones sagradas.",
-                        price: "25.000",
-                        image: "MEDIA/medalla2.jpg",
-                        material: "Metal bañado en oro",
-                        size: "3cm",
-                        details: "Exorcismo y protección"
-                    },
-                    {
-                        name: "Medallón de Ángel Custodio",
-                        description: "Medallón con imagen del ángel de la guarda para protección diaria.",
-                        price: "18.000",
-                        image: "MEDIA/medallon.jpg",
-                        material: "Plata con esmalte",
-                        size: "3.5cm",
-                        details: "Para niños y adultos"
-                    },
-                    {
-                        name: "Medalla de San Benito",
-                        description: "Medalla protectora contra el mal con inscripciones sagradas.",
-                        price: "25.000",
-                        image: "MEDIA/medalla2.jpg",
-                        material: "Metal bañado en oro",
-                        size: "3cm",
-                        details: "Exorcismo y protección"
-                    },
-                    {
-                        name: "Medallón de Ángel Custodio",
-                        description: "Medallón con imagen del ángel de la guarda para protección diaria.",
-                        price: "18.000",
-                        image: "MEDIA/medallon.jpg",
-                        material: "Plata con esmalte",
-                        size: "3.5cm",
-                        details: "Para niños y adultos"
-                    },
-                    {
-                        name: "Medalla de San Benito",
-                        description: "Medalla protectora contra el mal con inscripciones sagradas.",
-                        price: "25.000",
-                        image: "MEDIA/medalla2.jpg",
-                        material: "Metal bañado en oro",
-                        size: "3cm",
-                        details: "Exorcismo y protección"
-                    },
-                    {
-                        name: "Medallón de Ángel Custodio",
-                        description: "Medallón con imagen del ángel de la guarda para protección diaria.",
-                        price: "18.000",
-                        image: "MEDIA/medallon.jpg",
-                        material: "Plata con esmalte",
-                        size: "3.5cm",
-                        details: "Para niños y adultos"
-                    },
-                    {
-                        name: "Medalla de San Benito",
-                        description: "Medalla protectora contra el mal con inscripciones sagradas.",
-                        price: "25.000",
-                        image: "MEDIA/medalla2.jpg",
-                        material: "Metal bañado en oro",
-                        size: "3cm",
-                        details: "Exorcismo y protección"
-                    },
-                    {
-                        name: "Medallón de Ángel Custodio",
-                        description: "Medallón con imagen del ángel de la guarda para protección diaria.",
-                        price: "18.000",
-                        image: "MEDIA/medallon.jpg",
-                        material: "Plata con esmalte",
-                        size: "3.5cm",
-                        details: "Para niños y adultos"
-                    },
-                    {
-                        name: "Medalla de San Benito",
-                        description: "Medalla protectora contra el mal con inscripciones sagradas.",
-                        price: "25.000",
-                        image: "MEDIA/medalla2.jpg",
-                        material: "Metal bañado en oro",
-                        size: "3cm",
-                        details: "Exorcismo y protección"
-                    },
-                    {
-                        name: "Medallón de Ángel Custodio",
-                        description: "Medallón con imagen del ángel de la guarda para protección diaria.",
-                        price: "18.000",
-                        image: "MEDIA/medallon.jpg",
-                        material: "Plata con esmalte",
-                        size: "3.5cm",
-                        details: "Para niños y adultos"
-                    },
-                    {
-                        name: "Medalla de San Benito",
-                        description: "Medalla protectora contra el mal con inscripciones sagradas.",
-                        price: "25.000",
-                        image: "MEDIA/medalla2.jpg",
-                        material: "Metal bañado en oro",
-                        size: "3cm",
-                        details: "Exorcismo y protección"
-                    },
-                    {
-                        name: "Medallón de Ángel Custodio",
-                        description: "Medallón con imagen del ángel de la guarda para protección diaria.",
-                        price: "18.000",
-                        image: "MEDIA/medallon.jpg",
-                        material: "Plata con esmalte",
-                        size: "3.5cm",
-                        details: "Para niños y adultos"
-                    },
-                    {
-                        name: "Medalla de San Benito",
-                        description: "Medalla protectora contra el mal con inscripciones sagradas.",
-                        price: "25.000",
-                        image: "MEDIA/medalla2.jpg",
-                        material: "Metal bañado en oro",
-                        size: "3cm",
-                        details: "Exorcismo y protección"
-                    },
-                    {
-                        name: "Medallón de Ángel Custodio",
-                        description: "Medallón con imagen del ángel de la guarda para protección diaria.",
+                        description: "Medallón con imagen del ángel de la guarda para protección diaria de niños y adultos.",
                         price: "18.000",
                         image: "MEDIA/medallon.jpg",
                         material: "Plata con esmalte",
@@ -3765,7 +3612,7 @@
                 items: [
                     {
                         name: "Mano de Fátima Plata",
-                        description: "Amuleto de protección contra el mal de ojo en plata.",
+                        description: "Amuleto de protección contra el mal de ojo elaborado en plata 925, símbolo de protección divina.",
                         price: "15.000",
                         image: "MEDIA/mano.jpg",
                         material: "Plata 925",
@@ -3774,7 +3621,7 @@
                     },
                     {
                         name: "Ojo Turco Cristal",
-                        description: "Protección tradicional contra energías negativas.",
+                        description: "Protección tradicional contra energías negativas y mal de ojo, en cristal azul auténtico.",
                         price: "12.000",
                         image: "MEDIA/ojo.jpg",
                         material: "Cristal azul",
@@ -3783,7 +3630,7 @@
                     },
                     {
                         name: "Cruz de Caravaca",
-                        description: "Cruz de doble travesaño con propiedades protectoras.",
+                        description: "Cruz de doble travesaño con propiedades protectoras contra maleficios y energías negativas.",
                         price: "18.000",
                         image: "MEDIA/cruz.jpg",
                         material: "Plata y esmalte",
@@ -3792,7 +3639,7 @@
                     },
                     {
                         name: "Herradura de la Suerte",
-                        description: "Símbolo tradicional para atraer la buena fortuna.",
+                        description: "Símbolo tradicional para atraer la buena fortuna, prosperidad y protección en el hogar.",
                         price: "9.000",
                         image: "MEDIA/herradura.jpg",
                         material: "Metal dorado",
@@ -3805,7 +3652,7 @@
                 items: [
                     {
                         name: "Escapulario Bordado",
-                        description: "Escapulario del Carmen con bordados artesanales.",
+                        description: "Escapulario del Carmen con bordados artesanales, promesa de salvación el sábado siguiente a la muerte.",
                         price: "10.000",
                         image: "MEDIA/escapulario.jpg",
                         material: "Tela y hilos",
