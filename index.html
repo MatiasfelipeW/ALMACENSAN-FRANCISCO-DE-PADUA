@@ -2332,6 +2332,7 @@
                     <button class="tab-button" data-tab="medals">Medallas y Colgantes</button>
                     <button class="tab-button" data-tab="amulets">Amuletos de Protección</button>
                     <button class="tab-button" data-tab="scapulars">Escapularios</button>
+                    <button class="tab-button" data-tab="liturgical">Objetos Litúrgicos</button>
                 </div>
                 
                 <div class="tabs-content">
@@ -2362,6 +2363,13 @@
                     <div class="tab-content" id="scapulars-tab">
                         <div class="products-grid" id="scapularsGrid">
                             <!-- Product cards for scapulars will be inserted here by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <!-- NUEVA SECCIÓN: OBJETOS LITÚRGICOS -->
+                    <div class="tab-content" id="liturgical-tab">
+                        <div class="products-grid" id="liturgicalGrid">
+                            <!-- Product cards for liturgical items will be inserted here by JavaScript -->
                         </div>
                     </div>
                 </div>
@@ -2542,6 +2550,7 @@
                     <li><a href="#products" class="tab-link" data-tab="medals">Medallas y Colgantes</a></li>
                     <li><a href="#products" class="tab-link" data-tab="amulets">Amuletos de Protección</a></li>
                     <li><a href="#products" class="tab-link" data-tab="scapulars">Escapularios</a></li>
+                    <li><a href="#products" class="tab-link" data-tab="liturgical">Objetos Litúrgicos</a></li>
                 </ul>
             </div>
             
@@ -3100,11 +3109,11 @@
             });
         }
 
-        // Product data con imágenes reales
+        // Product data con imágenes reales - MODIFICADO PARA INCLUIR OBJETOS LITÚRGICOS
         const productCategories = {
-                     saints: {
+            saints: {
                 items: [
-                    {
+  {
                         name: "Virgen Milagrosa Pintada a Mano 40CM",
                         description: "Virgen de las gracias y los milagros.",
                         price: "150.000",
@@ -3699,6 +3708,222 @@
                         details: "Técnica italiana al horno"
                     },
                     {
+                        name: "Virgen María Auxiliadora",
+                        description: "Doctora de la Iglesia y reformadora carmelita.",
+                        price: "110.000",
+                        image: "MEDIA/VIRGEN MARIA AUXILIADORA 3.jpeg",
+                        material: "Cerámica italiana",
+                        size: "cm",
+                        details: "Técnica italiana al horno"
+                    },,
+                    {
+                        name: "San Antonio",
+                        description: "Doctora de la Iglesia y reformadora carmelita.",
+                        price: "86.000",
+                        image: "MEDIA/SAN ANTONIO.jpeg",
+                        material: "Cerámica italiana",
+                        size: "cm",
+                        details: "Técnica italiana al horno"
+                    },,
+                    {
+                        name: "Virgen polaca",
+                        description: "Doctora de la Iglesia y reformadora carmelita.",
+                        price: "86.000",
+                        image: "MEDIA/VIRGEN POLACA.jpeg",
+                        material: "Cerámica italiana",
+                        size: "cm",
+                        details: "Técnica italiana al horno"
+                    },,
+                    {
+                        name: "Juan Diego",
+                        description: "Doctora de la Iglesia y reformadora carmelita.",
+                        price: "85.000",
+                        image: "MEDIA/JUAN DIEGO.jpeg",
+                        material: "Cerámica italiana",
+                        size: "cm",
+                        details: "Técnica italiana al horno"
+                    },,
+                    {
+                        name: "Virgen de la leche",
+                        description: "Doctora de la Iglesia y reformadora carmelita.",
+                        price: "80.000",
+                        image: "MEDIA/VIRGEN DE LA LECHE.jpeg",
+                        material: "Cerámica italiana",
+                        size: "cm",
+                        details: "Técnica italiana al horno"
+                    },,
+                    {
+                        name: "Virgen estrella del mar ",
+                        description: "Doctora de la Iglesia y reformadora carmelita.",
+                        price: "85.000",
+                        image: "MEDIA/VIRGEN ESTRELLA DEL MAR.jpeg",
+                        material: "Cerámica italiana",
+                        size: "cm",
+                        details: "Técnica italiana al horno"
+                    },,
+                    {
+                        name: "San Patrick ",
+                        description: "Doctora de la Iglesia y reformadora carmelita.",
+                        price: "88.000",
+                        image: "MEDIA/SAN PATRICK.jpeg",
+                        material: "Cerámica italiana",
+                        size: "cm",
+                        details: "Técnica italiana al horno"
+                    },,
+                    {
+                        name: "Teresa de Ávila ",
+                        description: "Doctora de la Iglesia y reformadora carmelita.",
+                        price: "90.000",
+                        image: "MEDIA/TERESA DE AVILA.jpeg",
+                        material: "Cerámica italiana",
+                        size: "30cm",
+                        details: "Técnica italiana al horno"
+                    },,
+                    {
+                        name: "San Pedro ",
+                        description: "Doctora de la Iglesia y reformadora carmelita.",
+                        price: "90.000",
+                        image: "MEDIA/SAN PEDRO.jpeg",
+                        material: "Cerámica italiana",
+                        size: "cm",
+                        details: "Técnica italiana al horno"
+                    },,
+                    {
+                        name: "Santa Inés ",
+                        description: "Doctora de la Iglesia y reformadora carmelita.",
+                        price: "80.000",
+                        image: "MEDIA/SAN INES.jpeg",
+                        material: "Cerámica italiana",
+                        size: "cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Virgen de Fátima",
+                        description: "Representación del Cristo de San Juan de la Cruz.",
+                        price: "350.000",
+                        image: "MEDIA/VIRGEN DE FATIMA.jpeg",
+                        material: "Fibra",
+                        size: "30cm",
+                        details: "Técnica italiana al horno"
+                    },,
+                    {
+                        name: "Arcángel San Miguel en acrílico ",
+                        description: "Doctora de la Iglesia y reformadora carmelita.",
+                        price: "350.000",
+                        image: "MEDIA/ARCANGEL SAN MIGUEL EN ACRILICO.jpeg",
+                        material: "Acrilico",
+                        size: "30cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Virgen Guadalupe",
+                        description: "Representación del Cristo de San Juan de la Cruz.",
+                        price: "250.000",
+                        image: "MEDIA/VIRGEN DE GUADALUPE POLICERAMICA.jpeg",
+                        material: "Policeramica",
+                        size: "30cm",
+                        details: "Técnica italiana al horno"
+                    },,
+                    {
+                        name: "San Miguel arcángel ",
+                        description: "Doctora de la Iglesia y reformadora carmelita.",
+                        price: "250.000",
+                        image: "MEDIA/SAN MIGUEL ARCANGEL POLICERAMICA.jpeg",
+                        material: "Policeramica",
+                        size: "30cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Cristo Dalí",
+                        description: "Representación del Cristo de San Juan de la Cruz.",
+                        price: "75.000",
+                        image: "MEDIA/CRISTO DALI.jpeg",
+                        material: "Cerámica italiana",
+                        size: "39   cm",
+                        details: "Técnica italiana al horno"
+                    },,
+                    {
+                        name: "Teresa de Ávila ",
+                        description: "Doctora de la Iglesia y reformadora carmelita.",
+                        price: "90.000",
+                        image: "MEDIA/TERESA DE AVILA.jpeg",
+                        material: "Cerámica italiana",
+                        size: "30cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Cristo Dalí",
+                        description: "Representación del Cristo de San Juan de la Cruz.",
+                        price: "75.000",
+                        image: "MEDIA/CRISTO DALI.jpeg",
+                        material: "Cerámica italiana",
+                        size: "39   cm",
+                        details: "Técnica italiana al horno"
+                    },,
+                    {
+                        name: "Teresa de Ávila ",
+                        description: "Doctora de la Iglesia y reformadora carmelita.",
+                        price: "90.000",
+                        image: "MEDIA/TERESA DE AVILA.jpeg",
+                        material: "Cerámica italiana",
+                        size: "30cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Cristo Dalí",
+                        description: "Representación del Cristo de San Juan de la Cruz.",
+                        price: "75.000",
+                        image: "MEDIA/CRISTO DALI.jpeg",
+                        material: "Cerámica italiana",
+                        size: "39   cm",
+                        details: "Técnica italiana al horno"
+                    },,
+                    {
+                        name: "Teresa de Ávila ",
+                        description: "Doctora de la Iglesia y reformadora carmelita.",
+                        price: "90.000",
+                        image: "MEDIA/TERESA DE AVILA.jpeg",
+                        material: "Cerámica italiana",
+                        size: "30cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Cristo Dalí",
+                        description: "Representación del Cristo de San Juan de la Cruz.",
+                        price: "75.000",
+                        image: "MEDIA/CRISTO DALI.jpeg",
+                        material: "Cerámica italiana",
+                        size: "39   cm",
+                        details: "Técnica italiana al horno"
+                    },,
+                    {
+                        name: "Teresa de Ávila ",
+                        description: "Doctora de la Iglesia y reformadora carmelita.",
+                        price: "90.000",
+                        image: "MEDIA/TERESA DE AVILA.jpeg",
+                        material: "Cerámica italiana",
+                        size: "30cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
+                        name: "Cristo Dalí",
+                        description: "Representación del Cristo de San Juan de la Cruz.",
+                        price: "75.000",
+                        image: "MEDIA/CRISTO DALI.jpeg",
+                        material: "Cerámica italiana",
+                        size: "39   cm",
+                        details: "Técnica italiana al horno"
+                    },,
+                    {
+                        name: "Teresa de Ávila ",
+                        description: "Doctora de la Iglesia y reformadora carmelita.",
+                        price: "90.000",
+                        image: "MEDIA/TERESA DE AVILA.jpeg",
+                        material: "Cerámica italiana",
+                        size: "30cm",
+                        details: "Técnica italiana al horno"
+                    },
+                    {
                         name: "Cristo Dalí",
                         description: "Representación del Cristo de San Juan de la Cruz.",
                         price: "75.000",
@@ -3707,25 +3932,26 @@
                         size: "39   cm",
                         details: "Técnica italiana al horno"
                     }
-    ]
-            },    rosaries: {
+                ]
+            },
+            rosaries: {
                 items: [
                     {
-                        name: "Rosario Madera de Olivo",
+                        name: "Rosario novena de San Jose",
                         description: "Rosario artesanal con cuentas de madera de olivo traída de Tierra Santa, bendecido en Jerusalén.",
-                        price: "22.000",
-                        image: "MEDIA/rosario1.jpg",
+                        price: "15.000",
+                        image: "MEDIA/ROSARIO NOVENA A SAN JOSE.jpeg",
                         material: "Madera de olivo",
-                        size: "55cm",
+                        size: "cm",
                         details: "Bendecido en Jerusalén"
                     },
                     {
-                        name: "Rosario de Pétalos de Rosa",
+                        name: "Denario de San José ",
                         description: "Rosario delicado con cuentas de pétalos de rosa natural prensados, con aroma suave y duradero.",
-                        price: "45.000",
-                        image: "MEDIA/rosario2.jpg",
+                        price: "12.000",
+                        image: "MEDIA/DENARIO DE SAN JOSE.jpeg",
                         material: "Pétalos de rosa",
-                        size: "50cm",
+                        size: "cm",
                         details: "Aroma natural"
                     },
                     {
@@ -3736,22 +3962,13 @@
                         material: "Cristal Swarovski",
                         size: "48cm",
                         details: "Elegante y luminoso"
-                    },
-                    {
-                        name: "Rosario Infantil de Colores",
-                        description: "Rosario pequeño y colorido diseñado especialmente para niños, con colores brillantes y seguro.",
-                        price: "15.000",
-                        image: "MEDIA/rosario4.jpg",
-                        material: "Plástico resistente",
-                        size: "40cm",
-                        details: "Colorido y educativo"
                     }
                 ]
             },
             medals: {
                 items: [
                     {
-                        name: "Medallón de San Benito acero 13 *13CM",
+                        name: "Medallón de San Benito acero ",
                         description: "Medallón protector de San Benito en acero inoxidable con todas las inscripciones sagradas para protección espiritual.",
                         price: "85.000",
                         image: "MEDIA/MEDALLON SAN BEDITO 13X13.jpeg",
@@ -3762,8 +3979,8 @@
                     {
                         name: "Medalla de San Benito",
                         description: "Medalla protectora contra el mal con inscripciones sagradas de exorcismo, bañada en oro de 18k.",
-                        price: "25.000",
-                        image: "MEDIA/medalla2.jpg",
+                        price: "80.000",
+                        image: "MEDIA/MEDALLON DE SAN BENITO.jpeg",
                         material: "Metal bañado en oro",
                         size: "3cm",
                         details: "Exorcismo y protección"
@@ -3782,53 +3999,196 @@
             amulets: {
                 items: [
                     {
-                        name: "Mano de Fátima Plata",
+                        name: "Amuleto de San Miguel arcánge",
                         description: "Amuleto de protección contra el mal de ojo elaborado en plata 925, símbolo de protección divina.",
-                        price: "15.000",
-                        image: "MEDIA/mano.jpg",
-                        material: "Plata 925",
-                        size: "2.5cm",
+                        price: "25.000",
+                        image: "MEDIA/AMULETO SAN MIGUEL.png",
+                        material: "",
+                        size: "",
                         details: "Contra envidias y malas energías"
                     },
                     {
-                        name: "Ojo Turco Cristal",
+                        name: "Pulsera de San Miguel arcángel con novena",
                         description: "Protección tradicional contra energías negativas y mal de ojo, en cristal azul auténtico.",
-                        price: "12.000",
-                        image: "MEDIA/ojo.jpg",
+                        price: "15.000",
+                        image: "MEDIA/PULSERA DE SAN MIGUEL ARCANGEL CON NOVENA.jpeg",
                         material: "Cristal azul",
-                        size: "2cm",
+                        size: "",
                         details: "Protección contra el mal de ojo"
                     },
                     {
-                        name: "Cruz de Caravaca",
+                        name: "Escudo de fe",
                         description: "Cruz de doble travesaño con propiedades protectoras contra maleficios y energías negativas.",
-                        price: "18.000",
-                        image: "MEDIA/cruz.jpg",
+                        price: "40.000",
+                        image: "MEDIA/ECUDO DE FE.jpeg",
                         material: "Plata y esmalte",
-                        size: "4cm",
+                        size: "cm",
                         details: "Protección contra maleficios"
                     },
                     {
-                        name: "Herradura de la Suerte",
-                        description: "Símbolo tradicional para atraer la buena fortuna, prosperidad y protección en el hogar.",
-                        price: "9.000",
-                        image: "MEDIA/herradura.jpg",
-                        material: "Metal dorado",
-                        size: "3cm",
-                        details: "Atrae prosperidad"
+                        name: "Escudo de fe",
+                        description: "Cruz de doble travesaño con propiedades protectoras contra maleficios y energías negativas.",
+                        price: "40.000",
+                        image: "MEDIA/ESCUDO DE FE 2.jpeg",
+                        material: "Plata y esmalte",
+                        size: "cm",
+                        details: "Protección contra maleficios"
+                    },
+                    {
+                        name: "Llavero divina protección",
+                        description: "Cruz de doble travesaño con propiedades protectoras contra maleficios y energías negativas.",
+                        price: "69.000",
+                        image: "MEDIA/LLAVERO DIVINA PROTECCION.jpeg",
+                        material: "Plata y esmalte",
+                        size: "cm",
+                        details: "Protección contra maleficios"
+                    },
+                    {
+                        name: "Llavero bendición del hogar",
+                        description: "Cruz de doble travesaño con propiedades protectoras contra maleficios y energías negativas.",
+                        price: "80.000",
+                        image: "MEDIA/LLAVERO BENDICION DEL HOGAR.jpeg",
+                        material: "Plata y esmalte",
+                        size: "cm",
+                        details: "Protección contra maleficios"
+                    },
+                    {
+                        name: "Pulsera de protección del sagrado corazón",
+                        description: "Cruz de doble travesaño con propiedades protectoras contra maleficios y energías negativas.",
+                        price: "40.000",
+                        image: "MEDIA/PULSERA DE PROTECCION DEL SAGRADO CORAZON.jpeg",
+                        material: "Plata y esmalte",
+                        size: "cm",
+                        details: "Protección contra maleficios"
+                    },
+                    {
+                        name: "Pulsera milagrosa",
+                        description: "Cruz de doble travesaño con propiedades protectoras contra maleficios y energías negativas.",
+                        price: "40.000",
+                        image: "MEDIA/PULSERA MILAGROSA.jpeg",
+                        material: "",
+                        size: "cm",
+                        details: "Protección contra maleficios"
+                    },
+                    {
+                        name: "Bendición para el hogar",
+                        description: "Cruz de doble travesaño con propiedades protectoras contra maleficios y energías negativas.",
+                        price: "50.000",
+                        image: "MEDIA/BENDICION PARA EL HOGAR.jpeg",
+                        material: "P",
+                        size: "cm",
+                        details: "Protección contra maleficios"
+                    },
+                    {
+                        name: "Llavero  San Benito",
+                        description: "Cruz de doble travesaño con propiedades protectoras contra maleficios y energías negativas.",
+                        price: "50.000",
+                        image: "MEDIA/LLAVERO DE SAN BENITO.jpeg",
+                        material: "",
+                        size: "cm",
+                        details: "Protección contra maleficios"
                     }
                 ]
             },
             scapulars: {
                 items: [
                     {
-                        name: "Escapulario Bordado",
+                        name: "Pulsera con escapulario",
                         description: "Escapulario del Carmen con bordados artesanales, promesa de salvación el sábado siguiente a la muerte.",
-                        price: "10.000",
-                        image: "MEDIA/escapulario.jpg",
-                        material: "Tela y hilos",
-                        size: "5x3cm",
+                        price: "25.000",
+                        image: "MEDIA/PULSERA CON ESCAPULARIO.jpeg",
+                        material: "",
+                        size: "",
                         details: "Promesa del sábado siguiente a la muerte"
+                    }
+                ]
+            },
+            // NUEVA SECCIÓN: OBJETOS LITÚRGICOS
+            liturgical: {
+                items: [
+                    // OBJETOS LITÚRGICOS 1 - SIN NOMBRE (puedes nombrarlos después)
+                    {
+                        name: "Caliz misionero",
+                        description: "Elemento sagrado para la celebración eucarística, fabricado con materiales de alta calidad.",
+                        price: "250.000",
+                        image: "MEDIA/CALIZ MISIONEROS.jpeg",
+                        material: "",
+                        size: "",
+                        details: "Para uso en celebraciones litúrgicas"
+                    },
+                    {
+                        name: "Objeto Litúrgico de Altar 2",
+                        description: "Pieza ceremonial utilizada en rituales religiosos con simbolismo espiritual profundo.",
+                        price: "85.000",
+                        image: "MEDIA/liturgical2.jpg",
+                        material: "Metal plateado y esmalte",
+                        size: "20x12cm",
+                        details: "Consagrado para uso litúrgico"
+                    },
+                    {
+                        name: "Objeto Litúrgico de Altar 3",
+                        description: "Instrumento ceremonial para ceremonias religiosas con acabados artesanales detallados.",
+                        price: "150.000",
+                        image: "MEDIA/liturgical3.jpg",
+                        material: "Bronce y piedras preciosas",
+                        size: "30x18cm",
+                        details: "Para uso exclusivo en celebraciones"
+                    },
+                    // OBJETOS LITÚRGICOS 2 - SIN NOMBRE (puedes nombrarlos después)
+                    {
+                        name: "Elemento Litúrgico Ceremonial 1",
+                        description: "Herramienta sagrada utilizada en rituales de consagración y bendición.",
+                        price: "95.000",
+                        image: "MEDIA/liturgical4.jpg",
+                        material: "Latón y cristal",
+                        size: "22x14cm",
+                        details: "Para ceremonias especiales"
+                    },
+                    {
+                        name: "Elemento Litúrgico Ceremonial 2",
+                        description: "Accesorio ritual con significado simbólico profundo en la tradición cristiana.",
+                        price: "110.000",
+                        image: "MEDIA/liturgical5.jpg",
+                        material: "Plata y madera noble",
+                        size: "18x10cm",
+                        details: "Con simbolismo espiritual"
+                    },
+                    {
+                        name: "Elemento Litúrgico Ceremonial 3",
+                        description: "Utensilio sagrado para ceremonias litúrgicas con diseño tradicional y significado teológico.",
+                        price: "130.000",
+                        image: "MEDIA/liturgical6.jpg",
+                        material: "Metal dorado y terciopelo",
+                        size: "28x16cm",
+                        details: "Para uso en celebraciones solemnes"
+                    },
+                    // OBJETOS LITÚRGICOS 3 - SIN NOMBRE (puedes nombrarlos después)
+                    {
+                        name: "Accesorio Litúrgico Ritual 1",
+                        description: "Pieza ceremonial utilizada en servicios religiosos con valor simbólico y espiritual.",
+                        price: "75.000",
+                        image: "MEDIA/liturgical7.jpg",
+                        material: "Cobre y esmalte vitral",
+                        size: "15x8cm",
+                        details: "Para rituales litúrgicos"
+                    },
+                    {
+                        name: "Accesorio Litúrgico Ritual 2",
+                        description: "Objeto sagrado para ceremonias religiosas con diseño inspirado en la tradición eclesial.",
+                        price: "105.000",
+                        image: "MEDIA/liturgical8.jpg",
+                        material: "Alpaca y piedras semipreciosas",
+                        size: "20x12cm",
+                        details: "Para uso ceremonial"
+                    },
+                    {
+                        name: "Accesorio Litúrgico Ritual 3",
+                        description: "Instrumento litúrgico para celebraciones religiosas con acabados artesanales y significado teológico.",
+                        price: "140.000",
+                        image: "MEDIA/liturgical9.jpg",
+                        material: "Plata esterlina y marfil vegetal",
+                        size: "25x15cm",
+                        details: "Para ceremonias litúrgicas"
                     }
                 ]
             }
@@ -3853,6 +4213,7 @@
                         if (category === 'medals') badgeText = 'MEDALLA';
                         if (category === 'amulets') badgeText = 'AMULETO';
                         if (category === 'scapulars') badgeText = 'ESCAPULARIO';
+                        if (category === 'liturgical') badgeText = 'LITÚRGICO';
                         
                         productCard.innerHTML = `
                             <div class="product-image">
