@@ -2593,19 +2593,19 @@ footer {
 /* ========== ORBE DIVINO PARA IMAGEN DE SAN FRANCISCO ESPECÍFICA ========== */
 .divine-orb-san-francisco {
     position: absolute;
-    width: 20px;
-    height: 20px;
-    border-radius: 10%;
+    width: 120px;  /* Cambié de 20px a 120px */
+    height: 120px; /* Cambié de 20px a 120px */
+    border-radius: 50%; /* Cambié de 10% a 50% */
     background: radial-gradient(circle, 
-        rgba(255, 255, 255, 0.616) 0%, 
+        rgba(255, 255, 255, 0.95) 0%, 
         rgba(255, 255, 255, 0.6) 40%, 
         rgba(255, 255, 255, 0.3) 70%, 
         rgba(255, 255, 255, 0) 100%);
     box-shadow: 
-        0 0 80px 40px rgba(255, 255, 255, 0.9),
-        0 0 150px 80px rgba(255, 255, 255, 0.5),
-        0 0 200px 120px rgba(255, 255, 255, 0.2),
-        inset 0 0 60px 30px rgba(255, 255, 255, 0.8);
+        0 0 40px 20px rgba(255, 255, 255, 0.7), /* Reduje las dimensiones */
+        0 0 80px 40px rgba(255, 255, 255, 0.4),
+        0 0 120px 60px rgba(255, 255, 255, 0.2),
+        inset 0 0 30px 15px rgba(255, 255, 255, 0.6);
     z-index: 100;
     pointer-events: none;
     opacity: 0;
@@ -2742,13 +2742,13 @@ footer {
 /* Halo especial para San Francisco */
 .san-francisco-halo {
     position: absolute;
-    width: 50px;
-    height: 50px;
+    width: 180px;  /* Cambié de 50px a 180px */
+    height: 180px; /* Cambié de 50px a 180px */
     border-radius: 50%;
-    border: 3px solid rgba(255, 255, 255, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.4);
     box-shadow: 
-        0 0 120px 60px rgba(255, 255, 255, 0.3),
-        inset 0 0 80px 40px rgba(255, 255, 255, 0.2);
+        0 0 60px 30px rgba(255, 255, 255, 0.3),
+        inset 0 0 40px 20px rgba(255, 255, 255, 0.2);
     animation: sanFranciscoHaloRotate 25s infinite linear;
     z-index: 98;
 }
@@ -5310,21 +5310,21 @@ function addDivineOrbToSanFranciscoImage() {
     const specificImagePath = 'MEDIA/SAN_FRANCISCO_PALOMITAS__1_-removebg-preview.png';
     
     // Buscar todas las instancias de esta imagen específica
-    const sanFranciscoImages = document.querySelectorAll(`img[src*="${specificImagePath}"], 
-                                                         img[src*="${specificImagePath.toLowerCase()}"], 
-                                                         img[src*="SAN_FRANCISCO_PALOMITAS"]`);
+    const sanFranciscoImages = document.querySelectorAll('img[src*="SAN_FRANCISCO_PALOMITAS"]');
+    
+    console.log(`🔍 Buscando imágenes de San Francisco. Encontradas: ${sanFranciscoImages.length}`);
     
     sanFranciscoImages.forEach((img, index) => {
+        console.log(`📸 Procesando imagen ${index + 1}: ${img.src}`);
+        
         // Verificar si ya tiene el efecto
-        if (img.parentElement.classList.contains('san-francisco-logo-container') && 
-            img.parentElement.querySelector('.divine-orb-san-francisco')) {
-            return; // Ya tiene el efecto, no hacer nada
+        if (img.parentElement.querySelector('.divine-orb-san-francisco')) {
+            console.log(`⏭️ Imagen ${index + 1} ya tiene efecto, omitiendo...`);
+            return;
         }
         
         // Añadir clase al contenedor
-        if (!img.parentElement.classList.contains('san-francisco-logo-container')) {
-            img.parentElement.classList.add('san-francisco-logo-container');
-        }
+        img.parentElement.classList.add('san-francisco-logo-container');
         
         // Asegurar que el contenedor tenga posición relativa
         if (window.getComputedStyle(img.parentElement).position === 'static') {
@@ -5338,14 +5338,11 @@ function addDivineOrbToSanFranciscoImage() {
             orbContainer.className = 'san-francisco-orb-container';
             orbContainer.style.cssText = `
                 position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
+                top: 0;
+                left: 0;
                 width: 100%;
                 height: 100%;
-                max-width: 300px;
-                max-height: 300px;
-                z-index: 100;
+                z-index: 10;
                 pointer-events: none;
             `;
             img.parentElement.appendChild(orbContainer);
@@ -5353,10 +5350,6 @@ function addDivineOrbToSanFranciscoImage() {
         
         // Limpiar efectos anteriores
         orbContainer.innerHTML = '';
-        
-        // Calcular posición del orbe (en el centro de la imagen)
-        const imgRect = img.getBoundingClientRect();
-        const parentRect = img.parentElement.getBoundingClientRect();
         
         // Crear halo
         const halo = document.createElement('div');
@@ -5394,14 +5387,14 @@ function addDivineOrbToSanFranciscoImage() {
         
         // Crear múltiples destellos en posiciones estratégicas
         const sparklePositions = [
-            { top: '30%', left: '30%' },   // Superior izquierda
-            { top: '30%', left: '70%' },   // Superior derecha
-            { top: '70%', left: '30%' },   // Inferior izquierda
-            { top: '70%', left: '70%' },   // Inferior derecha
-            { top: '50%', left: '20%' },   // Centro izquierda
-            { top: '50%', left: '80%' },   // Centro derecha
-            { top: '20%', left: '50%' },   // Arriba centro
-            { top: '80%', left: '50%' }    // Abajo centro
+            { top: '30%', left: '30%' },
+            { top: '30%', left: '70%' },
+            { top: '70%', left: '30%' },
+            { top: '70%', left: '70%' },
+            { top: '50%', left: '20%' },
+            { top: '50%', left: '80%' },
+            { top: '20%', left: '50%' },
+            { top: '80%', left: '50%' }
         ];
         
         sparklePositions.forEach((pos, i) => {
@@ -5416,24 +5409,13 @@ function addDivineOrbToSanFranciscoImage() {
             orbContainer.appendChild(sparkle);
         });
         
-        // Añadir efecto de brillo al hacer hover
-        img.parentElement.addEventListener('mouseenter', function() {
-            divineOrb.style.animation = 'sanFranciscoGentlePulse 2s infinite ease-in-out';
-            divineLight.style.opacity = '0.9';
-        });
-        
-        img.parentElement.addEventListener('mouseleave', function() {
-            divineOrb.style.animation = 'sanFranciscoGentlePulse 4s infinite ease-in-out 2s';
-            divineLight.style.opacity = '0.7';
-        });
-        
-        console.log(`✅ Efecto divino aplicado a la imagen de San Francisco (instancia ${index + 1})`);
+        console.log(`✅ Efecto divino aplicado a imagen ${index + 1}`);
     });
     
-    // Si no se encontró la imagen, buscar después de un tiempo (para imágenes que se cargan dinámicamente)
+    // Si no se encontró la imagen, buscar después de un tiempo
     if (sanFranciscoImages.length === 0) {
-        console.log('🔍 Imagen de San Francisco no encontrada, intentando de nuevo en 1 segundo...');
-        setTimeout(addDivineOrbToSanFranciscoImage, 1000);
+        console.log('🔄 No se encontraron imágenes, intentando de nuevo en 500ms...');
+        setTimeout(addDivineOrbToSanFranciscoImage, 500);
     }
 }
 
@@ -5445,16 +5427,22 @@ function observeForSanFranciscoImage() {
         mutations.forEach((mutation) => {
             if (mutation.addedNodes.length) {
                 mutation.addedNodes.forEach((node) => {
-                    if (node.nodeName === 'IMG' && 
-                        (node.src.includes('SAN_FRANCISCO_PALOMITAS') || 
-                         node.src.includes('san_francisco_palomitas'))) {
+                    if (node.nodeName === 'IMG' && node.src.includes('SAN_FRANCISCO_PALOMITAS')) {
                         imageFound = true;
+                    }
+                    // También verificar nodos hijos
+                    if (node.querySelectorAll) {
+                        const images = node.querySelectorAll('img[src*="SAN_FRANCISCO_PALOMITAS"]');
+                        if (images.length > 0) {
+                            imageFound = true;
+                        }
                     }
                 });
             }
         });
         
         if (imageFound) {
+            console.log('🆕 Nueva imagen detectada, aplicando efecto...');
             setTimeout(addDivineOrbToSanFranciscoImage, 300);
         }
     });
@@ -5464,21 +5452,213 @@ function observeForSanFranciscoImage() {
         childList: true,
         subtree: true
     });
-}function initializeAll() {
-    // ... tu código existente ...
     
-    // Inicializar orbe divino para la imagen específica de San Francisco
-    setTimeout(addDivineOrbToSanFranciscoImage, 500);
-    observeForSanFranciscoImage();
+    console.log('👀 Observador de imágenes iniciado');
+}
+
+// ========== INICIALIZAR TODO ==========
+function initializeAll() {
+    // Tu código existente (mantenerlo todo)
+    // ... (mantén todo el código existente de initializeAll aquí)
     
-    // También ejecutar cuando se cargue completamente la página
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mainMenu = document.getElementById('mainMenu');
+    
+    if (mobileMenuBtn && mainMenu) {
+        mobileMenuBtn.addEventListener('click', function() {
+            mainMenu.classList.toggle('active');
+            mobileMenuBtn.innerHTML = mainMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+    }
+
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('nav a, .tab-link').forEach(link => {
+        link.addEventListener('click', function() {
+            if (mainMenu) {
+                mainMenu.classList.remove('active');
+                if (mobileMenuBtn) {
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            }
+        });
+    });
+
+    // Tab functionality
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const tabId = button.getAttribute('data-tab');
+            
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            button.classList.add('active');
+            const tabContent = document.getElementById(`${tabId}-tab`);
+            if (tabContent) {
+                tabContent.classList.add('active');
+            }
+            
+            setTimeout(() => {
+                animateProductCards(tabId);
+            }, 100);
+        });
+    });
+
+    // Tab links from footer
+    document.querySelectorAll('.tab-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const tabId = this.getAttribute('data-tab');
+            
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            const tabButton = document.querySelector(`.tab-button[data-tab="${tabId}"]`);
+            const tabContent = document.getElementById(`${tabId}-tab`);
+            
+            if (tabButton) tabButton.classList.add('active');
+            if (tabContent) tabContent.classList.add('active');
+            
+            const productsSection = document.getElementById('products');
+            if (productsSection) {
+                productsSection.scrollIntoView({ behavior: 'smooth' });
+            }
+            
+            setTimeout(() => {
+                animateProductCards(tabId);
+            }, 100);
+        });
+    });
+
+    // Inicializar productos
+    generateProducts();
+
+    // Botón volver arriba
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    });
+
+    // Smooth scrolling para todos los enlaces internos
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            if (this.getAttribute('href') === '#') return;
+            
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Añadir funcionalidad al botón volver arriba
+    backToTop.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    
+    // Inicializar buscador
+    initializeSearch();
+    
+    // ========== INICIALIZAR ORBE DIVINO ==========
+    console.log('🌟 Inicializando efectos divinos...');
+    
+    // Esperar a que todas las imágenes se carguen
     window.addEventListener('load', function() {
+        console.log('🚀 Página completamente cargada, aplicando efectos...');
         setTimeout(addDivineOrbToSanFranciscoImage, 1000);
     });
     
-    // ... resto de tu código ...
+    // También aplicar efectos inmediatamente por si ya están cargadas
+    setTimeout(addDivineOrbToSanFranciscoImage, 500);
+    
+    // Iniciar observador para imágenes que se carguen después
+    observeForSanFranciscoImage();
+    
+    // Verificar periódicamente en caso de que alguna imagen se haya perdido
+    setInterval(() => {
+        const images = document.querySelectorAll('img[src*="SAN_FRANCISCO_PALOMITAS"]:not(.has-orb)');
+        if (images.length > 0) {
+            console.log(`🔍 Encontradas ${images.length} imágenes sin efecto, aplicando...`);
+            addDivineOrbToSanFranciscoImage();
+        }
+    }, 2000);
+    
+    // Agregar clase a imágenes ya procesadas para evitar duplicados
+    document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(() => {
+            document.querySelectorAll('img[src*="SAN_FRANCISCO_PALOMITAS"]').forEach(img => {
+                img.classList.add('has-orb-check');
+            });
+        }, 2000);
+    });
 }
 
+// También agregar este código para reiniciar efectos cuando cambien las pestañas
+document.querySelectorAll('.tab-button').forEach(button => {
+    button.addEventListener('click', () => {
+        setTimeout(addDivineOrbToSanFranciscoImage, 800);
+    });
+});
+
+// Inicializar cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', function() {
+    // Tu código existente del DOMContentLoaded (mantenerlo)
+    initializeConstructionAlert();
+    
+    const preloader = document.getElementById('preloader');
+    const minimumDisplayTime = 1500;
+    const startTime = Date.now();
+    
+    function hidePreloader() {
+        const elapsed = Date.now() - startTime;
+        const remaining = Math.max(minimumDisplayTime - elapsed, 0);
+        
+        setTimeout(() => {
+            preloader.classList.add('loaded');
+            
+            setTimeout(() => {
+                preloader.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                // Inicializar efectos celestiales
+                initializeCelestialEffects();
+                // Inicializar carrusel de fondo
+                initializeCarousel();
+            }, 500);
+        }, remaining);
+    }
+    
+    window.addEventListener('load', function() {
+        hidePreloader();
+    });
+    
+    setTimeout(() => {
+        if (preloader && !preloader.classList.contains('loaded')) {
+            hidePreloader();
+        }
+    }, 5000);
+    
+    // Inicializar todo, incluyendo el orbe
+    initializeAll();
+});
 
     </script>
 </body>
