@@ -2250,24 +2250,272 @@
 
     <!-- Main Content -->
     <main>
-        <!-- Hero Section -->
-        <section class="hero" id="home">
-            <!-- Logo en el hero (centrado) -->
-            <div class="hero-logo-container">
-                <img src="MEDIA/SAN_FRANCISCO_PALOMITAS__1_-removebg-preview.png" alt="San Francisco Tienda" class="hero-logo">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Políticas de Venta - San Francisco Tienda</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f5f0;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .policies-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .policies-header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #8B4513;
+        }
+        
+        .policies-logo-container {
+            margin-bottom: 25px;
+        }
+        
+        .policies-logo {
+            max-width: 250px;
+            height: auto;
+        }
+        
+        .policies-title {
+            color: #8B4513;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+        
+        .policies-subtitle {
+            color: #666;
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        
+        .policies-motto {
+            margin-top: 25px;
+            font-style: italic;
+            color: #8B4513;
+            font-size: 1.1rem;
+        }
+        
+        .policies-content {
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+        }
+        
+        .policy-section {
+            margin-bottom: 35px;
+        }
+        
+        .policy-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .policy-title {
+            color: #8B4513;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #e0d6cc;
+            font-weight: 500;
+        }
+        
+        .policy-point {
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .policy-point:before {
+            content: "•";
+            color: #8B4513;
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -5px;
+        }
+        
+        .important-note {
+            background-color: #fff8f0;
+            border-left: 4px solid #8B4513;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .important-note p {
+            font-weight: 600;
+            color: #5a2d0c;
+        }
+        
+        .acceptance-section {
+            text-align: center;
+            font-style: italic;
+            color: #666;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px dashed #ccc;
+        }
+        
+        .final-motto {
+            text-align: center;
+            font-size: 1.3rem;
+            color: #8B4513;
+            font-style: italic;
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #f9f5f0;
+            border-radius: 5px;
+        }
+        
+        .policies-footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        .highlight {
+            color: #8B4513;
+            font-weight: 600;
+        }
+        
+        @media (max-width: 768px) {
+            .policies-container {
+                padding: 20px 15px;
+            }
+            
+            .policies-title {
+                font-size: 2rem;
+            }
+            
+            .policies-content {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="policies-container">
+        <header class="policies-header">
+            <div class="policies-logo-container">
+                <img src="MEDIA/SAN_FRANCISCO_PALOMITAS__1_-removebg-preview.png" alt="San Francisco Tienda" class="policies-logo">
             </div>
             
-            <h2>Arte y Devoción en Cada Detalle</h2>
-            <p>Desde el 21 de febrero de 2006, ofrecemos artículos religiosos que inspiran fe y recuerdan nuestro amor a Dios. Cada pieza es una representación de nuestra divinidad y compromiso con el amor al prójimo.</p>
+            <h1 class="policies-title">Políticas de Venta y Garantía</h1>
+            <p class="policies-subtitle">Arte y Devoción en Cada Detalle</p>
+            <p>Desde el 21 de febrero de 2006, ofrecemos artículos religiosos que inspiran fe y recuerdan nuestro amor a Dios.</p>
             
-            <!-- Lema debajo del logo -->
-            <div class="hero-motto">
+            <div class="policies-motto">
                 <p class="motto-text">Via sanfisio, Alma ghiossamente</p>
             </div>
+        </header>
+        
+        <div class="policies-content">
+            <div class="policy-section">
+                <h2 class="policy-title">1. Revisión de Productos al Momento de la Compra o Entrega</h2>
+                
+                <div class="policy-point">
+                    <span class="highlight">Compras en Tienda Física:</span> Le solicitamos amablemente que, antes de finalizar su compra, revise minuciosamente el producto (estado, tamaño, color, detalles del diseño).
+                </div>
+                
+                <div class="policy-point">
+                    Una vez que el artículo sale de nuestro local, <span class="highlight">no se aceptan cambios, devoluciones ni reclamos por daños o discrepancias</span> que no hayan sido notificadas en ese momento.
+                </div>
+                
+                <div class="policy-point">
+                    <span class="highlight">Compras con Domiciliario:</span> Al recibir su pedido a domicilio, es <span class="highlight">responsabilidad del cliente revisar el producto en el acto de la entrega</span>, en presencia del domiciliario.
+                </div>
+                
+                <div class="policy-point">
+                    Cualquier inconveniente (producto equivocado, daño visible) <span class="highlight">debe ser notificado inmediatamente al domiciliario y a nuestra tienda</span> (vía telefónica o WhatsApp) antes de firmar el recibo o confirmar la recepción.
+                </div>
+                
+                <div class="policy-point">
+                    No se procesarán reclamos una vez finalizada la entrega.
+                </div>
+            </div>
             
-            <a href="#products" class="cta-button">Ver Nuestra Colección</a>
-        </section>
+            <div class="important-note">
+                <p>⚠️ ATENCIÓN: Para compras en tienda, la revisión debe hacerse ANTES de salir del establecimiento. Para domicilios, la revisión debe hacerse ANTES de firmar o confirmar la recepción.</p>
+            </div>
+            
+            <div class="policy-section">
+                <h2 class="policy-title">2. No Aceptamos Cambios ni Devoluciones</h2>
+                
+                <div class="policy-point">
+                    Debido a la naturaleza religiosa y, en muchos casos, personalizada de nuestros artículos, <span class="highlight">no realizamos cambios ni aceptamos devoluciones</span> una vez el producto ha salido de nuestra tienda o ha sido entregado y recibido por el cliente.
+                </div>
+                
+                <div class="policy-point">
+                    La única excepción aplica para defectos de fabricación evidentes, los cuales deben ser notificados en el momento preciso indicado en la sección anterior.
+                </div>
+            </div>
+            
+            <div class="policy-section">
+                <h2 class="policy-title">3. Nuestro Compromiso</h2>
+                
+                <div class="policy-point">
+                    Nuestra prioridad es que usted reciba un producto en perfectas condiciones, que refleje el <span class="highlight">"Arte y Devoción en Cada Detalle"</span> que nos caracteriza desde 2006.
+                </div>
+                
+                <div class="policy-point">
+                    Estas políticas nos permiten mantener nuestros estándares de calidad y servicio, asegurando que cada pieza cumpla su propósito de inspirar fe y recordar el amor a Dios y al prójimo.
+                </div>
+            </div>
+            
+            <div class="acceptance-section">
+                <p>Agradecemos su comprensión y confianza. <span class="highlight">Al realizar una compra, usted acepta estas políticas.</span></p>
+            </div>
+        </div>
+        
+        <div class="final-motto">
+            <p>"Via sanfisio, Alma ghiossamente"</p>
+        </div>
+        
+        <footer class="policies-footer">
+            <p>San Francisco Tienda © 2006 - <span id="current-year"></span> | Todos los derechos reservados</p>
+            <p>Políticas actualizadas: <span id="current-date"></span></p>
+        </footer>
+    </div>
 
+    <script>
+        // Actualizar año y fecha automáticamente
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        const now = new Date();
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('current-date').textContent = now.toLocaleDateString('es-ES', options);
+        
+        // Resaltar texto importante al hacer clic (opcional)
+        document.querySelectorAll('.highlight').forEach(item => {
+            item.addEventListener('click', function() {
+                this.style.backgroundColor = '#fff8f0';
+                this.style.padding = '2px 5px';
+                this.style.borderRadius = '3px';
+                this.style.transition = 'background-color 0.3s';
+                
+                setTimeout(() => {
+                    this.style.backgroundColor = 'transparent';
+                    this.style.padding = '0';
+                }, 1500);
+            });
+        });
+    </script>
         <!-- Products Section CON CARRUSEL DE FONDO CORREGIDO -->
         <section id="products">
             <!-- Carrusel de fondo CORREGIDO -->
