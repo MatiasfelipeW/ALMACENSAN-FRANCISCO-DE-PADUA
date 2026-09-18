@@ -85,6 +85,176 @@ h1, h2, h3, h4, h5 {
 
 .container-narrow { max-width: 720px; }
 
+/* ============ PROTECCIÓN DE IMÁGENES ============ */
+img[data-protected="true"],
+img.protected-image {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+    pointer-events: auto;
+    -webkit-touch-callout: none;
+}
+
+/* ============ BLOQUEO DE SELECCIÓN DE TEXTO ============ */
+body.no-select,
+body.no-select * {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+}
+
+/* Permitir selección en inputs y textareas */
+body.no-select input,
+body.no-select textarea {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+/* ============ OVERLAY DE SEGURIDAD ============ */
+.security-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 12, 10, 0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 999999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    animation: securityFadeIn 0.4s ease;
+}
+
+.security-overlay.active {
+    display: flex;
+}
+
+@keyframes securityFadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.security-overlay-content {
+    max-width: 480px;
+    width: 100%;
+    background: linear-gradient(135deg, #1A1614 0%, #1E3A2F 100%);
+    border: 1.5px solid var(--gold-400);
+    border-radius: 24px;
+    padding: 48px 36px;
+    text-align: center;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 60px rgba(212, 175, 55, 0.25);
+    animation: securityPop 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes securityPop {
+    from { transform: scale(0.85); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+}
+
+.security-shield {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 24px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold-500), var(--gold-300));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.6rem;
+    color: #1A1614;
+    box-shadow: 0 0 40px rgba(212, 175, 55, 0.5);
+    animation: shieldPulse 2s ease-in-out infinite;
+}
+
+@keyframes shieldPulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 40px rgba(212, 175, 55, 0.5); }
+    50%      { transform: scale(1.06); box-shadow: 0 0 60px rgba(212, 175, 55, 0.85); }
+}
+
+.security-overlay-content h2 {
+    font-family: var(--font-display);
+    color: var(--gold-200);
+    font-size: 1.7rem;
+    letter-spacing: 1.5px;
+    margin-bottom: 14px;
+}
+
+.security-overlay-content p {
+    color: #BFB3A5;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 10px;
+}
+
+.security-brand {
+    color: var(--gold-400) !important;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1rem !important;
+    margin: 20px 0 28px !important;
+    padding-top: 20px;
+    border-top: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+.security-dismiss {
+    padding: 13px 40px;
+    background: linear-gradient(135deg, var(--gold-500), var(--gold-300));
+    color: #1A1614;
+    border-radius: 50px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    box-shadow: 0 8px 24px rgba(212, 175, 55, 0.4);
+    transition: all 0.3s var(--transition);
+    cursor: pointer;
+}
+
+.security-dismiss:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 34px rgba(212, 175, 55, 0.6);
+    filter: brightness(1.08);
+}
+
+/* ============ CAPA DE MARCA DE AGUA ============ */
+.watermark-layer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 900;
+    opacity: 0.035;
+    overflow: hidden;
+    user-select: none;
+    display: none;
+}
+
+.watermark-layer.active {
+    display: block;
+}
+
+.watermark-item {
+    position: absolute;
+    font-family: var(--font-display);
+    color: var(--gold-600);
+    font-weight: 700;
+    white-space: nowrap;
+    transform: rotate(-32deg);
+    letter-spacing: 3px;
+    font-size: 1.1rem;
+    user-select: none;
+    pointer-events: none;
+}
+
 /* ============ FONDO CELESTIAL ============ */
 .celestial-background {
     position: fixed;
@@ -129,7 +299,7 @@ h1, h2, h3, h4, h5 {
     66%      { transform: translate(-40px, 60px) scale(0.95); }
 }
 
-/* ============ PRELOADER MINIMALISTA ============ */
+/* ============ PRELOADER ============ */
 #preloader {
     position: fixed;
     inset: 0;
@@ -160,13 +330,13 @@ h1, h2, h3, h4, h5 {
 }
 
 @keyframes logoPulse {
-    0%, 100% { 
-        transform: scale(1); 
-        filter: drop-shadow(0 0 25px rgba(212,175,55,0.35)); 
+    0%, 100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 25px rgba(212,175,55,0.35));
     }
-    50%      { 
-        transform: scale(1.04); 
-        filter: drop-shadow(0 0 45px rgba(212,175,55,0.7)); 
+    50%      {
+        transform: scale(1.04);
+        filter: drop-shadow(0 0 45px rgba(212,175,55,0.7));
     }
 }
 
@@ -428,7 +598,7 @@ body.banner-hidden #mainHeader { top: 0; }
 .mobile-toggle.active span:nth-child(2) { opacity: 0; }
 .mobile-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* ============ HERO (FIX: contenido visible siempre) ============ */
+/* ============ HERO ============ */
 .hero {
     position: relative;
     min-height: 100vh;
@@ -469,7 +639,7 @@ body.banner-hidden #mainHeader { top: 0; }
     flex-direction: column;
     align-items: center;
     gap: 26px;
-    opacity: 1; /* FIX: garantiza visibilidad */
+    opacity: 1;
 }
 
 .hero-badge {
@@ -1071,7 +1241,7 @@ section { padding: 100px 0; position: relative; }
     gap: 28px;
 }
 
-/* ============ PRODUCT CARD (FIX: visible siempre) ============ */
+/* ============ PRODUCT CARD ============ */
 .product-card {
     position: relative;
     background: var(--white);
@@ -1972,6 +2142,7 @@ footer::before {
     overflow: hidden;
     box-shadow: 0 30px 80px rgba(0,0,0,0.5);
     background: var(--white);
+    position: relative;
 }
 
 .modal-content img {
@@ -1979,28 +2150,6 @@ footer::before {
     max-height: 85vh;
     object-fit: contain;
     display: block;
-}
-
-.close-modal {
-    position: absolute;
-    top: 20px;
-    right: 28px;
-    color: var(--gold-300);
-    font-size: 2.6rem;
-    cursor: pointer;
-    line-height: 1;
-    transition: all 0.3s var(--transition);
-    width: 50px; height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-}
-
-.close-modal:hover {
-    color: var(--white);
-    background: rgba(212,175,55,0.2);
-    transform: rotate(90deg);
 }
 
 /* ============ RESPONSIVE ============ */
@@ -2030,18 +2179,18 @@ footer::before {
         z-index: 998;
         border-left: 1px solid rgba(212,175,55,0.2);
     }
-    
+
     .main-nav.active { right: 0; }
-    
+
     .nav-link {
         width: 100%;
         padding: 14px 0;
         font-size: 0.95rem;
         border-bottom: 1px solid rgba(212,175,55,0.12);
     }
-    
+
     .nav-link::after { display: none; }
-    
+
     .mobile-toggle { display: flex; z-index: 999; position: relative; }
     .btn-whatsapp-header span { display: none; }
     .btn-whatsapp-header { padding: 10px 12px; }
@@ -2049,7 +2198,7 @@ footer::before {
 
 @media (max-width: 768px) {
     section { padding: 70px 0; }
-    
+
     .hero { padding: 160px 20px 70px; min-height: auto; }
     .hero-logo-wrap { width: 160px; height: 160px; }
     .hero-stats { gap: 18px; padding: 18px 24px; }
@@ -2058,7 +2207,7 @@ footer::before {
     .hero-cta { flex-direction: column; width: 100%; }
     .hero-cta .btn { width: 100%; }
     .hero-scroll-hint { display: none; }
-    
+
     .tabs-header {
         flex-wrap: nowrap;
         overflow-x: auto;
@@ -2071,18 +2220,18 @@ footer::before {
     }
     .tabs-header::-webkit-scrollbar { display: none; }
     .tab-button { padding: 10px 18px; font-size: 0.78rem; }
-    
+
     .products-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
     .product-image { height: 220px; }
-    
+
     .about-image-wrap > img { height: 400px; }
     .about-image-badge { width: 100px; height: 100px; bottom: -20px; right: -20px; }
     .about-features { grid-template-columns: 1fr; }
-    
+
     .visit-gallery { grid-template-columns: 1fr; }
     .gallery-main { grid-column: span 1; height: 260px; }
     .gallery-small { height: 200px; }
-    
+
     .footer-grid { grid-template-columns: 1fr; gap: 36px; text-align: center; }
     .footer-brand { justify-content: center; }
     .footer-socials { justify-content: center; }
@@ -2090,14 +2239,14 @@ footer::before {
     .footer-col ul li a { justify-content: center; }
     .footer-contact li { justify-content: center; text-align: center; flex-direction: column; align-items: center; gap: 4px; }
     .footer-desc { margin-left: auto; margin-right: auto; }
-    
+
     .contact-grid { grid-template-columns: 1fr 1fr; }
-    
+
     .whatsapp-float { width: 52px; height: 52px; font-size: 1.4rem; bottom: 18px; right: 18px; }
     .back-to-top { bottom: 84px; right: 18px; width: 42px; height: 42px; }
-    
+
     .top-banner { font-size: 0.72rem; padding: 8px 44px 8px 12px; }
-    
+
     .section-tag { font-size: 0.65rem; padding: 0 36px; }
     .section-tag::before, .section-tag::after { width: 24px; }
 }
@@ -2106,28 +2255,32 @@ footer::before {
     .brand-text h1 { font-size: 0.92rem; letter-spacing: 1px; }
     .brand-text span { font-size: 0.6rem; letter-spacing: 1.2px; }
     .brand-logo-wrap { width: 46px; height: 46px; }
-    
+
     .hero-title { font-size: 1.8rem; }
     .hero-subtitle { font-size: 0.9rem; }
     .hero-motto { font-size: 1rem; }
-    
+
     .hero-stats { flex-direction: column; gap: 14px; width: 100%; }
     .stat-divider { display: none; }
-    
+
     .products-grid { grid-template-columns: 1fr; }
     .contact-grid { grid-template-columns: 1fr; }
-    
+
     .search-input { font-size: 0.85rem; }
     .search-button { width: 42px; height: 42px; }
-    
+
     .about-image-wrap > img { height: 320px; }
     .about-stats { padding: 18px 14px; gap: 12px; }
     .astat-num { font-size: 1.35rem; }
     .astat-lbl { font-size: 0.62rem; }
-    
+
     .policy-card { padding: 30px 22px; }
     .payment-card { padding: 26px 18px; }
-    
+
     .preloader-logo { width: 120px; height: 120px; }
     .loader-text { font-size: 0.78rem; letter-spacing: 6px; }
+
+    .security-overlay-content { padding: 36px 24px; }
+    .security-shield { width: 76px; height: 76px; font-size: 2rem; }
+    .security-overlay-content h2 { font-size: 1.3rem; }
 }

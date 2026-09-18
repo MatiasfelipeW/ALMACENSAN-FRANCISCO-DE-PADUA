@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>San Francisco de Padua | Arte y Devoción desde 2006</title>
-    
-    <!-- ========== SEGURIDAD (DESACTIVADA EN DESARROLLO) ========== 
+
+    <!-- ========== SEGURIDAD META (DESACTIVADA EN DESARROLLO) ==========
          Descomenta este bloque cuando subas el sitio a producción -->
     <!--
     <meta http-equiv="Content-Security-Policy" content="
@@ -26,21 +26,44 @@
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), usb=(), battery=()">
-    
+
+    <!-- ========== PROTECCIÓN ANTI-COPIADO ========== -->
+    <meta name="author" content="San Francisco de Padua Cali">
+    <meta name="copyright" content="© 2006-2025 San Francisco de Padua Cali. Todos los derechos reservados.">
+    <meta name="robots" content="index, follow, noimageindex, noarchive">
+    <meta name="googlebot" content="noimageindex">
+    <meta name="rating" content="general">
+
     <!-- Favicon -->
     <link rel="icon" href="MEDIA/SAN FRANCISCO PALOMITAS.png" type="image/png">
-    
+
     <!-- Fonts & Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
-          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
           crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+    <!-- ========== OVERLAY DE SEGURIDAD (se muestra al detectar amenazas) ========== -->
+    <div id="securityOverlay" class="security-overlay" aria-hidden="true">
+        <div class="security-overlay-content">
+            <div class="security-shield">
+                <i class="fas fa-shield-halved"></i>
+            </div>
+            <h2>Contenido Protegido</h2>
+            <p id="securityMessage">Este contenido está protegido por derechos de autor.</p>
+            <p class="security-brand">© San Francisco de Padua Cali</p>
+            <button id="securityDismiss" class="security-dismiss">Entendido</button>
+        </div>
+    </div>
+
+    <!-- ========== MARCA DE AGUA DINÁMICA ========== -->
+    <div id="watermarkLayer" class="watermark-layer" aria-hidden="true"></div>
 
     <!-- ========== FONDO CELESTIAL ANIMADO ========== -->
     <div class="celestial-background" id="celestialBackground">
@@ -76,7 +99,7 @@
         <div class="header-inner">
             <a href="#home" class="brand">
                 <div class="brand-logo-wrap">
-                    <img src="MEDIA/SAN FRANCISCO PALOMITAS.png" alt="San Francisco de Padua" class="brand-logo">
+                    <img src="MEDIA/SAN FRANCISCO PALOMITAS.png" alt="San Francisco de Padua" class="brand-logo" data-protected="true">
                     <span class="brand-halo"></span>
                 </div>
                 <div class="brand-text">
@@ -95,7 +118,7 @@
             </nav>
 
             <div class="header-actions">
-                <a href="https://wa.me/573008486851?text=Hola%20San%20Francisco%20de%20Padua,%20me%20interesan%20sus%20productos" 
+                <a href="https://wa.me/573008486851?text=Hola%20San%20Francisco%20de%20Padua,%20me%20interesan%20sus%20productos"
                    target="_blank" rel="noopener noreferrer" class="btn-whatsapp-header">
                     <i class="fab fa-whatsapp"></i>
                     <span>WhatsApp</span>
@@ -112,7 +135,7 @@
         <section id="home" class="hero">
             <div class="hero-decor hero-decor-1"></div>
             <div class="hero-decor hero-decor-2"></div>
-            
+
             <div class="hero-inner">
                 <div class="hero-badge">
                     <i class="fas fa-star"></i>
@@ -123,7 +146,7 @@
                 <div class="hero-logo-wrap">
                     <div class="hero-logo-ring"></div>
                     <div class="hero-logo-ring ring-2"></div>
-                    <img src="MEDIA/SAN FRANCISCO PALOMITAS.png" alt="San Francisco de Padua" class="hero-logo">
+                    <img src="MEDIA/SAN FRANCISCO PALOMITAS.png" alt="San Francisco de Padua" class="hero-logo" data-protected="true">
                 </div>
 
                 <h2 class="hero-title">
@@ -132,7 +155,7 @@
                 </h2>
 
                 <p class="hero-subtitle">
-                    Desde 2006 ofrecemos artículos religiosos que inspiran fe, 
+                    Desde 2006 ofrecemos artículos religiosos que inspiran fe,
                     conectan con lo divino y acompañan tu camino espiritual.
                 </p>
 
@@ -223,7 +246,7 @@
 
                 <div class="search-box">
                     <i class="fas fa-search search-icon"></i>
-                    <input type="text" class="search-input" id="searchInput" 
+                    <input type="text" class="search-input" id="searchInput"
                            placeholder="Buscar por nombre, santo o categoría..." maxlength="100">
                     <button class="search-button" id="searchButton">
                         <i class="fas fa-arrow-right"></i>
@@ -356,9 +379,9 @@
 
                     <div class="about-image-wrap">
                         <div class="about-image-frame"></div>
-                        <img src="MEDIA/ALMACEN%201.jpeg" alt="Nuestra tienda" loading="lazy">
+                        <img src="MEDIA/ALMACEN%201.jpeg" alt="Nuestra tienda" loading="lazy" data-protected="true">
                         <div class="about-image-badge">
-                            <img src="MEDIA/SAN FRANCISCO PALOMITAS.png" alt="San Francisco">
+                            <img src="MEDIA/SAN FRANCISCO PALOMITAS.png" alt="San Francisco" data-protected="true">
                         </div>
                     </div>
                 </div>
@@ -377,13 +400,13 @@
                 <div class="visit-grid">
                     <div class="visit-gallery">
                         <div class="gallery-main" onclick="openModal(this.querySelector('img').src)">
-                            <img src="MEDIA/ALMACEN%201.jpeg" alt="Interior de la tienda" loading="lazy">
+                            <img src="MEDIA/ALMACEN%201.jpeg" alt="Interior de la tienda" loading="lazy" data-protected="true">
                         </div>
                         <div class="gallery-small" onclick="openModal(this.querySelector('img').src)">
-                            <img src="MEDIA/ALMACEN%202.jpeg" alt="Productos" loading="lazy">
+                            <img src="MEDIA/ALMACEN%202.jpeg" alt="Productos" loading="lazy" data-protected="true">
                         </div>
                         <div class="gallery-small" onclick="openModal(this.querySelector('img').src)">
-                            <img src="MEDIA/ALMACEN%203.jpeg" alt="Estanterías" loading="lazy">
+                            <img src="MEDIA/ALMACEN%203.jpeg" alt="Estanterías" loading="lazy" data-protected="true">
                         </div>
                     </div>
 
@@ -418,10 +441,10 @@
                         </div>
 
                         <div class="visit-map">
-                            <iframe 
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3982.6740040667867!2d-76.53638542424154!3d3.4511160965203944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e30a6a0c5c6b5a3%3A0x1a7c8a9b9b9b9b9b!2sCl.%209%20%235-28%2C%20Comuna%203%2C%20Cali%2C%20Valle%20del%20Cauca%2C%20Colombia!5e0!3m2!1ses!2sco!4v1690834567890!5m2!1ses!2sco" 
-                                class="map-iframe" 
-                                allowfullscreen="" 
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3982.6740040667867!2d-76.53638542424154!3d3.4511160965203944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e30a6a0c5c6b5a3%3A0x1a7c8a9b9b9b9b9b!2sCl.%209%20%235-28%2C%20Comuna%203%2C%20Cali%2C%20Valle%20del%20Cauca%2C%20Colombia!5e0!3m2!1ses!2sco!4v1690834567890!5m2!1ses!2sco"
+                                class="map-iframe"
+                                allowfullscreen=""
                                 loading="lazy"
                                 title="Ubicación de San Francisco de Padua">
                             </iframe>
@@ -510,7 +533,7 @@
             <div class="footer-grid">
                 <div class="footer-brand-col">
                     <div class="footer-brand">
-                        <img src="MEDIA/SAN FRANCISCO PALOMITAS.png" alt="San Francisco de Padua" class="footer-logo">
+                        <img src="MEDIA/SAN FRANCISCO PALOMITAS.png" alt="San Francisco de Padua" class="footer-logo" data-protected="true">
                         <div>
                             <h3>San Francisco de Padua</h3>
                             <p>Via sanfisio, Alma ghiossamente</p>
@@ -565,7 +588,7 @@
     </footer>
 
     <!-- ========== BOTONES FLOTANTES ========== -->
-    <a href="https://wa.me/573008486851?text=Hola%20San%20Francisco%20de%20Padua,%20me%20interesan%20sus%20productos" 
+    <a href="https://wa.me/573008486851?text=Hola%20San%20Francisco%20de%20Padua,%20me%20interesan%20sus%20productos"
        class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>

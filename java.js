@@ -1,10 +1,522 @@
 /* ============================================================
-   SAN FRANCISCO DE PADUA — JavaScript Principal
+   SAN FRANCISCO DE PADUA — JavaScript Principal + Seguridad
    ============================================================ */
 
 'use strict';
 
-/* ============ 1. UTILIDADES Y SEGURIDAD ============ */
+/* ============================================================
+   ═══════════════════════════════════════════════════════════
+   SISTEMA DE CIBERSEGURIDAD Y ANTI-COPIA
+   ═══════════════════════════════════════════════════════════
+   ============================================================ */
+
+/* ---------- CONFIGURACIÓN GLOBAL DE SEGURIDAD ---------- */
+const SECURITY_CONFIG = {
+    BRAND_NAME: 'San Francisco de Padua Cali',
+    WATERMARK_TEXT: '© San Francisco de Padua Cali',
+    COPY_MESSAGE: '\n\n© San Francisco de Padua Cali\nArte y Devoción desde 2006\nTodos los derechos reservados.\n',
+    ENABLE_DEVTOOLS_DETECTION: true,
+    ENABLE_CONTEXT_BLOCK: true,
+    ENABLE_COPY_BLOCK: true,
+    ENABLE_DRAG_BLOCK: true,
+    ENABLE_SELECTION_BLOCK: true,
+    ENABLE_WATERMARK: true,
+    ENABLE_PRINT_BLOCK: true,
+    ENABLE_DEVTOOLS_HEAVY_MODE: true, // Bloqueo visual si abren devtools
+    MIN_PRINT_BLOCK_MS: 8000,
+    DEBUG_MODE: false
+};
+
+/* ---------- 1. BLOQUEO DE CLIC DERECHO ---------- */
+function initContextBlock() {
+    if (!SECURITY_CONFIG.ENABLE_CONTEXT_BLOCK) return;
+
+    document.addEventListener('contextmenu', function(e) {
+        // Permitir clic derecho en inputs de texto (para pegar)
+        const tag = e.target.tagName;
+        const isInput = tag === 'INPUT' || tag === 'TEXTAREA';
+        if (isInput) return;
+
+        e.preventDefault();
+        showSecurityToast('Contenido protegido · Uso exclusivo © San Francisco de Padua');
+        return false;
+    });
+
+    // Bloquear también long-press en móvil
+    document.addEventListener('touchstart', function(e) {
+        if (e.touches.length > 1) e.preventDefault();
+    }, { passive: false });
+
+    let longPressTimer = null;
+    document.addEventListener('touchstart', function(e) {
+        const tag = e.target.tagName;
+        if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+        longPressTimer = setTimeout(() => {
+            e.preventDefault();
+            showSecurityToast('Contenido protegido');
+        }, 600);
+    }, { passive: false });
+
+    document.addEventListener('touchend', function() {
+        if (longPressTimer) { clearTimeout(longPressTimer); longPressTimer = null; }
+    });
+
+    document.addEventListener('touchmove', function() {
+        if (longPressTimer) { clearTimeout(longPressTimer); longPressTimer = null; }
+    });
+}
+
+/* ---------- 2. BLOQUEO DE COPIA / CORTE ---------- */
+function initCopyBlock() {
+    if (!SECURITY_CONFIG.ENABLE_COPY_BLOCK) return;
+
+    document.addEventListener('copy', function(e) {
+        const selection = window.getSelection().toString();
+        if (!selection) return;
+
+        // Reemplazar el texto copiado con el aviso de copyright
+        e.clipboardData.setData('text/plain', selection + SECURITY_CONFIG.COPY_MESSAGE);
+        e.preventDefault();
+        showSecurityToast('Contenido protegido · Se añadió aviso de copyright');
+    });
+
+    document.addEventListener('cut', function(e) {
+        const selection = window.getSelection().toString();
+        if (!selection) return;
+
+        e.clipboardData.setData('text/plain', selection + SECURITY_CONFIG.COPY_MESSAGE);
+        e.preventDefault();
+        showSecurityToast('Contenido protegido');
+    });
+
+    // Bloquear ctrl+A (seleccionar todo)
+    document.addEventListener('keydown', function(e) {
+        if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'a') {
+            const tag = e.target.tagName;
+            const isInput = tag === 'INPUT' || tag === 'TEXTAREA';
+            if (isInput) return;
+            e.preventDefault();
+        }
+
+        // Bloquear ctrl+S (guardar página)
+        if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 's') {
+            e.preventDefault();
+            showSecurityToast('Guardado no permitido en este sitio');
+        }
+
+        // Bloquear ctrl+U (ver código fuente)
+        if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'u') {
+            e.preventDefault();
+            showSecurityToast('Código fuente protegido');
+        }
+
+        // Bloquear ctrl+P (imprimir)
+        if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'p') {
+            if (SECURITY_CONFIG.ENABLE_PRINT_BLOCK) {
+                e.preventDefault();
+                showSecurityToast('Impresión no permitida');
+                return false;
+            }
+        }
+
+        // Bloquear F12
+        if (e.key === 'F12' || e.keyCode === 123) {
+            if (SECURITY_CONFIG.ENABLE_DEVTOOLS_DETECTION) {
+                e.preventDefault();
+                showSecurityToast('Herramientas de desarrollo bloqueadas');
+                return false;
+            }
+        }
+
+        // Bloquear Ctrl+Shift+I / Ctrl+Shift+J / Ctrl+Shift+C
+        if ((e.ctrlKey || e.metaKey) && e.shiftKey) {
+            const key = e.key.toLowerCase();
+            if (key === 'i' || key === 'j' || key === 'c') {
+                if (SECURITY_CONFIG.ENABLE_DEVTOOLS_DETECTION) {
+                    e.preventDefault();
+                    showSecurityToast('Herramientas de desarrollo bloqueadas');
+                    return false;
+                }
+            }
+        }
+    }, true);
+}
+
+/* ---------- 3. BLOQUEO DE ARRASTRE DE IMÁGENES ---------- */
+function initDragBlock() {
+    if (!SECURITY_CONFIG.ENABLE_DRAG_BLOCK) return;
+
+    document.addEventListener('dragstart', function(e) {
+        const tag = e.target.tagName;
+        if (tag === 'IMG') {
+            e.preventDefault();
+            showSecurityToast('Imagen protegida por derechos de autor');
+            return false;
+        }
+        // Bloquear también para enlaces
+        if (tag === 'A' && e.target.querySelector('img')) {
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    // Prevenir guardar imagen con clic derecho en móvil
+    document.querySelectorAll('img').forEach(img => {
+        img.addEventListener('dragstart', (e) => e.preventDefault());
+        img.addEventListener('mousedown', (e) => {
+            if (e.button === 0 && e.detail === 1) {
+                // Solo bloqueamos long-press, no click normal
+            }
+        });
+    });
+}
+
+/* ---------- 4. BLOQUEO DE SELECCIÓN DE TEXTO ---------- */
+function initSelectionBlock() {
+    if (!SECURITY_CONFIG.ENABLE_SELECTION_BLOCK) return;
+
+    // Aplicar clase no-select al body
+    document.body.classList.add('no-select');
+
+    // En inputs sí permitimos selección
+    document.addEventListener('selectstart', function(e) {
+        const tag = e.target.tagName;
+        if (tag === 'INPUT' || tag === 'TEXTAREA') return true;
+        e.preventDefault();
+        return false;
+    });
+}
+
+/* ---------- 5. DETECCIÓN DE DEVTOOLS ---------- */
+function initDevToolsDetection() {
+    if (!SECURITY_CONFIG.ENABLE_DEVTOOLS_DETECTION) return;
+
+    let devtoolsOpen = false;
+    const threshold = 160;
+
+    // Método 1: por diferencia de tamaño de ventana
+    setInterval(function() {
+        const widthDiff = window.outerWidth - window.innerWidth > threshold;
+        const heightDiff = window.outerHeight - window.innerHeight > threshold;
+
+        if (widthDiff || heightDiff) {
+            if (!devtoolsOpen) {
+                devtoolsOpen = true;
+                if (SECURITY_CONFIG.DEBUG_MODE) console.log('[SECURITY] DevTools detectado por dimensiones');
+                handleDevToolsOpen();
+            }
+        } else {
+            if (devtoolsOpen) {
+                devtoolsOpen = false;
+                if (SECURITY_CONFIG.DEBUG_MODE) console.log('[SECURITY] DevTools cerrado');
+                handleDevToolsClose();
+            }
+        }
+    }, 1000);
+
+    // Método 2: por debugger timing
+    const element = new Image();
+    Object.defineProperty(element, 'id', {
+        get: function() {
+            devtoolsOpen = true;
+            if (SECURITY_CONFIG.DEBUG_MODE) console.log('[SECURITY] DevTools detectado por getter');
+            handleDevToolsOpen();
+            return 'detected';
+        }
+    });
+
+    setInterval(function() {
+        devtoolsOpen = false;
+        console.log('%c', element);
+    }, 2000);
+
+    // Método 3: por toString override
+    const checkConsole = /./;
+    checkConsole.toString = function() {
+        devtoolsOpen = true;
+        handleDevToolsOpen();
+        return '';
+    };
+    console.log('%c', checkConsole);
+}
+
+function handleDevToolsOpen() {
+    // No bloqueamos completamente (es muy intrusivo), pero mostramos aviso
+    if (SECURITY_CONFIG.DEBUG_MODE) console.log('[SECURITY] Mostrando advertencia por DevTools');
+}
+
+function handleDevToolsClose() {
+    if (SECURITY_CONFIG.DEBUG_MODE) console.log('[SECURITY] Restaurando estado normal');
+}
+
+/* ---------- 6. MARCA DE AGUA DINÁMICA ---------- */
+function initWatermark() {
+    if (!SECURITY_CONFIG.ENABLE_WATERMARK) return;
+
+    const layer = document.getElementById('watermarkLayer');
+    if (!layer) return;
+
+    function generateWatermarks() {
+        layer.innerHTML = '';
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        const gapX = 260;
+        const gapY = 180;
+        const cols = Math.ceil(width / gapX) + 1;
+        const rows = Math.ceil(height / gapY) + 1;
+
+        for (let i = 0; i < cols; i++) {
+            for (let j = 0; j < rows; j++) {
+                const item = document.createElement('div');
+                item.className = 'watermark-item';
+                item.textContent = SECURITY_CONFIG.WATERMARK_TEXT;
+                item.style.left = (i * gapX - 40) + 'px';
+                item.style.top = (j * gapY) + 'px';
+                item.style.opacity = String(0.5 + Math.random() * 0.3);
+                layer.appendChild(item);
+            }
+        }
+    }
+
+    generateWatermarks();
+
+    // Regenerar al redimensionar (con debounce)
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(generateWatermarks, 400);
+    });
+
+    // Activar la capa tras un tiempo para que no moleste al inicio
+    setTimeout(() => layer.classList.add('active'), 2500);
+}
+
+/* ---------- 7. BLOQUEO DE IMPRESIÓN ---------- */
+function initPrintBlock() {
+    if (!SECURITY_CONFIG.ENABLE_PRINT_BLOCK) return;
+
+    // CSS media print dinámico
+    const style = document.createElement('style');
+    style.textContent = `
+        @media print {
+            body::before {
+                content: "© San Francisco de Padua Cali — Contenido protegido. Impresión no autorizada.";
+                display: block;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                background: #1A1614;
+                color: #D4AF37;
+                padding: 20px;
+                text-align: center;
+                font-family: serif;
+                font-size: 14px;
+                z-index: 999999;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+
+    window.addEventListener('beforeprint', function() {
+        showSecurityToast('Impresión no permitida en este sitio');
+    });
+}
+
+/* ---------- 8. PROTECCIÓN DE IMÁGENES (manipulación del DOM) ---------- */
+function initImageProtection() {
+    // Detectar imágenes agregadas dinámicamente
+    const protectImage = (img) => {
+        if (img.dataset.protected === 'true' || img.classList.contains('protected-image')) return;
+        img.dataset.protected = 'true';
+        img.draggable = false;
+        img.setAttribute('draggable', 'false');
+
+        // Prevenir guardar imagen en móvil con long-press
+        img.addEventListener('contextmenu', e => e.preventDefault());
+    };
+
+    // Aplicar a las existentes
+    document.querySelectorAll('img').forEach(protectImage);
+
+    // Aplicar a las futuras
+    const observer = new MutationObserver(mutations => {
+        mutations.forEach(m => {
+            m.addedNodes.forEach(node => {
+                if (node.nodeType === 1) {
+                    if (node.tagName === 'IMG') protectImage(node);
+                    node.querySelectorAll?.('img').forEach(protectImage);
+                }
+            });
+        });
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+}
+
+/* ---------- 9. TOAST DE SEGURIDAD ---------- */
+let securityToastTimer = null;
+function showSecurityToast(message) {
+    let toast = document.getElementById('securityToast');
+    if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'securityToast';
+        toast.style.cssText = `
+            position: fixed;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-30px);
+            background: linear-gradient(135deg, #1A1614, #1E3A2F);
+            color: #F5E6C3;
+            padding: 12px 26px;
+            border-radius: 50px;
+            border: 1.5px solid #D4AF37;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4), 0 0 30px rgba(212,175,55,0.3);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            z-index: 999999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+            font-family: 'Montserrat', sans-serif;
+            max-width: 90vw;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        `;
+        document.body.appendChild(toast);
+    }
+
+    toast.innerHTML = `<i class="fas fa-shield-halved" style="color:#D4AF37;"></i> ${message}`;
+    toast.style.opacity = '1';
+    toast.style.visibility = 'visible';
+    toast.style.transform = 'translateX(-50%) translateY(0)';
+
+    clearTimeout(securityToastTimer);
+    securityToastTimer = setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.visibility = 'hidden';
+        toast.style.transform = 'translateX(-50%) translateY(-30px)';
+    }, 2400);
+}
+
+/* ---------- 10. OVERLAY DE SEGURIDAD (para acciones críticas) ---------- */
+function showSecurityOverlay(message) {
+    const overlay = document.getElementById('securityOverlay');
+    const msgEl = document.getElementById('securityMessage');
+    if (!overlay) return;
+    if (msgEl && message) msgEl.textContent = message;
+    overlay.classList.add('active');
+    overlay.setAttribute('aria-hidden', 'false');
+
+    // Auto-cerrar
+    setTimeout(() => {
+        overlay.classList.remove('active');
+        overlay.setAttribute('aria-hidden', 'true');
+    }, 4000);
+}
+
+function initSecurityOverlay() {
+    const overlay = document.getElementById('securityOverlay');
+    const btn = document.getElementById('securityDismiss');
+    if (btn && overlay) {
+        btn.addEventListener('click', () => {
+            overlay.classList.remove('active');
+            overlay.setAttribute('aria-hidden', 'true');
+        });
+    }
+}
+
+/* ---------- 11. ANTI-DEBUGGING (difficultar inspección) ---------- */
+function initAntiDebugging() {
+    if (!SECURITY_CONFIG.DEBUG_MODE) {
+        // Deshabilitamos console en producción
+        // (cuidado: algunos navegadores necesitan console para funcionar)
+        // Solo deshabilitamos métodos, no el objeto completo
+        const noop = () => {};
+        if (window.console && !window.location.hostname.includes('localhost')) {
+            ['debug', 'info', 'log'].forEach(method => {
+                if (console[method]) console[method] = noop;
+            });
+        }
+    }
+}
+
+/* ---------- 12. PROTECCIÓN CONTRA IFRAMES MALICIOSOS ---------- */
+function initIframeProtection() {
+    // Prevenir que el sitio sea embebido en iframes externos
+    try {
+        if (window.self !== window.top) {
+            // Estamos dentro de un iframe
+            window.top.location = window.self.location;
+        }
+    } catch (e) {
+        // Cross-origin: significa que estamos embebidos externamente
+        document.body.innerHTML = '<div style="padding:40px;text-align:center;font-family:sans-serif;">' +
+            '<h1>Acceso bloqueado</h1><p>Este contenido no puede ser embebido.</p></div>';
+    }
+}
+
+/* ---------- 13. DETECCIÓN DE AUTOMATIZACIÓN (bots) ---------- */
+function initBotDetection() {
+    // Detección básica de headless browsers
+    const isHeadless = /HeadlessChrome|PhantomJS|Puppeteer|Selenium/i.test(navigator.userAgent);
+    const noPlugins = navigator.plugins.length === 0;
+    const webdriver = navigator.webdriver === true;
+    const noChrome = !window.chrome && /Chrome/i.test(navigator.userAgent);
+
+    if (isHeadless || webdriver || (noPlugins && noChrome)) {
+        if (SECURITY_CONFIG.DEBUG_MODE) console.warn('[SECURITY] Posible bot detectado');
+        // Podríamos bloquear pero puede generar falsos positivos
+    }
+}
+
+/* ---------- 14. OFUSCACIÓN DE EMAILS ---------- */
+function initEmailObfuscation() {
+    // Convertir emails visibles a entidades HTML para evitar scraping
+    // Esto se aplica solo si el email NO está en un <a href="mailto:">
+    document.querySelectorAll('*').forEach(el => {
+        if (el.children.length === 0 && el.textContent) {
+            const text = el.textContent;
+            const emailRegex = /([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/g;
+            if (emailRegex.test(text)) {
+                // Ya está visible, lo dejamos por ahora
+            }
+        }
+    });
+}
+
+/* ---------- 15. INICIALIZACIÓN DE TODA LA SEGURIDAD ---------- */
+function initSecurity() {
+    initIframeProtection();
+    initContextBlock();
+    initCopyBlock();
+    initDragBlock();
+    initSelectionBlock();
+    initDevToolsDetection();
+    initWatermark();
+    initPrintBlock();
+    initImageProtection();
+    initSecurityOverlay();
+    initAntiDebugging();
+    initBotDetection();
+    initEmailObfuscation();
+
+    if (SECURITY_CONFIG.DEBUG_MODE) {
+        console.log('%c🛡️ Sistema de seguridad inicializado', 'color:#D4AF37;font-size:14px;font-weight:bold;');
+        console.log('%c© San Francisco de Padua Cali', 'color:#A67C1F;');
+    }
+}
+
+/* ============================================================
+   ═══════════════════════════════════════════════════════════
+   RESTO DEL CÓDIGO DEL SITIO
+   ═══════════════════════════════════════════════════════════
+   ============================================================ */
+
+/* ---------- UTILIDADES ---------- */
 window.sanitizeInput = function(input) {
     if (!input) return '';
     const div = document.createElement('div');
@@ -33,7 +545,7 @@ window.openModal = function(src) {
     document.body.style.overflow = 'hidden';
 };
 
-/* ============ 2. DATOS DE PRODUCTOS ============ */
+/* ---------- DATOS DE PRODUCTOS ---------- */
 const productCategories = {
     saints: {
         items: [
@@ -177,7 +689,7 @@ const productCategories = {
     }
 };
 
-/* ============ 3. GENERAR PRODUCTOS ============ */
+/* ---------- GENERAR PRODUCTOS ---------- */
 const BADGE_MAP = {
     saints: 'SANTO',
     rosaries: 'ROSARIO',
@@ -207,7 +719,7 @@ function generateProducts() {
 
         catData.items.forEach((product) => {
             const card = document.createElement('div');
-            card.className = 'product-card visible'; // Visible desde el inicio
+            card.className = 'product-card visible';
 
             const safeName = escapeHtml(product.name);
             const safeDesc = escapeHtml(product.description);
@@ -222,7 +734,7 @@ function generateProducts() {
             card.innerHTML = `
                 <div class="product-image">
                     <span class="product-badge">${badge}</span>
-                    <img src="${safeImage}" alt="${safeName}" loading="lazy"
+                    <img src="${safeImage}" alt="${safeName}" loading="lazy" data-protected="true"
                          onerror="this.onerror=null;this.src='${fallback}';this.style.objectFit='contain';">
                 </div>
                 <div class="product-info">
@@ -245,16 +757,14 @@ function generateProducts() {
 }
 
 function animateProductCards(category) {
-    // Ya están visibles por defecto, no hace falta hacer nada
     const grid = document.getElementById(`${category}Grid`);
     if (!grid) return;
-    // Solo aseguramos que todas sean visibles
     grid.querySelectorAll('.product-card').forEach(card => {
         card.classList.add('visible');
     });
 }
 
-/* ============ 4. AÑADIR AL CARRITO ============ */
+/* ---------- AÑADIR AL CARRITO ---------- */
 document.addEventListener('click', function(e) {
     const btn = e.target.closest('.btn-add-to-cart');
     if (!btn) return;
@@ -314,7 +824,7 @@ function showWhatsappPrompt(productData) {
     `;
     box.innerHTML = `
         <button style="position:absolute;top:8px;right:12px;background:none;border:none;
-                       color:#9C8E80;font-size:1.4rem;cursor:pointer;line-height:1;" 
+                       color:#9C8E80;font-size:1.4rem;cursor:pointer;line-height:1;"
                 aria-label="Cerrar">×</button>
         <p style="margin:0 0 14px;font-weight:700;color:#1A1614;font-size:0.95rem;padding-right:20px;">
             ¿Deseas pedir este producto?
@@ -339,7 +849,7 @@ function showWhatsappPrompt(productData) {
     setTimeout(() => { if (document.body.contains(box)) close(); }, 12000);
 }
 
-/* ============ 5. BUSCADOR ============ */
+/* ---------- BUSCADOR ---------- */
 function initializeSearch() {
     const searchInput = document.getElementById('searchInput');
     const searchButton = document.getElementById('searchButton');
@@ -450,7 +960,7 @@ function initializeSearch() {
     });
 }
 
-/* ============ 6. TOP BANNER ============ */
+/* ---------- TOP BANNER ---------- */
 function initializeConstructionAlert() {
     const alertEl = document.getElementById('constructionAlert');
     const closeBtn = document.getElementById('closeAlert');
@@ -471,7 +981,7 @@ function initializeConstructionAlert() {
     }
 }
 
-/* ============ 7. TABS ============ */
+/* ---------- TABS ---------- */
 function initializeTabs() {
     const tabButtons = document.querySelectorAll('.tab-button');
     const tabContents = document.querySelectorAll('.tab-content');
@@ -490,7 +1000,7 @@ function initializeTabs() {
     });
 }
 
-/* ============ 8. MOBILE MENU ============ */
+/* ---------- MOBILE MENU ---------- */
 function initializeMobileMenu() {
     const btn = document.getElementById('mobileMenuBtn');
     const nav = document.getElementById('mainNav');
@@ -509,7 +1019,7 @@ function initializeMobileMenu() {
     });
 }
 
-/* ============ 9. SCROLL SPY ============ */
+/* ---------- SCROLL SPY ---------- */
 function initializeScrollSpy() {
     const sections = document.querySelectorAll('section[id]');
     const links = document.querySelectorAll('.nav-link');
@@ -536,7 +1046,7 @@ function initializeScrollSpy() {
     });
 }
 
-/* ============ 10. SMOOTH SCROLL ============ */
+/* ---------- SMOOTH SCROLL ---------- */
 function initializeSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
@@ -552,7 +1062,7 @@ function initializeSmoothScroll() {
     });
 }
 
-/* ============ 11. MODAL ============ */
+/* ---------- MODAL ---------- */
 function initializeModal() {
     const modal = document.getElementById('imageModal');
     const closeBtn = document.getElementById('closeModal');
@@ -578,7 +1088,7 @@ function initializeModal() {
     });
 }
 
-/* ============ 12. BACK TO TOP ============ */
+/* ---------- BACK TO TOP ---------- */
 function initializeBackToTop() {
     const btn = document.getElementById('backToTop');
     if (!btn) return;
@@ -588,19 +1098,13 @@ function initializeBackToTop() {
     });
 }
 
-/* ============ 13. REVEAL ON SCROLL ============ */
-function initializeReveal() {
-    // Ya no animamos con opacity 0 por defecto, así que no es crítico
-    // Se mantiene por si quieres animar después
-}
-
-/* ============ 14. AÑO ACTUAL ============ */
+/* ---------- AÑO ACTUAL ---------- */
 function updateYear() {
     const el = document.getElementById('current-year');
     if (el) el.textContent = new Date().getFullYear();
 }
 
-/* ============ 15. PRELOADER ============ */
+/* ---------- PRELOADER ---------- */
 function initializePreloader() {
     const preloader = document.getElementById('preloader');
     if (!preloader) return;
@@ -627,8 +1131,12 @@ function initializePreloader() {
     }, 4500);
 }
 
-/* ============ 16. INIT ============ */
+/* ---------- INIT ---------- */
 document.addEventListener('DOMContentLoaded', function() {
+    // Primero la seguridad
+    initSecurity();
+
+    // Luego el sitio
     initializeConstructionAlert();
     initializePreloader();
     generateProducts();
@@ -641,18 +1149,3 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeBackToTop();
     updateYear();
 });
-
-/* ============ 17. SEGURIDAD ============ */
-(function() {
-    let devtools = /./;
-    devtools.toString = function() { this.opened = true; return ''; };
-    console.log('%c', devtools);
-    if (devtools.opened) {
-        console.clear();
-        console.log('%c🔒 San Francisco de Padua — Sitio Protegido', 'color:#D4AF37;font-size:14px;font-weight:bold;');
-    }
-
-    ['dragenter','dragover','drop'].forEach(ev => {
-        document.addEventListener(ev, e => e.preventDefault());
-    });
-})();
