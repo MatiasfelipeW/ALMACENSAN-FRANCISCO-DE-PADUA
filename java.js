@@ -4,7 +4,7 @@
 
 'use strict';
 
-/* ============ 1. SEGURIDAD Y UTILIDADES ============ */
+/* ============ 1. UTILIDADES Y SEGURIDAD ============ */
 window.sanitizeInput = function(input) {
     if (!input) return '';
     const div = document.createElement('div');
@@ -33,7 +33,7 @@ window.openModal = function(src) {
     document.body.style.overflow = 'hidden';
 };
 
-/* ============ 2. DATOS DE PRODUCTOS (INTACTOS) ============ */
+/* ============ 2. DATOS DE PRODUCTOS ============ */
 const productCategories = {
     saints: {
         items: [
@@ -205,9 +205,9 @@ function generateProducts() {
 
         gridElement.innerHTML = '';
 
-        catData.items.forEach((product, index) => {
+        catData.items.forEach((product) => {
             const card = document.createElement('div');
-            card.className = 'product-card';
+            card.className = 'product-card visible'; // Visible desde el inicio
 
             const safeName = escapeHtml(product.name);
             const safeDesc = escapeHtml(product.description);
@@ -240,19 +240,17 @@ function generateProducts() {
                 </div>
             `;
             gridElement.appendChild(card);
-
-            setTimeout(() => card.classList.add('visible'), 80 + index * 45);
         });
     });
 }
 
 function animateProductCards(category) {
+    // Ya están visibles por defecto, no hace falta hacer nada
     const grid = document.getElementById(`${category}Grid`);
     if (!grid) return;
-    const cards = grid.querySelectorAll('.product-card');
-    cards.forEach((card, i) => {
-        card.classList.remove('visible');
-        setTimeout(() => card.classList.add('visible'), 60 + i * 45);
+    // Solo aseguramos que todas sean visibles
+    grid.querySelectorAll('.product-card').forEach(card => {
+        card.classList.add('visible');
     });
 }
 
@@ -473,7 +471,7 @@ function initializeConstructionAlert() {
     }
 }
 
-/* ============ 7. TAB SYSTEM ============ */
+/* ============ 7. TABS ============ */
 function initializeTabs() {
     const tabButtons = document.querySelectorAll('.tab-button');
     const tabContents = document.querySelectorAll('.tab-content');
@@ -488,8 +486,6 @@ function initializeTabs() {
             button.classList.add('active');
             const content = document.getElementById(`${tabId}-tab`);
             if (content) content.classList.add('active');
-
-            setTimeout(() => animateProductCards(tabId), 100);
         });
     });
 }
@@ -513,7 +509,7 @@ function initializeMobileMenu() {
     });
 }
 
-/* ============ 9. NAV ACTIVE ON SCROLL ============ */
+/* ============ 9. SCROLL SPY ============ */
 function initializeScrollSpy() {
     const sections = document.querySelectorAll('section[id]');
     const links = document.querySelectorAll('.nav-link');
@@ -594,19 +590,8 @@ function initializeBackToTop() {
 
 /* ============ 13. REVEAL ON SCROLL ============ */
 function initializeReveal() {
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.12 });
-
-    document.querySelectorAll('.section-header, .policy-card, .about-content, .about-image-wrap, .visit-info, .payment-card, .contact-card, .astat').forEach(el => {
-        el.classList.add('reveal');
-        observer.observe(el);
-    });
+    // Ya no animamos con opacity 0 por defecto, así que no es crítico
+    // Se mantiene por si quieres animar después
 }
 
 /* ============ 14. AÑO ACTUAL ============ */
@@ -655,13 +640,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeModal();
     initializeBackToTop();
     updateYear();
-
-    setTimeout(initializeReveal, 200);
-
-    setTimeout(() => {
-        const activeTab = document.querySelector('.tab-button.active');
-        if (activeTab) animateProductCards(activeTab.dataset.tab);
-    }, 900);
 });
 
 /* ============ 17. SEGURIDAD ============ */
@@ -677,16 +655,4 @@ document.addEventListener('DOMContentLoaded', function() {
     ['dragenter','dragover','drop'].forEach(ev => {
         document.addEventListener(ev, e => e.preventDefault());
     });
-
-    new MutationObserver(mutations => {
-        mutations.forEach(m => {
-            m.addedNodes.forEach(node => {
-                if (node.nodeType === 1 && (node.tagName === 'SCRIPT' || node.tagName === 'IFRAME')) {
-                    if (node.src && !node.src.startsWith(location.origin) && !node.src.includes('google.com')) {
-                        console.warn('[SECURITY] Script externo detectado');
-                    }
-                }
-            });
-        });
-    }).observe(document.body, { childList: true, subtree: true });
 })();

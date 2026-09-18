@@ -1,10 +1,8 @@
 /* ============================================================
    SAN FRANCISCO DE PADUA — Boutique Religiosa Premium
-   Diseño: Elegancia sacral · Dorados · Luz divina
    ============================================================ */
 
 :root {
-    /* Paleta */
     --gold-100: #F5E6C3;
     --gold-200: #E8D19E;
     --gold-300: #D4AF37;
@@ -27,7 +25,6 @@
 
     --green-deep: #1E3A2F;
     --green-mid:  #2C5142;
-    --red-wine:   #7A2B2B;
 
     --white: #FFFFFF;
 
@@ -39,7 +36,6 @@
     --radius-sm: 8px;
     --radius-md: 16px;
     --radius-lg: 24px;
-    --radius-xl: 32px;
 
     --font-display: 'Cinzel', serif;
     --font-serif: 'Cormorant Garamond', serif;
@@ -70,9 +66,7 @@ body {
 }
 
 img { max-width: 100%; display: block; }
-
 a { color: inherit; text-decoration: none; }
-
 button { font-family: inherit; cursor: pointer; border: none; background: none; }
 
 h1, h2, h3, h4, h5 {
@@ -223,7 +217,6 @@ h1, h2, h3, h4, h5 {
     justify-content: center;
 }
 
-.top-banner-content i.fa-sparkles,
 .top-banner-content .fa-sparkles {
     color: var(--gold-300);
     animation: sparkleRotate 3s ease-in-out infinite;
@@ -268,7 +261,7 @@ h1, h2, h3, h4, h5 {
     z-index: 999;
     transition: all 0.4s var(--transition);
     padding: 14px 0;
-    background: rgba(253, 251, 247, 0.75);
+    background: rgba(253, 251, 247, 0.85);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     border-bottom: 1px solid rgba(212,175,55,0.15);
@@ -329,6 +322,8 @@ body.banner-hidden #mainHeader { top: 0; }
     -webkit-mask: radial-gradient(circle, transparent 60%, black 62%);
 }
 
+@keyframes haloSpin { to { transform: rotate(360deg); } }
+
 .brand:hover .brand-logo { transform: scale(1.08) rotate(-4deg); }
 
 .brand-text h1 {
@@ -350,7 +345,6 @@ body.banner-hidden #mainHeader { top: 0; }
     text-transform: uppercase;
 }
 
-/* NAV */
 .main-nav {
     display: flex;
     align-items: center;
@@ -434,11 +428,11 @@ body.banner-hidden #mainHeader { top: 0; }
 .mobile-toggle.active span:nth-child(2) { opacity: 0; }
 .mobile-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* ============ HERO ============ */
+/* ============ HERO (FIX: contenido visible siempre) ============ */
 .hero {
     position: relative;
     min-height: 100vh;
-    padding: 160px 24px 80px;
+    padding: 200px 24px 100px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -475,12 +469,7 @@ body.banner-hidden #mainHeader { top: 0; }
     flex-direction: column;
     align-items: center;
     gap: 26px;
-    animation: heroFadeUp 1.2s var(--transition) both;
-}
-
-@keyframes heroFadeUp {
-    from { opacity: 0; transform: translateY(40px); }
-    to   { opacity: 1; transform: translateY(0); }
+    opacity: 1; /* FIX: garantiza visibilidad */
 }
 
 .hero-badge {
@@ -546,8 +535,6 @@ body.banner-hidden #mainHeader { top: 0; }
     0%, 100% { transform: scale(1); opacity: 0.7; }
     50%      { transform: scale(1.06); opacity: 0.3; }
 }
-
-@keyframes haloSpin { to { transform: rotate(360deg); } }
 
 .hero-title {
     font-family: var(--font-display);
@@ -739,7 +726,7 @@ body.banner-hidden #mainHeader { top: 0; }
     50%      { transform: translateX(-50%) translateY(8px); opacity: 1; }
 }
 
-/* ============ SECCIONES GENÉRICAS ============ */
+/* ============ SECCIONES ============ */
 section { padding: 100px 0; position: relative; }
 
 .section-header {
@@ -1084,7 +1071,7 @@ section { padding: 100px 0; position: relative; }
     gap: 28px;
 }
 
-/* ============ PRODUCT CARD ============ */
+/* ============ PRODUCT CARD (FIX: visible siempre) ============ */
 .product-card {
     position: relative;
     background: var(--white);
@@ -1095,14 +1082,13 @@ section { padding: 100px 0; position: relative; }
     transition: all 0.45s var(--transition);
     display: flex;
     flex-direction: column;
-    opacity: 0;
-    transform: translateY(20px);
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .product-card.visible {
     opacity: 1;
     transform: translateY(0);
-    transition: opacity 0.6s var(--transition), transform 0.6s var(--transition);
 }
 
 .product-card:hover {
@@ -2064,7 +2050,7 @@ footer::before {
 @media (max-width: 768px) {
     section { padding: 70px 0; }
     
-    .hero { padding: 140px 20px 70px; min-height: auto; }
+    .hero { padding: 160px 20px 70px; min-height: auto; }
     .hero-logo-wrap { width: 160px; height: 160px; }
     .hero-stats { gap: 18px; padding: 18px 24px; }
     .stat-num { font-size: 1.35rem; }
@@ -2144,16 +2130,4 @@ footer::before {
     
     .preloader-logo { width: 120px; height: 120px; }
     .loader-text { font-size: 0.78rem; letter-spacing: 6px; }
-}
-
-/* ============ ANIMACIONES REVEAL ============ */
-.reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s var(--transition), transform 0.8s var(--transition);
-}
-
-.reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
 }

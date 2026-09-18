@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>San Francisco de Padua | Arte y Devoción desde 2006</title>
     
-    <!-- ========== SEGURIDAD ========== -->
+    <!-- ========== SEGURIDAD (DESACTIVADA EN DESARROLLO) ========== 
+         Descomenta este bloque cuando subas el sitio a producción -->
+    <!--
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
         script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://www.google.com https://maps.googleapis.com;
@@ -18,6 +20,7 @@
         base-uri 'self';
         frame-ancestors 'none';
     ">
+    -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
@@ -580,14 +583,6 @@
     </div>
 
     <!-- ========== SCRIPTS ========== -->
-    <script>
-    // Seguridad básica
-    document.addEventListener('contextmenu', e => e.preventDefault());
-    document.addEventListener('copy', e => {
-        e.clipboardData.setData('text/plain', '© San Francisco de Padua');
-        e.preventDefault();
-    });
-    </script>
     <script src="java.js"></script>
 </body>
 </html>
