@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>San Francisco de Padua | Arte y Devoción desde 2006</title>
     
-    <!-- ========== SEGURIDAD: Políticas de Seguridad ========== -->
-    <!-- Content Security Policy (CSP) - Previene XSS y ataques de inyección -->
+    <!-- ========== SEGURIDAD ========== -->
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
         script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://www.google.com https://maps.googleapis.com;
@@ -19,334 +18,403 @@
         base-uri 'self';
         frame-ancestors 'none';
     ">
-    
-    <!-- Prevenir MIME type sniffing -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    
-    <!-- Protección contra clickjacking -->
     <meta http-equiv="X-Frame-Options" content="DENY">
-    
-    <!-- Habilitar XSS Protection en navegadores antiguos -->
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
-    
-    <!-- Política de referrer -->
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    
-    <!-- Permissions Policy - Restringir capacidades del navegador -->
     <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), usb=(), battery=()">
     
-    <!-- Cache Control para prevenir ataques de caché -->
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    
     <!-- Favicon -->
-    <link rel="icon" href="MEDIA/SAN_FRANCISCO_PALOMITAS__1_-removebg-preview.png" type="image/png">
+    <link rel="icon" href="MEDIA/SAN FRANCISCO PALOMITAS.png" type="image/png">
     
-    <!-- Fonts & Icons (con SRI - Subresource Integrity) -->
+    <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
           integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
           crossorigin="anonymous" referrerpolicy="no-referrer">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" 
-          rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- CSS Principal -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- ========== SEGURIDAD: Detector de Consola Abierta (F12) ========== -->
-    <script>
-    (function() {
-        // Detectar si la consola está abierta
-        let devtools = /./;
-        devtools.toString = function() {
-            this.opened = true;
-            return '';
-        };
-        console.log('%c', devtools);
-        
-        if (devtools.opened) {
-            // Mostrar advertencia pero no bloquear completamente
-            console.clear();
-            console.log('%c🔒 Modo Seguro Activo', 'color: #D4AF37; font-size: 16px; font-weight: bold;');
-            console.log('%cLas herramientas de desarrollo están siendo monitoreadas.', 'color: #666;');
-        }
-        
-        // Prevenir selección de texto y copia no autorizada
-        document.addEventListener('copy', function(e) {
-            e.clipboardData.setData('text/plain', '© San Francisco de Padua - Todos los derechos reservados');
-            e.preventDefault();
-        });
-        
-        // Prevenir inspección de elementos por click derecho (solo en producción)
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-            return false;
-        });
-    })();
-    </script>
 
-    <!-- Alerta de Construcción -->
-    <div class="construction-alert" id="constructionAlert">
-        <div class="alert-content">
-            <i class="fas fa-tools"></i>
-            <span>Visita nuestro instagram</span>
-            <a href="https://www.instagram.com/sanfranciscodepaduas/" target="_blank" rel="noopener noreferrer">San Francisco</a>
+    <!-- ========== FONDO CELESTIAL ANIMADO ========== -->
+    <div class="celestial-background" id="celestialBackground">
+        <div class="aurora aurora-1"></div>
+        <div class="aurora aurora-2"></div>
+        <div class="aurora aurora-3"></div>
+    </div>
+
+    <!-- ========== PRELOADER MINIMALISTA ========== -->
+    <div id="preloader">
+        <div class="loader-wrapper">
+            <img src="MEDIA/SAN FRANCISCO PALOMITAS.png" alt="San Francisco de Padua" class="preloader-logo">
+            <div class="loader-text">SAN FRANCISCO DE PADUA</div>
         </div>
-        <button class="close-alert" id="closeAlert">
+    </div>
+
+    <!-- ========== ALERTA INSTAGRAM ========== -->
+    <div class="top-banner" id="constructionAlert">
+        <div class="top-banner-content">
+            <i class="fas fa-sparkles"></i>
+            <span>Visita nuestro Instagram y descubre las novedades</span>
+            <a href="https://www.instagram.com/sanfranciscodepaduas/" target="_blank" rel="noopener noreferrer">
+                @sanfranciscodepaduas <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+        <button class="top-banner-close" id="closeAlert" aria-label="Cerrar">
             <i class="fas fa-times"></i>
         </button>
     </div>
 
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="loader-logo">
-            <img src="MEDIA/SAN_FRANCISCO_PALOMITAS__1_-removebg-preview.png" alt="San Francisco de Padua" class="preloader-logo">
-        </div>
-        <div class="loader-text">Cargando...</div>
-    </div>
-
-    <!-- Botones Flotantes con atributos de seguridad -->
-    <a href="#" class="back-to-top" id="backToTop" rel="noopener noreferrer">
-        <i class="fas fa-chevron-up"></i>
-    </a>
-
-    <a href="https://wa.me/573008486851?text=Hola%20San%20Francisco%20de%20Padua,%20me%20interesan%20sus%20productos" 
-       class="whatsapp-float" 
-       target="_blank" 
-       rel="noopener noreferrer">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <!-- Modal de Imágenes -->
-    <div class="image-modal" id="imageModal">
-        <span class="close-modal" id="closeModal">&times;</span>
-        <div class="modal-content">
-            <img id="modalImage" src="" alt="Imagen ampliada" loading="lazy">
-        </div>
-    </div>
-
-    <!-- Header -->
-    <header>
-        <div class="header-container">
-            <div class="logo">
-                <div class="logo-icon">
-                    <img src="MEDIA/SAN_FRANCISCO_PALOMITAS__1_-removebg-preview.png" alt="San Francisco de Padua" class="logo-image" loading="lazy">
+    <!-- ========== HEADER ========== -->
+    <header id="mainHeader">
+        <div class="header-inner">
+            <a href="#home" class="brand">
+                <div class="brand-logo-wrap">
+                    <img src="MEDIA/SAN FRANCISCO PALOMITAS.png" alt="San Francisco de Padua" class="brand-logo">
+                    <span class="brand-halo"></span>
                 </div>
-                <div class="logo-text">
-                    <h1>SAN FRANCISCO DE PADUA</h1>
-                    <div class="logo-subtitle">Arte y Devoción desde 2006</div>
+                <div class="brand-text">
+                    <h1>San Francisco de Padua</h1>
+                    <span>Arte & Devoción · Desde 2006</span>
                 </div>
-            </div>
-            
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menú">
-                <i class="fas fa-bars"></i>
-            </button>
-            
-            <nav>
-                <ul id="mainMenu">
-                    <li><a href="#home" class="active">Inicio</a></li>
-                    <li><a href="#products">Productos</a></li>
-                    <li><a href="#about">Nosotros</a></li>
-                    <li><a href="#payment">Pagos</a></li>
-                    <li><a href="#visit">Visítanos</a></li>
-                    <li><a href="#contact">Contacto</a></li>
-                </ul>
+            </a>
+
+            <nav class="main-nav" id="mainNav">
+                <a href="#home" class="nav-link active">Inicio</a>
+                <a href="#products" class="nav-link">Productos</a>
+                <a href="#about" class="nav-link">Nosotros</a>
+                <a href="#payment" class="nav-link">Pagos</a>
+                <a href="#visit" class="nav-link">Visítanos</a>
+                <a href="#contact" class="nav-link">Contacto</a>
             </nav>
+
+            <div class="header-actions">
+                <a href="https://wa.me/573008486851?text=Hola%20San%20Francisco%20de%20Padua,%20me%20interesan%20sus%20productos" 
+                   target="_blank" rel="noopener noreferrer" class="btn-whatsapp-header">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>WhatsApp</span>
+                </a>
+                <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Menú">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
         </div>
     </header>
 
     <main>
-        <!-- Hero Section -->
+        <!-- ========== HERO ========== -->
         <section id="home" class="hero">
-            <div class="hero-content">
-                <div class="hero-logo">
-                    <img src="MEDIA/SAN_FRANCISCO_PALOMITAS__1_-removebg-preview.png" alt="San Francisco de Padua" loading="lazy">
+            <div class="hero-decor hero-decor-1"></div>
+            <div class="hero-decor hero-decor-2"></div>
+            
+            <div class="hero-inner">
+                <div class="hero-badge">
+                    <i class="fas fa-star"></i>
+                    <span>Bendecido desde 2006</span>
+                    <i class="fas fa-star"></i>
                 </div>
-                <h2>Arte y Devoción en Cada Detalle</h2>
-                <p>Desde 2006, ofrecemos artículos religiosos que inspiran fe y conectan con lo divino</p>
+
+                <div class="hero-logo-wrap">
+                    <div class="hero-logo-ring"></div>
+                    <div class="hero-logo-ring ring-2"></div>
+                    <img src="MEDIA/SAN FRANCISCO PALOMITAS.png" alt="San Francisco de Padua" class="hero-logo">
+                </div>
+
+                <h2 class="hero-title">
+                    <span class="title-line">Arte y Devoción</span>
+                    <span class="title-line title-accent">en Cada Detalle</span>
+                </h2>
+
+                <p class="hero-subtitle">
+                    Desde 2006 ofrecemos artículos religiosos que inspiran fe, 
+                    conectan con lo divino y acompañan tu camino espiritual.
+                </p>
+
                 <div class="hero-motto">
-                    <p class="motto-text">Via sanfisio, Alma ghiossamente</p>
+                    <span class="motto-ornament">✦</span>
+                    <em>Via sanfisio, Alma ghiossamente</em>
+                    <span class="motto-ornament">✦</span>
                 </div>
-                <a href="#products" class="cta-button">Descubre Nuestros Productos</a>
+
+                <div class="hero-cta">
+                    <a href="#products" class="btn btn-primary">
+                        <i class="fas fa-gem"></i> Explorar Productos
+                    </a>
+                    <a href="#visit" class="btn btn-ghost">
+                        <i class="fas fa-map-marker-alt"></i> Visítanos
+                    </a>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-num">17<small>+</small></span>
+                        <span class="stat-lbl">Años de fe</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat">
+                        <span class="stat-num">1000<small>+</small></span>
+                        <span class="stat-lbl">Productos</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat">
+                        <span class="stat-num">5000<small>+</small></span>
+                        <span class="stat-lbl">Clientes felices</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-scroll-hint">
+                <span>Descubre más</span>
+                <i class="fas fa-chevron-down"></i>
             </div>
         </section>
 
-        <!-- Políticas de Venta -->
+        <!-- ========== POLÍTICAS ========== -->
         <section class="policies-section">
-            <div class="policies-container">
-                <div class="policies-header">
-                    <div class="policies-logo-container">
-                        <img src="MEDIA/SAN_FRANCISCO_PALOMITAS__1_-removebg-preview.png" alt="San Francisco de Padua" class="policies-logo" loading="lazy">
-                    </div>
-                    <h2 class="policies-title">Nuestras Políticas</h2>
-                    <p class="policies-subtitle">Transparencia y confianza desde 2006</p>
-                    <p class="policies-motto">"Via sanfisio, Alma ghiossamente"</p>
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Transparencia</span>
+                    <h2 class="section-title">Nuestras Políticas</h2>
+                    <p class="section-desc">Confianza y claridad en cada compra desde 2006</p>
                 </div>
-                
+
                 <div class="policies-grid">
-                    <div class="policy-card">
-                        <h3><i class="fas fa-search"></i> Revisión de Productos</h3>
-                        <p>🔍 <strong>En tienda física:</strong> Revisa tu producto antes de salir del establecimiento. No aceptamos cambios después de la compra.</p>
-                        <p>🚚 <strong>Con domiciliario:</strong> Verifica el producto en presencia del mensajero. Cualquier novedad debe reportarse inmediatamente.</p>
-                        <div class="policy-highlight">
-                            <i class="fas fa-exclamation-triangle"></i> La revisión es responsabilidad del cliente al momento de la entrega.
+                    <article class="policy-card">
+                        <div class="policy-icon"><i class="fas fa-search"></i></div>
+                        <h3>Revisión de Productos</h3>
+                        <p><strong>En tienda física:</strong> Revisa tu producto antes de salir del establecimiento. No aceptamos cambios después de la compra.</p>
+                        <p><strong>Con domiciliario:</strong> Verifica el producto en presencia del mensajero. Cualquier novedad debe reportarse inmediatamente.</p>
+                        <div class="policy-note">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            La revisión es responsabilidad del cliente al momento de la entrega.
                         </div>
-                    </div>
-                    
-                    <div class="policy-card">
-                        <h3><i class="fas fa-exchange-alt"></i> Cambios y Devoluciones</h3>
+                    </article>
+
+                    <article class="policy-card">
+                        <div class="policy-icon"><i class="fas fa-exchange-alt"></i></div>
+                        <h3>Cambios y Devoluciones</h3>
                         <p>No realizamos cambios ni devoluciones una vez el producto ha salido de nuestra tienda o ha sido entregado a domicilio.</p>
                         <p>La única excepción son defectos de fabricación evidentes, notificados en el momento de la entrega.</p>
-                    </div>
-                    
-                    <div class="policy-card">
-                        <h3><i class="fas fa-heart"></i> Nuestro Compromiso</h3>
+                    </article>
+
+                    <article class="policy-card">
+                        <div class="policy-icon"><i class="fas fa-heart"></i></div>
+                        <h3>Nuestro Compromiso</h3>
                         <p>Garantizamos que cada artículo refleja nuestro lema: "Arte y Devoción en Cada Detalle".</p>
                         <p>Trabajamos con proveedores de confianza para ofrecer productos de la más alta calidad.</p>
-                    </div>
-                </div>
-                
-                <div style="text-align: center; margin-top: 40px; color: var(--oro-santo);">
-                    <p><i class="fas fa-check-circle"></i> Al realizar una compra, aceptas nuestras políticas</p>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <!-- Buscador con sanitización -->
+        <!-- ========== BUSCADOR ========== -->
         <section class="search-section">
-            <div class="search-container">
-                <div class="section-title">
-                    <h2>Busca tu artículo</h2>
+            <div class="container container-narrow">
+                <div class="section-header">
+                    <span class="section-tag">Encuentra lo que buscas</span>
+                    <h2 class="section-title">Busca tu artículo</h2>
                 </div>
+
                 <div class="search-box">
-                    <input type="text" class="search-input" id="searchInput" placeholder="Buscar por nombre, santo o categoría..." maxlength="100">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" id="searchInput" 
+                           placeholder="Buscar por nombre, santo o categoría..." maxlength="100">
                     <button class="search-button" id="searchButton">
-                        <i class="fas fa-search"></i>
+                        <i class="fas fa-arrow-right"></i>
                     </button>
                 </div>
-                
+
+                <div class="search-results-info" id="searchResultsInfo">
+                    <p id="searchResultsText"></p>
+                </div>
+
                 <div class="no-results" id="noResults">
-                    <h3><i class="fas fa-search"></i> No encontramos resultados</h3>
+                    <i class="fas fa-search"></i>
+                    <h3>No encontramos resultados</h3>
                     <p>Prueba con otras palabras o mira nuestras sugerencias:</p>
                     <div class="search-suggestions">
-                        <div class="suggestion-tag" data-search="Virgen">Virgen María</div>
-                        <div class="suggestion-tag" data-search="San">San Francisco</div>
-                        <div class="suggestion-tag" data-search="Rosario">Rosarios</div>
-                        <div class="suggestion-tag" data-search="Cristo">Cristo</div>
-                        <div class="suggestion-tag" data-search="Medalla">Medallas</div>
+                        <span class="suggestion-tag" data-search="Virgen">Virgen María</span>
+                        <span class="suggestion-tag" data-search="San">San Francisco</span>
+                        <span class="suggestion-tag" data-search="Rosario">Rosarios</span>
+                        <span class="suggestion-tag" data-search="Cristo">Cristo</span>
+                        <span class="suggestion-tag" data-search="Medalla">Medallas</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Productos (el contenido se carga con JavaScript seguro) -->
-        <section id="products">
-            <div class="section-title">
-                <h2>Nuestros Productos</h2>
-            </div>
-            <div class="section-subtitle">
-                <p>Selección de artículos religiosos cuidadosamente elaborados para tu devoción</p>
-            </div>
-            
-            <div class="product-tabs">
-                <div class="tabs-header">
-                    <button class="tab-button active" data-tab="saints">Santos</button>
-                    <button class="tab-button" data-tab="rosaries">Rosarios</button>
-                    <button class="tab-button" data-tab="medals">Medallas</button>
-                    <button class="tab-button" data-tab="amulets">Amuletos</button>
-                    <button class="tab-button" data-tab="scapulars">Escapularios</button>
-                    <button class="tab-button" data-tab="liturgical">Litúrgicos</button>
+        <!-- ========== PRODUCTOS ========== -->
+        <section id="products" class="products-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Nuestra Colección</span>
+                    <h2 class="section-title">Nuestros Productos</h2>
+                    <p class="section-desc">Selección de artículos religiosos cuidadosamente elaborados para tu devoción</p>
                 </div>
-                
-                <div class="tabs-content">
-                    <div class="tab-content active" id="saints-tab">
-                        <div class="products-grid" id="saintsGrid"></div>
+
+                <div class="product-tabs">
+                    <div class="tabs-header" id="tabsHeader">
+                        <button class="tab-button active" data-tab="saints">
+                            <i class="fas fa-pray"></i> Santos
+                        </button>
+                        <button class="tab-button" data-tab="rosaries">
+                            <i class="fas fa-circle-notch"></i> Rosarios
+                        </button>
+                        <button class="tab-button" data-tab="medals">
+                            <i class="fas fa-circle"></i> Medallas
+                        </button>
+                        <button class="tab-button" data-tab="amulets">
+                            <i class="fas fa-shield-alt"></i> Amuletos
+                        </button>
+                        <button class="tab-button" data-tab="scapulars">
+                            <i class="fas fa-tshirt"></i> Escapularios
+                        </button>
+                        <button class="tab-button" data-tab="liturgical">
+                            <i class="fas fa-church"></i> Litúrgicos
+                        </button>
                     </div>
-                    <div class="tab-content" id="rosaries-tab">
-                        <div class="products-grid" id="rosariesGrid"></div>
-                    </div>
-                    <div class="tab-content" id="medals-tab">
-                        <div class="products-grid" id="medalsGrid"></div>
-                    </div>
-                    <div class="tab-content" id="amulets-tab">
-                        <div class="products-grid" id="amuletsGrid"></div>
-                    </div>
-                    <div class="tab-content" id="scapulars-tab">
-                        <div class="products-grid" id="scapularsGrid"></div>
-                    </div>
-                    <div class="tab-content" id="liturgical-tab">
-                        <div class="products-grid" id="liturgicalGrid"></div>
+
+                    <div class="tabs-content">
+                        <div class="tab-content active" id="saints-tab">
+                            <div class="products-grid" id="saintsGrid"></div>
+                        </div>
+                        <div class="tab-content" id="rosaries-tab">
+                            <div class="products-grid" id="rosariesGrid"></div>
+                        </div>
+                        <div class="tab-content" id="medals-tab">
+                            <div class="products-grid" id="medalsGrid"></div>
+                        </div>
+                        <div class="tab-content" id="amulets-tab">
+                            <div class="products-grid" id="amuletsGrid"></div>
+                        </div>
+                        <div class="tab-content" id="scapulars-tab">
+                            <div class="products-grid" id="scapularsGrid"></div>
+                        </div>
+                        <div class="tab-content" id="liturgical-tab">
+                            <div class="products-grid" id="liturgicalGrid"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Sobre Nosotros -->
+        <!-- ========== SOBRE NOSOTROS ========== -->
         <section id="about" class="about-section">
-            <div class="about-container">
-                <div class="about-content">
-                    <h2>Nuestra Historia</h2>
-                    <p>Desde el <span class="about-highlight">21 de febrero de 2006</span>, <strong>San Francisco de Padua Cali</strong> ha sido un faro de fe y devoción en el centro de la ciudad.</p>
-                    <p>Mantenemos nuestras costumbres y valores fundamentales: el amor al prójimo y una hermosa representación de nuestra divinidad. Cada artículo en nuestra tienda es seleccionado con cuidado para ayudar a nuestros clientes a fortalecer su camino espiritual.</p>
-                    
-                    <div class="about-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">17+</span>
-                            <span class="stat-label">Años de historia</span>
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-content">
+                        <span class="section-tag">Nuestra Historia</span>
+                        <h2>Un faro de fe en el corazón de Cali</h2>
+                        <p>Desde el <strong>21 de febrero de 2006</strong>, <span class="highlight">San Francisco de Padua Cali</span> ha sido un punto de encuentro para quienes buscan fortalecer su camino espiritual.</p>
+                        <p>Mantenemos nuestras costumbres y valores fundamentales: el amor al prójimo y una hermosa representación de nuestra divinidad. Cada artículo en nuestra tienda es seleccionado con cuidado.</p>
+
+                        <div class="about-features">
+                            <div class="feature-item">
+                                <i class="fas fa-truck"></i>
+                                <div>
+                                    <h4>Domicilios en Cali</h4>
+                                    <p>Y Área Metropolitana</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-globe-americas"></i>
+                                <div>
+                                    <h4>Envíos Nacionales</h4>
+                                    <p>A todo Colombia</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-hands-praying"></i>
+                                <div>
+                                    <h4>Productos Bendecidos</h4>
+                                    <p>Disponibles bajo pedido</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="stat-item">
-                            <span class="stat-number">1000+</span>
-                            <span class="stat-label">Productos</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">5000+</span>
-                            <span class="stat-label">Clientes</span>
+
+                        <div class="about-stats">
+                            <div class="astat">
+                                <span class="astat-num">17+</span>
+                                <span class="astat-lbl">Años de historia</span>
+                            </div>
+                            <div class="astat">
+                                <span class="astat-num">1000+</span>
+                                <span class="astat-lbl">Productos</span>
+                            </div>
+                            <div class="astat">
+                                <span class="astat-num">5000+</span>
+                                <span class="astat-lbl">Clientes</span>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div style="margin-top: 30px;">
-                        <p><i class="fas fa-check-circle" style="color: var(--oro-santo);"></i> Domicilios en Cali y Área Metropolitana</p>
-                        <p><i class="fas fa-check-circle" style="color: var(--oro-santo);"></i> Envíos a nivel nacional</p>
-                        <p><i class="fas fa-check-circle" style="color: var(--oro-santo);"></i> Productos bendecidos disponibles</p>
+
+                    <div class="about-image-wrap">
+                        <div class="about-image-frame"></div>
+                        <img src="MEDIA/ALMACEN%201.jpeg" alt="Nuestra tienda" loading="lazy">
+                        <div class="about-image-badge">
+                            <img src="MEDIA/SAN FRANCISCO PALOMITAS.png" alt="San Francisco">
+                        </div>
                     </div>
-                </div>
-                
-                <div class="about-image">
-                    <img src="MEDIA/ALMACEN%201.jpeg" alt="Nuestra tienda" loading="lazy">
                 </div>
             </div>
         </section>
 
-        <!-- Visítanos -->
+        <!-- ========== VISÍTANOS ========== -->
         <section id="visit" class="visit-section">
-            <div class="visit-container">
-                <div class="section-title">
-                    <h2>Visítanos</h2>
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Te esperamos</span>
+                    <h2 class="section-title">Visítanos</h2>
+                    <p class="section-desc">Un espacio de paz y reflexión en el corazón de Cali</p>
                 </div>
-                
-                <div class="visit-content">
-                    <div class="store-images">
-                        <div class="store-image-main">
-                            <img src="MEDIA/ALMACEN%201.jpeg" alt="Interior de la tienda" class="store-image" onclick="openModal(this.src)" loading="lazy">
+
+                <div class="visit-grid">
+                    <div class="visit-gallery">
+                        <div class="gallery-main" onclick="openModal(this.querySelector('img').src)">
+                            <img src="MEDIA/ALMACEN%201.jpeg" alt="Interior de la tienda" loading="lazy">
                         </div>
-                        <img src="MEDIA/ALMACEN%202.jpeg" alt="Productos" class="store-image" onclick="openModal(this.src)" loading="lazy">
-                        <img src="MEDIA/ALMACEN%203.jpeg" alt="Estanterías" class="store-image" onclick="openModal(this.src)" loading="lazy">
+                        <div class="gallery-small" onclick="openModal(this.querySelector('img').src)">
+                            <img src="MEDIA/ALMACEN%202.jpeg" alt="Productos" loading="lazy">
+                        </div>
+                        <div class="gallery-small" onclick="openModal(this.querySelector('img').src)">
+                            <img src="MEDIA/ALMACEN%203.jpeg" alt="Estanterías" loading="lazy">
+                        </div>
                     </div>
-                    
+
                     <div class="visit-info">
-                        <h3>Te esperamos en nuestra tienda física</h3>
-                        <p>Un espacio de paz y reflexión en el corazón de Cali</p>
-                        
-                        <div class="visit-details">
-                            <p><i class="fas fa-map-marker-alt"></i> <strong>Calle 9 # 5-28, Centro, Cali</strong></p>
-                            <p><i class="fas fa-clock"></i> Lunes a Sábado: 9:00 AM - 7:00 PM</p>
-                            <p><i class="fas fa-clock"></i> Domingos: 10:00 AM - 2:00 PM</p>
-                            <p><i class="fas fa-phone-alt"></i> 300 848 6851</p>
-                            <p><i class="fas fa-car"></i> Parqueadero cercano disponible</p>
+                        <div class="visit-detail">
+                            <div class="visit-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div>
+                                <h4>Dirección</h4>
+                                <p>Calle 9 # 5-28, Centro<br>Cali, Valle del Cauca</p>
+                            </div>
                         </div>
-                        
-                        <div class="map-container">
+                        <div class="visit-detail">
+                            <div class="visit-icon"><i class="fas fa-clock"></i></div>
+                            <div>
+                                <h4>Horarios</h4>
+                                <p>Lunes a Sábado: 9:00 AM - 7:00 PM<br>Domingos: 10:00 AM - 2:00 PM</p>
+                            </div>
+                        </div>
+                        <div class="visit-detail">
+                            <div class="visit-icon"><i class="fas fa-phone-alt"></i></div>
+                            <div>
+                                <h4>Teléfono</h4>
+                                <p>300 848 6851</p>
+                            </div>
+                        </div>
+                        <div class="visit-detail">
+                            <div class="visit-icon"><i class="fas fa-car"></i></div>
+                            <div>
+                                <h4>Parqueadero</h4>
+                                <p>Cercano disponible</p>
+                            </div>
+                        </div>
+
+                        <div class="visit-map">
                             <iframe 
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3982.6740040667867!2d-76.53638542424154!3d3.4511160965203944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e30a6a0c5c6b5a3%3A0x1a7c8a9b9b9b9b9b!2sCl.%209%20%235-28%2C%20Comuna%203%2C%20Cali%2C%20Valle%20del%20Cauca%2C%20Colombia!5e0!3m2!1ses!2sco!4v1690834567890!5m2!1ses!2sco" 
                                 class="map-iframe" 
@@ -355,8 +423,8 @@
                                 title="Ubicación de San Francisco de Padua">
                             </iframe>
                         </div>
-                        
-                        <a href="https://maps.app.goo.gl/Zgy17hrerEgKGTXX9" target="_blank" rel="noopener noreferrer" class="map-button">
+
+                        <a href="https://maps.app.goo.gl/Zgy17hrerEgKGTXX9" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block">
                             <i class="fas fa-directions"></i> Cómo llegar
                         </a>
                     </div>
@@ -364,440 +432,162 @@
             </div>
         </section>
 
-        <!-- Métodos de Pago -->
+        <!-- ========== MÉTODOS DE PAGO ========== -->
         <section id="payment" class="payment-section">
-            <div class="section-title">
-                <h2 style="color: var(--oro-santo);">Métodos de Pago</h2>
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Facilidad para ti</span>
+                    <h2 class="section-title">Métodos de Pago</h2>
+                </div>
+
+                <div class="payment-grid">
+                    <div class="payment-card">
+                        <div class="payment-logo bancolombia">Bancolombia</div>
+                        <p>Transferencia</p>
+                    </div>
+                    <div class="payment-card">
+                        <div class="payment-logo davivienda">Davivienda</div>
+                        <p>Transferencia</p>
+                    </div>
+                    <div class="payment-card">
+                        <div class="payment-logo efectivo"><i class="fas fa-money-bill-wave"></i> Efectivo</div>
+                        <p>Pago presencial</p>
+                    </div>
+                </div>
+
+                <div class="payment-cta">
+                    <a href="#" class="btn btn-outline">
+                        <i class="fas fa-credit-card"></i> Pagar con PSE
+                    </a>
+                    <p class="payment-note">Próximamente más opciones de pago</p>
+                </div>
             </div>
-            
-            <div class="payment-methods">
-                <div class="bank-logo">Bancolombia</div>
-                <div class="bank-logo">Davivienda</div>
-                <div class="bank-logo">Efectivo</div>
-            </div>
-            
-            <a href="#" class="pse-button" rel="noopener noreferrer">
-                <i class="fas fa-credit-card"></i> Pagar con PSE
-            </a>
-            
-            <p style="margin-top: 30px; opacity: 0.9;">Próximamente más opciones de pago</p>
         </section>
 
-        <!-- Contacto -->
-        <section id="contact" style="padding: 80px 20px; background: var(--crema-divino);">
-            <div class="section-title">
-                <h2>Contacto</h2>
-            </div>
-            
-            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px;">
-                    <div>
-                        <div style="font-size: 2.5rem; color: var(--oro-santo); margin-bottom: 15px;">
-                            <i class="fas fa-phone-alt"></i>
-                        </div>
+        <!-- ========== CONTACTO ========== -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Estamos para servirte</span>
+                    <h2 class="section-title">Contacto</h2>
+                </div>
+
+                <div class="contact-grid">
+                    <a href="tel:3008486851" class="contact-card">
+                        <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
                         <h3>Teléfono</h3>
-                        <p style="font-size: 1.3rem; font-weight: 600;">300 848 6851</p>
-                    </div>
-                    
-                    <div>
-                        <div style="font-size: 2.5rem; color: var(--oro-santo); margin-bottom: 15px;">
-                            <i class="fas fa-envelope"></i>
-                        </div>
+                        <p>300 848 6851</p>
+                    </a>
+
+                    <a href="mailto:depaduasanfrancisco@gmail.com" class="contact-card">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
                         <h3>Email</h3>
                         <p>depaduasanfrancisco@gmail.com</p>
-                    </div>
-                    
-                    <div>
-                        <div style="font-size: 2.5rem; color: var(--oro-santo); margin-bottom: 15px;">
-                            <i class="fab fa-instagram"></i>
-                        </div>
+                    </a>
+
+                    <a href="https://www.instagram.com/sanfranciscodepaduas/" target="_blank" rel="noopener noreferrer" class="contact-card">
+                        <div class="contact-icon"><i class="fab fa-instagram"></i></div>
                         <h3>Instagram</h3>
-                        <p>@sanfranciscodepadua</p>
-                    </div>
+                        <p>@sanfranciscodepaduas</p>
+                    </a>
+
+                    <a href="https://wa.me/573008486851" target="_blank" rel="noopener noreferrer" class="contact-card">
+                        <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+                        <h3>WhatsApp</h3>
+                        <p>Escríbenos ahora</p>
+                    </a>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
+    <!-- ========== FOOTER ========== -->
     <footer>
-        <div class="footer-wave">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                <path fill="var(--verde-devoto)" fill-opacity="1" d="M0,192L48,186.7C96,181,192,171,288,181.3C384,192,480,224,576,218.7C672,213,768,171,864,170.7C960,171,1056,213,1152,229.3C1248,245,1344,235,1392,229.3L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-            </svg>
-        </div>
-        
-        <div class="footer-content">
-            <div class="footer-container">
-                <div>
-                    <div class="footer-logo-section">
-                        <div class="footer-logo-container">
-                            <img src="MEDIA/SAN_FRANCISCO_PALOMITAS__1_-removebg-preview.png" alt="San Francisco de Padua" class="footer-logo" loading="lazy">
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-brand-col">
+                    <div class="footer-brand">
+                        <img src="MEDIA/SAN FRANCISCO PALOMITAS.png" alt="San Francisco de Padua" class="footer-logo">
+                        <div>
+                            <h3>San Francisco de Padua</h3>
+                            <p>Via sanfisio, Alma ghiossamente</p>
                         </div>
-                        <h3 class="footer-brand">SAN FRANCISCO DE PADUA</h3>
-                        <p class="footer-motto">Via sanfisio, Alma ghiossamente</p>
                     </div>
-                    <p class="footer-description">
-                        Arte y devoción desde 2006. Ofrecemos artículos religiosos que inspiran y fortalecen la fe.
-                    </p>
+                    <p class="footer-desc">Arte y devoción desde 2006. Ofrecemos artículos religiosos que inspiran y fortalecen la fe.</p>
+                    <div class="footer-socials">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/sanfranciscodepaduas/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/573008486851" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
-                
-                <div>
-                    <h3 class="footer-title">Enlaces Rápidos</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home"><i class="fas fa-home"></i> Inicio</a></li>
-                        <li><a href="#products"><i class="fas fa-shopping-cart"></i> Productos</a></li>
-                        <li><a href="#about"><i class="fas fa-church"></i> Nosotros</a></li>
-                        <li><a href="#visit"><i class="fas fa-map-marker-alt"></i> Visítanos</a></li>
+
+                <div class="footer-col">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Inicio</a></li>
+                        <li><a href="#products"><i class="fas fa-chevron-right"></i> Productos</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> Nosotros</a></li>
+                        <li><a href="#visit"><i class="fas fa-chevron-right"></i> Visítanos</a></li>
+                        <li><a href="#payment"><i class="fas fa-chevron-right"></i> Pagos</a></li>
                     </ul>
                 </div>
-                
-                <div>
-                    <h3 class="footer-title">Contacto</h3>
-                    <div class="contact-item">
-                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-                        <div>Calle 9 # 5-28, Centro<br>Cali, Colombia</div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
-                        <div>300 848 6851</div>
-                    </div>
+
+                <div class="footer-col">
+                    <h4>Contacto</h4>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-map-marker-alt"></i> Calle 9 # 5-28, Centro, Cali</li>
+                        <li><i class="fas fa-phone-alt"></i> 300 848 6851</li>
+                        <li><i class="fas fa-envelope"></i> depaduasanfrancisco@gmail.com</li>
+                    </ul>
                 </div>
-                
-                <div>
-                    <h3 class="footer-title">Síguenos</h3>
-                    <div class="social-grid">
-                        <a href="#" class="social-link" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i> Facebook</a>
-                        <a href="#" class="social-link" rel="noopener noreferrer"><i class="fab fa-instagram"></i> Instagram</a>
-                        <a href="#" class="social-link" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                        <a href="#" class="social-link" rel="noopener noreferrer"><i class="fab fa-youtube"></i> YouTube</a>
-                    </div>
+
+                <div class="footer-col">
+                    <h4>Horarios</h4>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-clock"></i> Lunes a Sábado<br><strong>9:00 AM - 7:00 PM</strong></li>
+                        <li><i class="fas fa-clock"></i> Domingos<br><strong>10:00 AM - 2:00 PM</strong></li>
+                    </ul>
                 </div>
             </div>
-            
+
             <div class="footer-bottom">
-                <div class="footer-bottom-content">
-                    <div class="copyright">
-                        <p>&copy; 2023 San Francisco de Padua Cali. Todos los derechos reservados.</p>
-                        <p>Desde el 21 de febrero de 2006 | "Arte y Devoción en Cada Detalle"</p>
-                    </div>
-                    <a href="https://whiatcompany.lat" target="_blank" rel="noopener noreferrer" class="developer-credit">
-                        <i class="fas fa-code"></i> Nuestro desarrollador Whiat Company Lat
-                    </a>
-                </div>
+                <p>&copy; <span id="current-year">2023</span> San Francisco de Padua Cali. Todos los derechos reservados.</p>
+                <p>Desde el 21 de febrero de 2006 · "Arte y Devoción en Cada Detalle"</p>
+                <a href="https://whiatcompany.lat" target="_blank" rel="noopener noreferrer" class="dev-credit">
+                    <i class="fas fa-code"></i> Desarrollado por Whiat Company Lat
+                </a>
             </div>
         </div>
     </footer>
 
-    <!-- ========== SEGURIDAD: Script de Protección Avanzada ========== -->
+    <!-- ========== BOTONES FLOTANTES ========== -->
+    <a href="https://wa.me/573008486851?text=Hola%20San%20Francisco%20de%20Padua,%20me%20interesan%20sus%20productos" 
+       class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <a href="#" class="back-to-top" id="backToTop" aria-label="Volver arriba">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <!-- ========== MODAL ========== -->
+    <div class="image-modal" id="imageModal">
+        <span class="close-modal" id="closeModal">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="Imagen ampliada">
+        </div>
+    </div>
+
+    <!-- ========== SCRIPTS ========== -->
     <script>
-    // ============================================
-    // SECURITY HARDENING - Capa de Ciberseguridad
-    // ============================================
-    
-    (function() {
-        'use strict';
-        
-        // ===== 1. Protección contra XSS =====
-        // Sanitizar inputs del usuario
-        window.sanitizeInput = function(input) {
-            if (!input) return '';
-            const div = document.createElement('div');
-            div.textContent = input;
-            return div.innerHTML;
-        };
-        
-        // ===== 2. Protección de Session Storage y Local Storage =====
-        // Encriptar datos sensibles
-        const encryptData = (data) => {
-            // Simple encoding (no es criptografía real, solo ejemplo)
-            return btoa(encodeURIComponent(data));
-        };
-        
-        const decryptData = (data) => {
-            try {
-                return decodeURIComponent(atob(data));
-            } catch(e) {
-                return null;
-            }
-        };
-        
-        // ===== 3. Rate Limiting para acciones repetitivas =====
-        const rateLimiter = {
-            store: new Map(),
-            check: function(action, limit = 5, windowMs = 60000) {
-                const now = Date.now();
-                const key = `${action}`;
-                const record = this.store.get(key) || { count: 0, resetTime: now + windowMs };
-                
-                if (now > record.resetTime) {
-                    record.count = 0;
-                    record.resetTime = now + windowMs;
-                }
-                
-                record.count++;
-                this.store.set(key, record);
-                
-                return record.count <= limit;
-            }
-        };
-        
-        // ===== 4. Prevenir inyección de DOM =====
-        const originalInnerHTML = Object.getOwnPropertyDescriptor(Element.prototype, 'innerHTML');
-        Object.defineProperty(Element.prototype, 'innerHTML', {
-            get: originalInnerHTML.get,
-            set: function(value) {
-                // Validar contenido sospechoso
-                if (typeof value === 'string') {
-                    const suspicious = /<script|javascript:|onclick|onerror|onload|onmouseover/i;
-                    if (suspicious.test(value)) {
-                        console.warn('[SECURITY] Intento de inyección bloqueado');
-                        return;
-                    }
-                }
-                originalInnerHTML.set.call(this, value);
-            }
-        });
-        
-        // ===== 5. Protección de eventos peligrosos =====
-        const dangerousEvents = ['onload', 'onerror', 'onclick', 'onmouseover', 'onfocus', 'onblur'];
-        dangerousEvents.forEach(eventName => {
-            Object.defineProperty(window, eventName, {
-                get: () => null,
-                set: () => {}
-            });
-        });
-        
-        // ===== 6. Detección de Modo Incógnito =====
-        function detectIncognito() {
-            return new Promise((resolve) => {
-                const fs = window.RequestFileSystem || window.webkitRequestFileSystem;
-                if (!fs) {
-                    resolve(false);
-                } else {
-                    fs(window.TEMPORARY, 100, 
-                        () => resolve(false),
-                        () => resolve(true)
-                    );
-                }
-            });
-        }
-        
-        detectIncognito().then(isIncognito => {
-            if (isIncognito) {
-                console.log('[INFO] Modo incógnito detectado - Algunas funciones pueden estar limitadas');
-            }
-        });
-        
-        // ===== 7. Prevenir Drag & Drop malicioso =====
-        document.addEventListener('dragenter', (e) => {
-            e.preventDefault();
-            return false;
-        });
-        
-        document.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            return false;
-        });
-        
-        document.addEventListener('drop', (e) => {
-            e.preventDefault();
-            return false;
-        });
-        
-        // ===== 8. Protección contra Keylogger (solo inputs sensibles) =====
-        const sensitiveInputs = ['password', 'card', 'cvv', 'cc'];
-        document.addEventListener('keypress', (e) => {
-            const target = e.target;
-            if (target && target.tagName === 'INPUT') {
-                const inputType = target.type.toLowerCase();
-                const inputName = (target.name || '').toLowerCase();
-                const inputId = (target.id || '').toLowerCase();
-                
-                const isSensitive = sensitiveInputs.some(s => 
-                    inputType.includes(s) || inputName.includes(s) || inputId.includes(s)
-                );
-                
-                if (isSensitive) {
-                    // No hacer nada aquí, solo registrar (en producción, loguear)
-                    console.log('[SECURITY] Entrada sensible detectada');
-                }
-            }
-        });
-        
-        // ===== 9. Validación de Email con expresión segura =====
-        window.validateEmail = (email) => {
-            const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-            return re.test(String(email).toLowerCase());
-        };
-        
-        // ===== 10. Protección de Formularios =====
-        const protectForm = (form) => {
-            if (!form) return;
-            
-            form.addEventListener('submit', (e) => {
-                const inputs = form.querySelectorAll('input, textarea');
-                inputs.forEach(input => {
-                    if (input.value) {
-                        // Sanitizar antes de enviar
-                        input.value = sanitizeInput(input.value);
-                    }
-                });
-            });
-        };
-        
-        // Aplicar protección a formularios existentes
-        document.querySelectorAll('form').forEach(protectForm);
-        
-        // ===== 11. Detección de cambios en DOM (MutationObserver) =====
-        const observer = new MutationObserver((mutations) => {
-            mutations.forEach((mutation) => {
-                if (mutation.type === 'childList') {
-                    mutation.addedNodes.forEach((node) => {
-                        if (node.nodeType === 1) { // Element node
-                            // Verificar scripts agregados dinámicamente
-                            if (node.tagName === 'SCRIPT' || node.tagName === 'IFRAME') {
-                                console.warn('[SECURITY] Elemento dinámico detectado:', node.tagName);
-                                // Opcional: remover scripts sospechosos
-                                if (node.src && !node.src.startsWith(window.location.origin)) {
-                                    node.remove();
-                                    console.warn('[SECURITY] Script externo removido');
-                                }
-                            }
-                            
-                            // Verificar atributos peligrosos
-                            if (node.hasAttributes()) {
-                                const attrs = node.attributes;
-                                for (let i = 0; i < attrs.length; i++) {
-                                    const attrName = attrs[i].name.toLowerCase();
-                                    if (attrName.startsWith('on')) {
-                                        node.removeAttribute(attrName);
-                                        console.warn('[SECURITY] Event handler removido:', attrName);
-                                    }
-                                }
-                            }
-                        }
-                    });
-                }
-            });
-        });
-        
-        observer.observe(document.body, {
-            childList: true,
-            subtree: true,
-            attributes: true,
-            attributeFilter: ['onclick', 'onload', 'onerror', 'onmouseover']
-        });
-        
-        // ===== 12. Protección de cookies =====
-        document.cookie = "SecureFlag=secure; Secure; HttpOnly; SameSite=Strict";
-        
-        // ===== 13. Información de seguridad en consola =====
-        console.log('%c🔒 Sitio Protegido | San Francisco de Padua', 'color: #D4AF37; font-size: 14px; font-weight: bold;');
-        console.log('%c✓ Protección XSS activa\n✓ Protección Clickjacking activa\n✓ Sanitización de inputs activa\n✓ Rate Limiting activo', 'color: #2C4A3E; font-size: 12px;');
-        
-        // ===== 14. Health Check de Seguridad =====
-        window.securityHealthCheck = function() {
-            const checks = {
-                csp: !!document.querySelector('meta[http-equiv="Content-Security-Policy"]'),
-                xssProtection: !!document.querySelector('meta[http-equiv="X-XSS-Protection"]'),
-                frameOptions: !!document.querySelector('meta[http-equiv="X-Frame-Options"]'),
-                referrerPolicy: !!document.querySelector('meta[name="referrer"]')
-            };
-            
-            console.table(checks);
-            return checks;
-        };
-        
-        // ===== 15. Prevenir clickjacking adicional =====        if (self !== top) {
-            top.location = self.location;
-        }
-        
-        // ===== 16. Protección de Console Injection =====
-        const noop = () => {};
-        const consoleMethods = ['log', 'info', 'warn', 'error', 'debug'];
-        if (window.location.hostname !== 'localhost' && !window.location.hostname.includes('127.0.0.1')) {
-            consoleMethods.forEach(method => {
-                if (console[method] && method !== 'error') {
-                    console[method] = noop;
-                }
-            });
-        }
-        
-        // ===== 17. Rate Limiting para búsquedas =====
-        let lastSearchTime = 0;
-        const minSearchInterval = 500; // 0.5 segundos entre búsquedas
-        
-        window.safeSearch = function(searchFn) {
-            const now = Date.now();
-            if (now - lastSearchTime < minSearchInterval) {
-                console.warn('[SECURITY] Búsqueda demasiado rápida - Rate limiting activado');
-                return;
-            }
-            lastSearchTime = now;
-            return searchFn();
-        };
-        
-        // ===== 18. Sanitización de URL =====
-        window.sanitizeUrl = function(url) {
-            try {
-                const parsed = new URL(url);
-                const allowedProtocols = ['http:', 'https:', 'mailto:', 'tel:'];
-                if (!allowedProtocols.includes(parsed.protocol)) {
-                    return '#';
-                }
-                return url;
-            } catch(e) {
-                return '#';
-            }
-        };
-        
-        // ===== 19. Verificación de extensiones maliciosas =====
-        window.checkFileExtension = function(filename, allowedExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp']) {
-            const ext = filename.toLowerCase().slice(((filename.lastIndexOf('.') - 1) >>> 0) + 2);
-            return allowedExtensions.includes(`.${ext}`);
-        };
-        
-        // ===== 20. Reporte de Seguridad (Opcional - para debugging) =====
-        window.securityReport = {
-            timestamp: new Date().toISOString(),
-            userAgent: navigator.userAgent,
-            language: navigator.language,
-            platform: navigator.platform,
-            cookiesEnabled: navigator.cookieEnabled,
-            doNotTrack: navigator.doNotTrack,
-            connectionType: navigator.connection ? navigator.connection.effectiveType : 'unknown'
-        };
-        
-        console.log('[SECURITY] Sistema de protección inicializado correctamente');
-        
-    })();
-    
-    // ===== FUNCIONES EXISTENTES (Mantener compatibilidad) =====
-    window.openModal = function(src) {
-        const modal = document.getElementById('imageModal');
-        const modalImg = document.getElementById('modalImage');
-        if (modal && modalImg) {
-            modalImg.src = window.sanitizeUrl ? window.sanitizeUrl(src) : src;
-            modal.style.display = 'flex';
-        }
-    };
+    // Seguridad básica
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('copy', e => {
+        e.clipboardData.setData('text/plain', '© San Francisco de Padua');
+        e.preventDefault();
+    });
     </script>
-    
-    <!-- Tu archivo JavaScript principal -->
     <script src="java.js"></script>
-    
-    <!-- ========== SEGURIDAD: SRI adicional para recursos externos ========== -->
-    <script>
-    // Verificar integridad de recursos cargados dinámicamente
-    (function() {
-        const resources = document.querySelectorAll('link[rel="stylesheet"], script[src]');
-        resources.forEach(resource => {
-            resource.addEventListener('error', function() {
-                console.error(`[SECURITY] Error cargando recurso: ${this.src || this.href}`);
-            });
-        });
-    })();
-    </script>
 </body>
 </html>
